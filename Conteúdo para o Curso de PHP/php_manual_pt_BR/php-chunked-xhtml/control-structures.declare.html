@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>declare</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.switch.html">« switch</a></li>
+      <li style="float: right;"><a href="function.return.html">return »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estruturas de Controle</a></li>
+    <li>declare</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.declare" class="sect1">
+ <h2 class="title"><em>declare</em></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <p class="para">
+  A instrução <em>declare</em> é usada
+  para definir diretivas de execução para um bloco de código.
+  A sintaxe do <em>declare</em> é similar à
+  sintaxe de outros construtos de controle de fluxo:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+declare (directive)
+    statement
+</pre></div>
+   </div>
+
+  </div>
+ </p>
+
+ <p class="para">
+  A seção <em>directive</em> permite que
+  o comportamento do bloco do <em>declare</em> seja
+  definido.
+  Atualmente três diretivas são reconhecidas: a diretiva
+  <em>ticks</em> (Veja abaixo para mais
+  informações da diretiva
+  <a href="control-structures.declare.html#control-structures.declare.ticks" class="link">ticks</a>),
+  a diretiva <em>encoding</em> (Veja abaixo para mais
+  informações da diretiva
+  <a href="control-structures.declare.html#control-structures.declare.encoding" class="link">encoding</a>)
+  e a diretiva <em>strict_types</em> (Veja abaixo para mais
+  informações na seção
+  <a href="functions.arguments.html#functions.arguments.type-declaration.strict" class="link">strict</a>
+  sobre argumentos de função).
+ </p>
+ <p class="para">
+  <table class="doctable informaltable">
+       
+        <thead>
+         <tr>
+          <th>Versão</th>
+          <th>Descrição</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>7.0.0</td>
+          <td>Adicionada a diretiva <em>strict_types</em></td>
+         </tr>
+
+         <tr>
+          <td>7.0.0</td>
+          <td>
+           A diretiva <em>ticks</em> não escapa mais para diferentes
+           unidades de compilação.
+          </td>
+         </tr>
+
+         <tr>
+          <td>5.3.0</td>
+          <td>Adicionada a diretiva <em>encoding</em></td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+ </p>
+ <p class="para">
+  Como as diretivas são manipuladas na compilação do arquivo, somente literais podem
+  ser usadas como valores da diretiva. Variáveis e constantes não podem ser usadas. Para
+  ilustrar:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Isto&nbsp;é&nbsp;válido:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;isto&nbsp;é&nbsp;inválido:<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">TICK_VALUE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">TICK_VALUE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  A <em>declaração</em> parte do bloco do
+  <em>declare</em> será executada - como
+  é executada e quais os efeitos colaterais que ocorrem durante
+  a execução depende da diretiva definida no bloco
+  <em>directive</em>.
+ </p>
+ <p class="para">
+  O construtor do <em>declare</em> também pode ser usado
+  no escopo global, afetando todo o código que o segue (entretanto se o arquivo com o
+  <em>declare</em> for incluído, não afetará o
+  arquivo principal).
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;these&nbsp;are&nbsp;the&nbsp;same:<br /><br />//&nbsp;you&nbsp;can&nbsp;use&nbsp;this:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;entire&nbsp;script&nbsp;here<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #FF8000">//&nbsp;or&nbsp;you&nbsp;can&nbsp;use&nbsp;this:<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;entire&nbsp;script&nbsp;here<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+
+ <div class="sect2" id="control-structures.declare.ticks">
+  <h3 class="title">Ticks</h3>
+  <p class="para">Um &#039;tick&#039; é um evento que ocorre a cada
+  <var class="varname"><var class="varname">N</var></var> declarações de baixo nível executadas
+  pelo interpretador dentro do bloco <em>declare</em>.
+  O valor de <var class="varname"><var class="varname">N</var></var> é especificado
+  usando <code class="code">ticks=<var class="varname"><var class="varname">N</var></var></code>
+  dentro do bloco <em>declare</em> da seção
+  <em>directive</em>.
+ </p>
+ <p class="para">
+  Nem todas declarações são passiveis de executar um &#039;tick&#039;. Normalmente, expressões de
+  condições e argumentos de expressões não são.
+ </p>
+ <p class="para">
+  O(s) evento(s) que serão executados a cada tick são especificados usando a função
+  <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span>. Veja o exemplo
+  abaixo para mais detalhes. Note que mais de um evento pode ser executado
+  para cada tick.
+ </p>
+ <p class="para">
+  <div class="example" id="example-138">
+   <p><strong>Exemplo #1 Exemplo de uso do Tick</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;A&nbsp;function&nbsp;called&nbsp;on&nbsp;each&nbsp;tick&nbsp;event<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"tick_handler()&nbsp;called\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">register_tick_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'tick_handler'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br />if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-139">
+   <p><strong>Exemplo #2 Exemplo de uso dos Ticks</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"tick_handler()&nbsp;called\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;print(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">tick_handler</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Veja mais sobre <span class="function"><a href="function.register-tick-function.html" class="function">register_tick_function()</a></span> e
+  <span class="function"><a href="function.unregister-tick-function.html" class="function">unregister_tick_function()</a></span>.
+ </p>
+ </div>
+ <div class="sect2" id="control-structures.declare.encoding">
+  <h3 class="title">Codificação</h3>
+  <p class="para">
+    A codificação de um script pode ser especificada, por script, utilizando a diretiva <em>encoding</em>.
+  <div class="example" id="example-140">
+   <p><strong>Exemplo #3 Declarando um encoding para o script.</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">encoding</span><span style="color: #007700">=</span><span style="color: #DD0000">'ISO-8859-1'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;code&nbsp;here<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+
+  <div class="caution"><strong class="caution">Cuidado</strong>
+   <p class="simpara">
+    Quando usada com namespaces, a única sintaxe válida para declarar
+    é <em>declare(encoding=&#039;...&#039;);</em> onde <em>...</em>
+    é o valor do encoding.  <em>declare(encoding=&#039;...&#039;) {}</em>
+    irá resultar em um erro de sintaxe quando usada com namespaces.
+   </p>
+  </div>
+  <p class="para">
+   O valor de codificação em declare será  ignorada no PHP 5.3 exceto se compilado com
+   <em>--enable-zend-multibyte</em>.
+  </p>
+  <p class="para">
+   Note que o PHP não mostra se <em>--enable-zend-multibyte</em> foi
+   usada na compilação, com exceção da utilização da função <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>.
+  </p>
+  <p class="para">
+   Veja mais <a href="ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a>.
+  </p>
+ </div>
+</div></div></div></body></html>

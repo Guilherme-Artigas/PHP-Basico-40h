@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Novas Fun&ccedil;&otilde;es</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration5.configuration.html">« Migrando Arquivos de Configura&ccedil;&atilde;o</a></li>
+      <li style="float: right;"><a href="migration5.newconf.html">Novas Diretivas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration5.html">Migrando do PHP 4 para o PHP 5.0.x</a></li>
+    <li>Novas Fun&ccedil;&otilde;es</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration5.functions" class="section">
+   <h2 class="title">Novas Funções</h2>
+   <p class="para">
+    No PHP 5 existem algumas novas funções. Aqui está uma lista delas:
+   </p>
+   <p class="para"><a href="ref.array.html" class="link">Arrays</a>:</p>
+    <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-combine.html" class="function">array_combine()</a></span> - Cria um array usando um array para chaves
+      e outro array para valores
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-diff-uassoc.html" class="function">array_diff_uassoc()</a></span> - Computa a diferença de
+      arrays com checagem adicional de índice que é realizada por uma função de callback
+      fornecida pelo usuário
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-udiff.html" class="function">array_udiff()</a></span> - Computa a diferença entre arrays
+      usando uma função de callback para comparação dos dados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-udiff-assoc.html" class="function">array_udiff_assoc()</a></span> - Computa a diferença
+      de array com verificação adicional de índices. Os valores são comparados
+      usando uma função de callback
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-udiff-uassoc.html" class="function">array_udiff_uassoc()</a></span> - Computa a diferença de
+      arrays com verificação adicional de índices. Os valores são comparados
+      usando uma função de callback. Os índices também são comparados utilizando uma função de callback.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-walk-recursive.html" class="function">array_walk_recursive()</a></span> - Aplica uma função definida pelo usuário 
+      recursivamente para cada item de uma array
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-uintersect-assoc.html" class="function">array_uintersect_assoc()</a></span> - Computa a intersecção de
+      arrays com verificação adicional de índice. Os valores são comparados
+      usando uma função de callback.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-uintersect-uassoc.html" class="function">array_uintersect_uassoc()</a></span> - Computa a intersecção de
+      arrays com verificação adicional de índice. Tanto os valores quanto os índices são comparados
+      usando funções de callback separadas.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.array-uintersect.html" class="function">array_uintersect()</a></span> - Computa a intersecção de arrays.
+      Os valores são comparados usando uma função de callback.
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.ibase.html" class="link">InterBase</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-affected-rows.html" class="function">ibase_affected_rows()</a></span> - Returna o número de registros
+      que foram afetados pelo query anterior
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-backup.html" class="function">ibase_backup()</a></span> -Inicia uma tarefa de backup
+      no gerenciador de serviços e retorna imediatamente
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-commit-ret.html" class="function">ibase_commit_ret()</a></span> - Comita a transação sem 
+      fechá-la
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-db-info.html" class="function">ibase_db_info()</a></span> - Solicita estatística sobre o
+      banco de dados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-drop-db.html" class="function">ibase_drop_db()</a></span> - Remover o banco de dados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-errcode.html" class="function">ibase_errcode()</a></span> - Retorna o código de erro
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-free-event-handler.html" class="function">ibase_free_event_handler()</a></span> - Cancela o registro de
+      um manipulador de eventos
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-gen-id.html" class="function">ibase_gen_id()</a></span> - Incrementa o gerador e retorna 
+      o novo valor
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-maintain-db.html" class="function">ibase_maintain_db()</a></span> - Executa o comando de manutenção
+      no servidor do banco de dados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-name-result.html" class="function">ibase_name_result()</a></span> - Define um nome para um conjunto de resultados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-num-params.html" class="function">ibase_num_params()</a></span> - Retorna o número de parâmetros numa 
+      query preparada
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-param-info.html" class="function">ibase_param_info()</a></span> - Retorna informações sobre os 
+      parâmetros de uma query preparada
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-restore.html" class="function">ibase_restore()</a></span> - Inicia uma tarefa de recuperação
+      no gerenciador de serviços e retorna imediatamente
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-rollback-ret.html" class="function">ibase_rollback_ret()</a></span> - Faz um rollback na transação e
+      retém o contexto da transação
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-server-info.html" class="function">ibase_server_info()</a></span> - Solicita estatísticas sobre o 
+      servidor de banco de dados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-service-attach.html" class="function">ibase_service_attach()</a></span> - Conecta no gerenciador de serviços
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-service-detach.html" class="function">ibase_service_detach()</a></span> - Desconecta do 
+      gerenciador de serviços 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-set-event-handler.html" class="function">ibase_set_event_handler()</a></span> - Registra uma função de callback
+      para ser executada quando um evento é disparado
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ibase-wait-event.html" class="function">ibase_wait_event()</a></span> - Espera pelo disparo de um evento
+      pelo banco de dados
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.iconv.html" class="link">iconv</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-mime-decode.html" class="function">iconv_mime_decode()</a></span> - Decodifica um campo de cabeçalho MIME 
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-mime-decode-headers.html" class="function">iconv_mime_decode_headers()</a></span> - decodifica múltiplos campos de um cabeçalho MIME
+      de uma única vez.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-mime-encode.html" class="function">iconv_mime_encode()</a></span> - Compõe um campo do cabeçalho MIME
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-strlen.html" class="function">iconv_strlen()</a></span> - Retorna o total de caracteres de uma 
+      string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-strpos.html" class="function">iconv_strpos()</a></span> - Encontra a posicão da primeira ocorrência
+      do item no conjunto
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-strrpos.html" class="function">iconv_strrpos()</a></span> - Encontra a posicão da última ocorrência
+      do item no conjunto
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.iconv-substr.html" class="function">iconv_substr()</a></span> - Remove parte de uma string
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.stream.html" class="link">Streams</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-copy-to-stream.html" class="function">stream_copy_to_stream()</a></span> - Copia valores de um stream
+      para outro
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-get-line.html" class="function">stream_get_line()</a></span> - Pega a linha do recurso de stream até o 
+      delimitador passado
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-accept.html" class="function">stream_socket_accept()</a></span> - Aceita a conexão em um
+      socket criado por <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span> - Abre a internet ou domínio Unix
+      numa conexão socket
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-get-name.html" class="function">stream_socket_get_name()</a></span> - Recupera o nome de sockets locais
+      ou remotos
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-recvfrom.html" class="function">stream_socket_recvfrom()</a></span> - Recebe dados de um
+      socket, conectado ou não
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-sendto.html" class="function">stream_socket_sendto()</a></span> - Manda uma mensagem para um socket,
+      se estiver conectado ou não
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.stream-socket-server.html" class="function">stream_socket_server()</a></span> - Cria uma Internet ou domínio Unix
+      servidor de socket
+     </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.datetime.html" class="link">Relacionado a Data e Hora</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.idate.html" class="function">idate()</a></span> - Formata a hora/data local como inteiro
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.date-sunset.html" class="function">date_sunset()</a></span> - Hora do pôr do sol para um determinado dia e 
+      localização
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.date-sunrise.html" class="function">date_sunrise()</a></span> - Hora do nascer do sol para um determinado dia e 
+      localização
+    </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.time-nanosleep.html" class="function">time_nanosleep()</a></span> - Atrasar por um determinado número de segundos ou
+      nanosegundos
+    </span>
+    </li>
+   </ul>
+
+   <p class="para"><a href="ref.strings.html" class="link">Strings</a>:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.str-split.html" class="function">str_split()</a></span> - Converte uma string para uma array
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.strpbrk.html" class="function">strpbrk()</a></span> - Procura na string por qualquer um dos conjuntos 
+      de caracteres passados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.substr-compare.html" class="function">substr_compare()</a></span> - Opcionalmente &quot;Binary safe&quot;, comparação &quot; case
+      insensitive&quot; de duas strings de uma posição até o comprimento
+      de caracteres
+     </span>
+    </li>
+   </ul>
+
+   <p class="para">Outros:</p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.convert-uudecode.html" class="function">convert_uudecode()</a></span> - decodifica uma string codificada com uuencoded
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.convert-uuencode.html" class="function">convert_uuencode()</a></span> - Codifica uma string
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.curl-copy-handle.html" class="function">curl_copy_handle()</a></span> - Copia o manipulador cURL com 
+      todas as suas preferências
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.dba-key-split.html" class="function">dba_key_split()</a></span> - Divide uma chave em representação de string
+      em representação de array
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.dbase-get-header-info.html" class="function">dbase_get_header_info()</a></span> - Obtêm a informação do cabeçalho 
+      de um banco de dados dBase
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.dbx-fetch-row.html" class="function">dbx_fetch_row()</a></span> - Busca registros de um resultado de query
+      que teve a flag <strong><code>DBX_RESULT_UNBUFFERED</code></strong> setada
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.fbsql-set-password.html" class="function">fbsql_set_password()</a></span> - Muda a senha de um determinado
+      usuário
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.file-put-contents.html" class="function">file_put_contents()</a></span> - Escreve a string no arquivo
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ftp-alloc.html" class="function">ftp_alloc()</a></span> - Aloca espaço para o arquivo ser 
+      enviado
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.get-declared-interfaces.html" class="function">get_declared_interfaces()</a></span> - Retorna uma arrau com toda as 
+      interfaces declaradas
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.get-headers.html" class="function">get_headers()</a></span> - Busca todos os cabeçalhos enviados para o
+      servidor em resposta a uma requisição HTTP
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.headers-list.html" class="function">headers_list()</a></span> - Retorna uma lista de cabeçalhos de resposta
+      enviados (ou prontos para serem enviados)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.http-build-query.html" class="function">http_build_query()</a></span> - Gera uma string de consulta codificada como URL
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.image-type-to-extension.html" class="function">image_type_to_extension()</a></span> - Obtêm a extensão do arquivos para
+      image-type retornada por <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span>,
+      <span class="function"><a href="function.exif-read-data.html" class="function">exif_read_data()</a></span>,
+      <span class="function"><a href="function.exif-thumbnail.html" class="function">exif_thumbnail()</a></span>,
+      <span class="function"><a href="function.exif-imagetype.html" class="function">exif_imagetype()</a></span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.imagefilter.html" class="function">imagefilter()</a></span> - Aplicada um filtro em uma imagem usando
+      argumentos customizados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.imap-getacl.html" class="function">imap_getacl()</a></span> - Obtêm o ACL para uma determinada caixa de email
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.ldap-sasl-bind.html" class="function">ldap_sasl_bind()</a></span> - Vincula para o diretório LDAP usando SASL
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.mb-list-encodings.html" class="function">mb_list_encodings()</a></span> - Retorna um array com todos 
+      codificações suportados
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.pcntl-getpriority.html" class="function">pcntl_getpriority()</a></span> - Obtêm a prioridade de qualquer
+      processo
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.pcntl-wait.html" class="function">pcntl_wait()</a></span> - Aguarda ou retorna o estado de uma
+      chamada de sistema de um filho definido por <em>waitpid()</em>\
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.pg-version.html" class="function">pg_version()</a></span> - Retorna um array com cliente, protocolo
+      e versão do servidor (quando disponível)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.php-check-syntax.html" class="function">php_check_syntax()</a></span> - Verifica a sintaxe de um 
+      arquivo específico
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.php-strip-whitespace.html" class="function">php_strip_whitespace()</a></span> - Retorna o fonte sem comentários
+      e espaços em branco
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.proc-nice.html" class="function">proc_nice()</a></span> - Muda a prioridade do processo
+      atual
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.pspell-config-data-dir.html" class="function">pspell_config_data_dir()</a></span> - Muda a localização dos
+      arquivos de idiomas
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.pspell-config-dict-dir.html" class="function">pspell_config_dict_dir()</a></span> - Muda a localização da
+      lista de palavras principais
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.setrawcookie.html" class="function">setrawcookie()</a></span> - Envia um cookie sem a codificação de URL
+      nos valores
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.scandir.html" class="function">scandir()</a></span> - Lista arquivos e diretórios dentro 
+      de um caminho especificado
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.snmp-read-mib.html" class="function">snmp_read_mib()</a></span> - Lê e processa arquivos MIB dentro
+      da árvore MIB ativa
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function"><a href="function.sqlite-fetch-column-types.html" class="function">sqlite_fetch_column_types()</a></span> - Retorna uma array de
+      tipos de colunas de uma tabela em particular
+     </span>
+    </li>
+   </ul>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     A extensão <a href="ref.tidy.html" class="link">Tidy</a> mudou completamente a sua 
+     API.
+    </p>
+   </p></blockquote>
+  </div></div></div></body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Outras Melhorias</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration52.errorrep.html">« Relat&oacute;rio de Erros</a></li>
+      <li style="float: right;"><a href="migration51.html">Migrando do PHP 5.0.x para PHP 5.1.x »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration52.html">Migrando do PHP 5.1.x para o PHP 5.2.x</a></li>
+    <li>Outras Melhorias</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration52.other" class="section">
+  <h2 class="title">Outras Melhorias</h2>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Melhoria no gerenciador de memória e aumento de limite de memória padrão.
+    </span>
+    <span class="simpara">
+     O novo gerenciador de memória aloca menos memória e funciona mais rápido que sua
+     encarnação anterior. Ele aloca memória do sistema em grandes blocos, e então
+     gerencia o heap sozinho. O valor <em>memory_limit</em> no <var class="filename">php.ini</var> é
+     verificado, não para cada chamada <em>emalloc()</em> (como antes), mas para os blocos
+     atuais solicitados pelo sistema. Isso significa que <em>memory_limit</em> é muito mais
+     preciso do que costumava ser, uma vez que o gerenciador de memória antigo não calculava
+     toda a sobrecarga de memória utilizada pela biblioteca <em>malloc</em>.
+    </span>
+    <span class="simpara">
+     Graças a essa recém-descoberta precisão do uso de memória parece ter aumentado,
+     embora na verdade não aumentou. Para acomodar esse aumento aparente, a configuração
+     padrão do <em>memory_limit</em> também foi aumentada - de 8 para 16 megabytes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Adicionado suporte para construtores em interfaces para forçar a verificação
+     da assinatura em implementações.
+    </span>
+    <span class="simpara">
+     A partir do PHP 5.2.0, as interfaces podem ter construtores. No entanto, se você escolher
+     declarar um construtor em uma interface, cada classe que implementa a interface
+     DEVE incluir um construtor com a assinatura correspondente ao construtor da
+     interface base. Por &#039;assinatura&#039; queremos dizer que os parâmetros e as definições
+     de tipo de retorno, incluindo qualquer type hint, inclusive se os dados são passados
+     por referência ou por valor.
+    </span>
+   </li>
+  </ul>
+ </div></div></div></body></html>

@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Determina se a vari&aacute;vel &eacute; vazia</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.doubleval.html">« doubleval</a></li>
+      <li style="float: right;"><a href="function.floatval.html">floatval »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.var.html">Fun&ccedil;&otilde;es para Manipula&ccedil;&atilde;o de vari&aacute;veis</a></li>
+    <li>Determina se a vari&aacute;vel &eacute; vazia</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.empty" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">empty</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">empty</span> &mdash; <span class="dc-title">Determina se a variável é vazia</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.empty-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>empty</strong></span>
+    ( <span class="methodparam"><span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span> <code class="parameter">$var</code></span>
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Determina se uma variável é considerada vazia. Uma variável é considerada vazia se não existir ou seu valor é igual <strong><code>FALSE</code></strong>. A função <span class="function"><strong>empty()</strong></span> não gera um aviso se a variável não existir.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.empty-parameters">
+ <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Variável a ser verificada
+      </p>
+      <blockquote class="note"><p><strong class="note">Nota</strong>: 
+       <p class="para">
+        Em versões anteriores ao PHP 5.5, a função <span class="function"><strong>empty()</strong></span> somente suportava variáveis;
+        qualquer outra coisa resultaria em um erro de interpretação. Em outras palavras, o código
+        a seguir não funcionará: <strong class="command">empty(trim($name))</strong>.
+        Em substituição, use <strong class="command">trim($name) == false</strong>.
+       </p>
+      </p></blockquote>
+      <p class="para">
+       Nenhum aviso é gerado se a variável não existir.
+       Isso significa que a função <span class="function"><strong>empty()</strong></span> é essencialmente
+       equivalente a <strong class="command">!isset($var) || $var == false</strong>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.empty-returnvalues">
+  <h3 class="title">Valor Retornado</h3>
+  <p class="para">
+   Retorna <strong><code>FALSE</code></strong> se <code class="parameter">var</code> existir e não estiver vazia e não conter um valor zerado.
+   Caso contrário retornará <strong><code>TRUE</code></strong>.
+  </p>
+  <p class="para">
+   O que é visto abaixo é considerado vazio:
+   <ul class="simplelist">
+    <li class="member"><em>&quot;&quot;</em> (uma string vazia)</li>
+    <li class="member"><em>0</em> (0 como um inteiro)</li>
+    <li class="member"><em>0.0</em> (0 como um ponto flutuante)</li>
+    <li class="member"><em>&quot;0&quot;</em> (0 como uma string)</li>
+    <li class="member"><strong><code>NULL</code></strong></li>
+    <li class="member"><strong><code>FALSE</code></strong></li>
+    <li class="member"><em>array()</em> (um array vazio)</li>
+    <li class="member"><em>$var;</em> (uma variável declarada, mas sem valor)</li>
+   </ul>
+ </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.empty-changelog">
+ <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Versão</th>
+       <th>Descrição</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        <p class="para">
+         A função <span class="function"><strong>empty()</strong></span> agora suporta expressões, em vez de somente
+         variáveis.
+        </p>
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        <p class="para">
+         Checar deslocamentos de strings não numéricos retorna <strong><code>TRUE</code></strong>.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.empty-examples">
+  <h3 class="title">Exemplos</h3>
+   <p class="para">
+    <div class="example" id="example-6246">
+     <p><strong>Exemplo #1 
+      Uma simples comparação entre as funções <span class="function"><strong>empty()</strong></span> /
+      <span class="function"><a href="function.isset.html" class="function">isset()</a></span>.
+     </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Evaluates&nbsp;to&nbsp;true&nbsp;because&nbsp;$var&nbsp;is&nbsp;empty<br /></span><span style="color: #007700">if&nbsp;(empty(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$var&nbsp;is&nbsp;either&nbsp;0,&nbsp;empty,&nbsp;or&nbsp;not&nbsp;set&nbsp;at&nbsp;all'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Evaluates&nbsp;as&nbsp;true&nbsp;because&nbsp;$var&nbsp;is&nbsp;set<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'$var&nbsp;is&nbsp;set&nbsp;even&nbsp;though&nbsp;it&nbsp;is&nbsp;empty'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="example" id="example-6247">
+   <p><strong>Exemplo #2 Função <span class="function"><strong>empty()</strong></span> em Deslocamento de String</strong></p>
+   <div class="example-contents"><p>
+    O PHP 5.4 modifica como <span class="function"><strong>empty()</strong></span> se comporta
+    quando passado deslocamentos de string.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$expected_array_got_string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somestring'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #0000BB">0.5</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0.5'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0&nbsp;Mostel'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>O exemplo acima irá imprimir no PHP 5.3:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+</pre></div>
+   </div>
+   <div class="example-contents"><p>O exemplo acima irá imprimir no PHP 5.4:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+bool(false)
+bool(false)
+bool(true)
+bool(true)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.empty-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Este é um
+ construtor de linguagem e não uma função, por isso não é possível chamá-lo através de
+ <a href="functions.variable-functions.html" class="link">funções variáveis</a></span>
+</p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Ao utilizar a função <span class="function"><strong>empty()</strong></span> em propriedades de objetos inacessíveis,
+    o método de sobrecarga <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>
+    será chamado, se declarado.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.empty-seealso">
+  <h3 class="title">Veja Também</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.isset.html" class="function" rel="rdfs-seeAlso">isset()</a> - Informa se a vari&aacute;vel foi iniciada</span></li>
+    <li class="member"><a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a></li>
+    <li class="member"><span class="function"><a href="function.unset.html" class="function" rel="rdfs-seeAlso">unset()</a> - Destr&oacute;i a vari&aacute;vel especificada</span></li>
+    <li class="member"><span class="function"><a href="function.array-key-exists.html" class="function" rel="rdfs-seeAlso">array_key_exists()</a> - Checa se uma chave ou &iacute;ndice existe em um array</span></li>
+    <li class="member"><span class="function"><a href="function.count.html" class="function" rel="rdfs-seeAlso">count()</a> - Conta o n&uacute;mero de elementos de uma vari&aacute;vel, ou propriedades de um objeto</span></li>
+    <li class="member"><span class="function"><a href="function.strlen.html" class="function" rel="rdfs-seeAlso">strlen()</a> - Retorna o tamanho de uma string</span></li>
+    <li class="member"><a href="types.comparisons.html" class="link">A tabela de comparação de tipos</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

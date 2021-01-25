@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>break</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.foreach.html">« foreach</a></li>
+      <li style="float: right;"><a href="control-structures.continue.html">continue »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estruturas de Controle</a></li>
+    <li>break</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.break" class="sect1">
+ <h2 class="title"><em>break</em></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <p class="simpara">
+  <em>break</em> finaliza a execução da estrutura
+  <em>for</em>, <em>foreach</em>,
+  <em>while</em>, <em>do-while</em> ou
+  <em>switch</em> atual.
+ </p>
+ <p class="simpara">
+  <em>break</em> aceita um argumento numérico opcional
+  que diz quantas estruturas aninhadas deverá
+  interromper. O valor padrão é <em>1</em>, somente
+  a estrutura imediata é interrompida.
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'one'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'two'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'three'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'four'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'stop'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'five'</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'stop'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;You&nbsp;could&nbsp;also&nbsp;write&nbsp;'break&nbsp;1;'&nbsp;here.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$val</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Using&nbsp;the&nbsp;optional&nbsp;argument.&nbsp;*/<br /><br /></span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />while&nbsp;(++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"At&nbsp;5&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Exit&nbsp;only&nbsp;the&nbsp;switch.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"At&nbsp;10;&nbsp;quitting&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Exit&nbsp;the&nbsp;switch&nbsp;and&nbsp;the&nbsp;while.&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Changelog para o <em>break</em></strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Versão</th>
+      <th>Descrição</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>7.0.0</td>
+      <td>
+       <em>break</em> fora de um laço ou de uma estrutura de controle
+       <em>switch</em> agora é detectado em tempo de compilação, antes
+       era em tempo de execução, e dispara um erro do tipo <strong><code>E_COMPILE_ERROR</code></strong>.
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       <em>break 0;</em> não é mais válido. Nas versões anteriores era interpretado
+       como <em>break 1;</em>.
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       Removida a possibilidade de passar variáveis como argumentos numéricos
+       (ex., <em>$num = 2; break $num;</em>)
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div></div></div></body></html>

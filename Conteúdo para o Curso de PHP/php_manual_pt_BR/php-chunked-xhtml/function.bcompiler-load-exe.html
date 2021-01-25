@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>L&ecirc; e cria classes a partir de um arquivo exe do bcompiler</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ref.bcompiler.html">« bcompiler Fun&ccedil;&otilde;es</a></li>
+      <li style="float: right;"><a href="function.bcompiler-load.html">bcompiler_load »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.bcompiler.html">bcompiler Fun&ccedil;&otilde;es</a></li>
+    <li>L&ecirc; e cria classes a partir de um arquivo exe do bcompiler</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.bcompiler-load-exe" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bcompiler_load_exe</h1>
+  <p class="verinfo">(PECL bcompiler &gt;= 0.4)</p><p class="refpurpose"><span class="refname">bcompiler_load_exe</span> &mdash; <span class="dc-title">Lê e cria classes a partir de um arquivo exe do bcompiler</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.bcompiler-load-exe-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>bcompiler_load_exe</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Lê os dados de um arquivo executável do bcompiler e cria classes a partir dos bytecodes
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.bcompiler-load-exe-parameters">
+  <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       String com o caminho do arquivo executável.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bcompiler-load-exe-returnvalues">
+  <h3 class="title">Valor Retornado</h3>
+  <p class="para">
+   Retorna <strong><code>TRUE</code></strong> em caso de sucesso ou <strong><code>FALSE</code></strong> em caso de falha.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.bcompiler-load-exe-examples">
+  <h3 class="title">Exemplos</h3>
+  <p class="para">
+   <div class="example" id="example-494">
+    <p><strong>Exemplo #1 Exemplo de <span class="function"><a href="function.bcompiler-load.html" class="function">bcompiler_load()</a></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />bcompiler_load_exe</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/example.exe"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">get_defined_classes</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 notes" id="refsect1-function.bcompiler-load-exe-notes">
+  <h3 class="title">Notas</h3>
+  <div class="warning"><strong class="warning">Aviso</strong><p class="simpara">Esta função é
+<em class="emphasis">EXPERIMENTAL</em>. O comportamento, seu nome e
+documentação podem mudar sem aviso em futuras versões do PHP.
+Utilize por sua própria conta e risco.
+</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.bcompiler-load-exe-seealso">
+  <h3 class="title">Veja Também</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.bcompiler-load.html" class="function" rel="rdfs-seeAlso">bcompiler_load()</a> - L&ecirc; e cria classes a partir de um arquivo compactado pelo bzip</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

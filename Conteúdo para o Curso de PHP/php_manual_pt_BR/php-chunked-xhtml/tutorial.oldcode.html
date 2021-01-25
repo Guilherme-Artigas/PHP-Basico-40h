@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Usando c&oacute;digos antigos com novas vers&otilde;es do PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="tutorial.forms.html">« Tratando Formul&aacute;rios</a></li>
+      <li style="float: right;"><a href="tutorial.whatsnext.html">O que vem a seguir? »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="tutorial.html">Um simples tutorial</a></li>
+    <li>Usando c&oacute;digos antigos com novas vers&otilde;es do PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="tutorial.oldcode" class="section">
+   <h2 class="title">Usando códigos antigos com novas versões do PHP</h2>
+   <p class="para">
+    Agora que o PHP cresceu e é uma linguagem de script popular, há
+    muitos repositórios públicos e bibliotecas contendo código que você pode reutilizar em seus próprios scripts.
+    Os desenvolvedores do PHP tentaram largamente manter a compatibilidade com versões anteriores,
+    para que um script escrito em uma versão mais antiga do PHP rode (idealmente) sem nenhuma alteração
+    em uma versão mais nova do PHP. Na prática algumas alterações serão geralmente necessárias.
+   </p>
+   <p class="para">
+    Duas das coisas mais importantes alterações recentes que afetam um código antigo são:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       O velho método de utilizar <var class="varname"><var class="varname">$HTTP_*_VARS</var></var> não está disponível
+       desde o PHP 5.4.0. Os seguintes
+       <a href="language.variables.superglobals.html" class="link">arrays superglobais</a>
+       foram introduzidos no PHP <a href="https://www.php.net/releases/4_1_0.php" class="link external">&raquo;&nbsp;4.1.0</a>:
+       <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>,
+       <var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var>,
+       <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></var>,
+       <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var> e <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Variáveis externas não são mais registradas no escopo global por
+       padrão. Em outras palavras, com o PHP
+       <a href="https://www.php.net/releases/4_2_0.php" class="link external">&raquo;&nbsp;4.2.0</a> a diretiva
+       <a href="ini.core.html#ini.register-globals" class="link">register_globals</a> está
+       <em class="emphasis">off</em> (desabilitada) por padrão no arquivo <var class="filename">php.ini</var>. O
+       método indicado atualmente é o de acessar estes valores através dos arrays superglobais como mencionado
+       acima. Scripts antigos, livros, e tutoriais podem estar utilizando esta
+       diretiva <em>on</em> (habilitada). Se ela estivesse <em>on</em> (habilitada),
+       por exemplo, seria possível utilizar a variável <var class="varname"><var class="varname">$id</var></var> da URL
+       <em>http://www.example.com/foo.php?id=42</em>. A diretiva estando habilitada
+       ou desabilitada, <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['id']</a></var></var> sempre está disponível.
+      </span>
+     </li>
+    </ul>
+    Para mais detalhes destas alterações, veja a seção
+    <a href="language.variables.predefined.html" class="link">variáveis predefinidas</a>
+    e links associados.
+   </p>
+  </div></div></div></body></html>

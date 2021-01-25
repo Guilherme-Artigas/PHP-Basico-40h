@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>M&eacute;todos M&aacute;gicos</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.iterations.html">« Itera&ccedil;&atilde;o de Objetos</a></li>
+      <li style="float: right;"><a href="language.oop5.final.html">final »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">Classes e Objetos</a></li>
+    <li>M&eacute;todos M&aacute;gicos</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.magic" class="sect1">
+  <h2 class="title">Métodos Mágicos</h2>
+  <p class="para">
+   Os nomes de função
+   <a href="language.oop5.decon.html#object.construct" class="link">__construct()</a>,
+   <a href="language.oop5.decon.html#object.destruct" class="link">__destruct()</a>,
+   <a href="language.oop5.overloading.html#object.call" class="link">__call()</a>,
+   <a href="language.oop5.overloading.html#object.callstatic" class="link">__callStatic()</a>,
+   <a href="language.oop5.overloading.html#object.get" class="link">__get()</a>,
+   <a href="language.oop5.overloading.html#object.set" class="link">__set()</a>,
+   <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>,
+   <a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a>,
+   <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a>,
+   <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>,
+   <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a>,
+   <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a>,
+   <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a>,
+   <a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a>,
+   <a href="language.oop5.magic.html#object.set-state" class="link">__set_state()</a>,
+   <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> e
+   <a href="language.oop5.magic.html#object.debuginfo" class="link">__debugInfo()</a>
+   são mágicos nas classes do PHP. Não
+   deve-se ter funções com esses nomes em nenhuma de suas
+   classes a não ser que queira a funcionalidade mágica associada
+   a eles.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Todos os métodos mágicos <em class="emphasis">DECEM</em> ser declarados como <em>public</em>
+   </span>
+  </p></blockquote>
+
+  <div class="caution"><strong class="caution">Cuidado</strong>
+   <p class="simpara">
+    O PHP reserva todas as funções com nomes iniciadas com __ como mágicas.
+    É recomendado que não se utilize funções com nomes com
+    __ no PHP, a não ser que deseje-se alguma funcionalidade mágica documentada.
+   </p>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.sleep">
+   <h3 class="title">
+    <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> e
+    <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>
+   </h3>
+
+   <div class="methodsynopsis dc-description" id="object.sleep">
+    <span class="modifier">public</span> <span class="methodname"><strong>__sleep</strong></span>
+     ( <span class="methodparam">void</span>
+    ) : <span class="type">array</span></div>
+
+   <div class="methodsynopsis dc-description" id="object.wakeup">
+    <span class="modifier">public</span> <span class="methodname"><strong>__wakeup</strong></span>
+     ( <span class="methodparam">void</span>
+    ) : <span class="type"><span class="type void">void</span></span></div>
+
+
+   <p class="para">
+    <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> checa se sua classe tem uma função com
+    o nome mágico <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a>. Se houver, a função é
+    executa antes de qualquer serialização. Ela pode limpar o objeto
+    e deve retornar um array com os nomes de todas as variáveis
+    do objeto que devem ser serializadas. Se o método não retornar nada,
+    então <strong><code>NULL</code></strong> é serializado e um
+    <strong><code>E_NOTICE</code></strong> disparado.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Não é possível que <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> retorne nomes de
+     propriedades privadas da classe pai. Fazer isso causará um erro de nível
+     <strong><code>E_NOTICE</code></strong>. Ao invés disso, pode-se utilizar a interface
+     <a href="class.serializable.html" class="classname">Serializable</a>.
+    </p>
+   </p></blockquote>
+   <p class="para">
+    O intuito do método <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> é enviar dados
+    pendentes ou realizar tarefas de limpeza. Além disso, a função é
+    útil se tiver objetos muito grandes que não precisem ser
+    completamente salvos.
+   </p>
+   <p class="para">
+    Ao mesmo tempo, <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> checa pela
+    presença da função com o nome mágico
+    <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>. Se presente, essa função pode
+    reconstruir qualquer recurso que o objeto possa ter.
+   </p>
+   <p class="para">
+    O intuito do método <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> é
+    reestabelecer qualquer conexão com banco de dados que podem ter sido perdidas
+    durante a serialização, e realizar outras tarefas de
+    reinicialização.
+   </p>
+   <div class="example" id="language.oop5.traits.conflict.ex1">
+    <p><strong>Exemplo #1 Sleep e wakeup</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Connection<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">connect</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">link&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__sleep</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array(</span><span style="color: #DD0000">'dsn'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'username'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__wakeup</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.serialize">
+   <h3 class="title">
+    <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a> e
+    <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a>
+   </h3>
+
+   <div class="methodsynopsis dc-description" id="object.serialize">
+    <span class="modifier">public</span> <span class="methodname"><strong>__serialize</strong></span>
+     ( <span class="methodparam">void</span>
+    ) : <span class="type">array</span></div>
+
+   <div class="methodsynopsis dc-description" id="object.unserialize">
+    <span class="modifier">public</span> <span class="methodname"><strong>__unserialize</strong></span>
+     ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$data</code></span>
+    ) : <span class="type"><span class="type void">void</span></span></div>
+
+
+   <p class="para">
+    <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span> verifica se a classe contém uma função
+    com o nome mágico <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a>. Se sim, essa função é
+    executada antes de qualquer serialização. Ela precisa construir e retornar um array associativo de chaves-valores
+    que representam a forma serializada do objeto. Se o array não for retornado então um erro <a href="class.typeerror.html" class="classname">TypeError</a>
+    será lançado.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Se ambos <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a> e <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a>
+     estiverem definidos no mesmo objeto, somente <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a> será chamado.
+     <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> será ignorado. Se o objeto implementa a interface <a href="class.serializable.html" class="link">Serializable</a>,
+     o método <em>serialize()</em> da interface será ignorado e o método mágico <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a>
+     será utilizado.
+    </p>
+   </p></blockquote>
+   <p class="para">
+    O uso pretendido de <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a> é definir uma representação arbitrária,
+    amigável, da representação do objeto. Elementos do array podem corresponder a propriedades do objeto diretamente, mas
+    isso não é obrigatório.
+   </p>
+   <p class="para">
+    Inversamente, <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span> verifica a
+    presença da função mágica
+    <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a>. Se presente, essa função será chamada
+    com o array retornado de <a href="language.oop5.magic.html#object.serialize" class="link">__serialize()</a>. Ela poderá,
+    então, restaurar as propriedades do objeto a partir do array.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Se ambos <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a> e <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>
+     estiverem definidos, somente <a href="language.oop5.magic.html#object.unserialize" class="link">__unserialize()</a> será chamado, e
+     <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> será ignorado.
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Esse recurso está disponível desde o PHP 7.4.0.
+    </p>
+   </p></blockquote>
+   <div class="example" id="language.oop5.traits.visibility.ex1">
+    <p><strong>Exemplo #2 Serialize e unserialize</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Connection<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$link</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">connect</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">link&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__serialize</span><span style="color: #007700">():&nbsp;array<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dsn'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'user'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'pass'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__unserialize</span><span style="color: #007700">(array&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">void<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'dsn'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'user'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">[</span><span style="color: #DD0000">'pass'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.tostring">
+   <h3 class="title"><a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a></h3>
+   <div class="methodsynopsis dc-description" id="object.tostring">
+    <span class="modifier">public</span> <span class="methodname"><strong>__toString</strong></span>
+     ( <span class="methodparam">void</span>
+    ) : <span class="type">string</span></div>
+
+   <p class="para">
+    O método <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a> permite que uma classe decida
+    como se comportar quando convertida para uma string. Por exemplo,
+    o que <em>echo $obj;</em> irá imprimir. Este método precisa
+    retornar uma string, senão um erro nível <strong><code>E_RECOVERABLE_ERROR</code></strong>
+    é gerado.
+   </p>
+   <div class="warning"><strong class="warning">Aviso</strong>
+    <p class="simpara">
+     Não era possível lançar uma exception de dentro de um método
+     <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a> antes do PHP 7.4.0. Isso gera
+     um erro fatal.
+    </p>
+   </div>
+   <div class="example" id="language.oop5.traits.composition.ex1">
+    <p><strong>Exemplo #3 Exemplo Simples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Declara&nbsp;uma&nbsp;classe&nbsp;simples<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">TestClass<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__toString</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TestClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'Hello'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello
+</pre></div>
+    </div>
+   </div>
+   <p class="para">
+    Vale lembrar que antes do PHP 5.2.0 o método <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a>
+    só era chamado quando combinado diretamente com
+    <span class="function"><a href="function.echo.html" class="function">echo</a></span> ou <span class="function"><a href="function.print.html" class="function">print</a></span>.
+    Desde o PHP 5.2.0, ele é chamado no contexto de string (e.g. em
+    <span class="function"><a href="function.printf.html" class="function">printf()</a></span> com modificador <em>%s</em>) mas não
+    em outros tipos de contextos (e.g. como modificador <em>%d</em>).
+    Desde o PHP 5.2.0, converter objetos sem o método <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a>
+    para string causará <strong><code>E_RECOVERABLE_ERROR</code></strong>.
+   </p>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.invoke">
+   <h3 class="title"><a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a></h3>
+   <div class="methodsynopsis dc-description" id="object.invoke">
+    <span class="methodname"><strong>__invoke</strong></span>
+     ([ <span class="methodparam"> <code class="parameter">$...</code></span>
+   ] ) : <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span></div>
+
+   <p class="para">
+    O método <a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a> é chamado quando um script tenta
+    chamar um objeto como uma função.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Esta funcionalidade esta disponível desde o PHP 5.3.0.
+    </p>
+   </p></blockquote>
+   <div class="example" id="language.oop5.traits.abstract.ex1">
+    <p><strong>Exemplo #4 Usando <a href="language.oop5.magic.html#object.invoke" class="link">__invoke()</a></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">CallableClass<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__invoke</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">CallableClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">is_callable</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(5)
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.set-state">
+   <h3 class="title"><a href="language.oop5.magic.html#object.set-state" class="link">__set_state()</a></h3>
+   <div class="methodsynopsis dc-description" id="object.set-state">
+    <span class="modifier">static</span> <span class="methodname"><strong>__set_state</strong></span>
+     ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$properties</code></span>
+    ) : <span class="type">object</span></div>
+
+   <p class="para">
+    Esse método <a href="language.oop5.static.html" class="link">estático</a> é chamado
+    em classes exportadas por <span class="function"><a href="function.var-export.html" class="function">var_export()</a></span> desde PHP 5.1.0.
+   </p>
+   <p class="para">
+    O único parâmetro deste método é um array contendo propriedades
+    exportadas no formato <em>array(&#039;property&#039; =&gt; value, ...)</em>.
+   </p>
+   <div class="example" id="language.oop5.traits.static.ex1">
+    <p><strong>Exemplo #5 Usando <a href="language.oop5.magic.html#object.set-state" class="link">__set_state()</a> (desde o PHP 5.1.0)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$var2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">__set_state</span><span style="color: #007700">(</span><span style="color: #0000BB">$an_array</span><span style="color: #007700">)&nbsp;</span><span style="color: #FF8000">//&nbsp;Desde&nbsp;o&nbsp;PHP&nbsp;5.1.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$an_array</span><span style="color: #007700">[</span><span style="color: #DD0000">'var1'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$an_array</span><span style="color: #007700">[</span><span style="color: #DD0000">'var2'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">var2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /><br />eval(</span><span style="color: #DD0000">'$b&nbsp;=&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">';'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$b&nbsp;=&nbsp;A::__set_state(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;'var1'&nbsp;=&gt;&nbsp;5,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;'var2'&nbsp;=&gt;&nbsp;'foo',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(A)#2 (2) {
+  [&quot;var1&quot;]=&gt;
+  int(5)
+  [&quot;var2&quot;]=&gt;
+  string(3) &quot;foo&quot;
+}
+</pre></div>
+    </div>
+   </div>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     Quando exportando um objeto, <span class="function"><a href="function.var-export.html" class="function">var_export()</a></span> não verifica
+     se <a href="language.oop5.magic.html#object.set-state" class="link">__set_state()</a> está
+     implementado na classe do objeto, de forma que re-importar esses objetos falham
+     na ausência de __set_state(). Isto afeta particularmente algumas
+     classes internas.
+    </span>
+    <span class="simpara">
+     É responsabilidade do programador verificar se todos os objetos podem
+     ser re-importados, ou seja, que todas as classes implementem __set_state().
+    </span>
+   </p></blockquote>
+  </div>
+
+  <div class="sect2" id="language.oop5.magic.debuginfo">
+   <h3 class="title"><a href="language.oop5.magic.html#object.debuginfo" class="link">__debugInfo()</a></h3>
+   <div class="methodsynopsis dc-description" id="object.debuginfo">
+    <span class="methodname"><strong>__debugInfo</strong></span>
+     ( <span class="methodparam">void</span>
+    ) : <span class="type">array</span></div>
+
+   <p class="para">
+    Este método é chamado pela função <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span> ao despejar um
+    objeto para obter as propriedades que devem ser exibidas. Se este método não for
+    definido em um objeto, todos as propriedades públicas, protegidas e provadas
+    serão exibidas.
+   </p>
+   <p class="para">
+    Este recurso foi adicionado no 5.6.0.
+   </p>
+   <div class="example" id="language.oop5.traits.static.ex2">
+    <p><strong>Exemplo #6 Utilizando o  <a href="language.oop5.magic.html#object.debuginfo" class="link">__debugInfo()</a></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$prop</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__debugInfo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'propSquared'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prop&nbsp;</span><span style="color: #007700">**&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (1) {
+  [&quot;propSquared&quot;]=&gt;
+  int(1764)
+}
+</pre></div>
+    </div>
+   </div>
+  </div>
+ </div></div></div></body></html>

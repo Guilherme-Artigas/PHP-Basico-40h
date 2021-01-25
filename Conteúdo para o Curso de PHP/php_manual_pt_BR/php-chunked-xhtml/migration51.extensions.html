@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Extens&otilde;es</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration51.oop.html">« Mudan&ccedil;as em classes e objetos</a></li>
+      <li style="float: right;"><a href="migration51.datetime.html">Suporte a Date/time »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration51.html">Migrando do PHP 5.0.x para PHP 5.1.x</a></li>
+    <li>Extens&otilde;es</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration51.extensions" class="section">
+  <h2 class="title">Extensões</h2>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     <a href="migration51.extensions.html#migration51.extensions-gone" class="link">Extensões removidas do core do PHP</a>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <a href="migration51.extensions.html#migration51.extensions-constants" class="link">Constantes de classe nas novas extensões do PHP 5.1.x</a>
+    </p>
+   </li>
+  </ul>
+
+  <div class="section" id="migration51.extensions-gone">
+   <h2 class="title">Extensões removidas do core do PHP</h2>
+   <p class="para">
+    Uma das primeiras coisas que você vai gostar de ver quando baixar o PHP 5.1.x é o desaparecimento de algumas extensões antigas. Essas extensões que ainda são ativamente mantidas estão disponíveis na PHP Extension Community Library (PECL), no
+    <a href="https://pecl.php.net/" class="link external">&raquo;&nbsp;https://pecl.php.net/</a>.
+   </p>
+   <table class="doctable table">
+    <caption><strong>Extensões removidas</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Extensões</th>
+       <th>Alternativa/Status</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>ext/cpdf</td>
+       <td><a href="ref.pdf.html" class="link">pecl/pdflib</a></td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.dbx.html" class="link">ext/dbx</a></td>
+       <td>pecl/dbx</td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.dio.html" class="link">ext/dio</a></td>
+       <td>pecl/dio</td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.fam.html" class="link">ext/fam</a></td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.ingres.html" class="link">ext/ingres_ii</a></td>
+       <td>pecl/ingres</td>
+      </tr>
+
+      <tr>
+       <td>ext/ircg</td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.mcve.html" class="link">ext/mcve</a></td>
+       <td>pecl/mcve</td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.mnogosearch.html" class="link">ext/mnogosearch</a></td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td>ext/oracle</td>
+       <td>
+        <a href="ref.oci8.html" class="link">ext/oci8</a> or
+        <a href="ref.pdo-oci.html" class="link">ext/pdo_oci</a>
+       </td>
+      </tr>
+
+      <tr>
+       <td>ext/ovrimos</td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td>ext/pfpro</td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td>ext/w32api</td>
+       <td><a href="https://pecl.php.net/package/ffi" class="link external">&raquo;&nbsp;pecl/ffi</a></td>
+      </tr>
+
+      <tr>
+       <td><a href="ref.nis.html" class="link">ext/yp</a></td>
+       <td>Não ativamente mantida</td>
+      </tr>
+
+      <tr>
+       <td>ext/activescript</td>
+       <td>
+        <a href="https://pecl.php.net/package/activescript" class="link external">&raquo;&nbsp;pecl/activescript</a>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+   <p class="para">
+    Módulos na PECL que não são ativamente mantidas (ex. não recebem suporte por algum tempo, não tem nenhum mantenedor ativo trabalhando neles atualmente e não tem nenhuma versão de pacote PECL), ainda estão disponíveis no SVN em <a href="https://svn.php.net/viewvc/pecl" class="link external">&raquo;&nbsp;https://svn.php.net/viewvc/pecl</a>.
+    Entretanto, módulos PHP não lançados são nativamente não suportados e seu tamanho pode variar ao tentar instalá-lo ou usá-los.
+   </p>
+  </div>
+
+  <div class="section" id="migration51.extensions-constants">
+   <h2 class="title">Constantes de classe nas novas extensões do PHP 5.1.x</h2>
+   <p class="para">
+    A API Zend Engine permite que desenvolvedores de extensão declarem constantes de classe em extensões orientadas a objetos. Novas extensões desenvolvidas para o PHP 5.1.x, incluindo <a href="ref.spl.html" class="link">SPL</a>,
+    <a href="intro.pdo.html" class="link">PDO</a>,
+    <a href="book.xmlreader.html" class="link">XMLReader</a> e
+    <a href="ref.datetime.html" class="link">date</a>, tem suas constantes no formato <strong><code>PDO::CLASS_CONSTANT</code></strong> diferentemente do formato C <strong><code>PDO_CLASS_CONSTANT</code></strong> com o objetivo de minimizar a poluição de namespace global no PHP.
+   </p>
+  </div>
+ </div></div></div></body></html>

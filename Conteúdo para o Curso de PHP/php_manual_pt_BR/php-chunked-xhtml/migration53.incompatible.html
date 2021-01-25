@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Mudan&ccedil;as incompat&iacute;veis com vers&otilde;es anteriores</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="migration53.changes.html">« O que mudou no PHP 5.3.x</a></li>
+      <li style="float: right;"><a href="migration53.new-features.html">Novos recursos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="migration53.html">Migrando do PHP 5.2.x para o PHP 5.3.x</a></li>
+    <li>Mudan&ccedil;as incompat&iacute;veis com vers&otilde;es anteriores</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="migration53.incompatible" class="section">
+  <h2 class="title">Mudanças incompatíveis com versões anteriores</h2>
+  <p class="simpara">
+   Embora a moir parte do código PHP 5 existente deva funcionar sem nenhuma alteração, por favor esteja ciente de
+   que existem algumas mudanças incompatíveis:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     A nova API interna de compilação de parametro foi aplicada em todas as extensões
+     embarcadas com o PHP 5.3.x. Esta API de compilação de parametro faz com
+     que as funções retornem <strong><code>NULL</code></strong> quando parametros incompatíveis
+     são enviados. Existem algumas exceções a esta regra, como a função <span class="function"><a href="function.get-class.html" class="function">get_class()</a></span>,
+     que continua retornando <strong><code>FALSE</code></strong> para errors.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.clearstatcache.html" class="function">clearstatcache()</a></span> não limpa mais o cache do realpath
+     por padão.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.realpath.html" class="function">realpath()</a></span> agora é totalmente indepentende da plataforma.
+     A consequência disto é que caminhos relativos inválidos como
+     <em>__FILE__ . &quot;/../x&quot;</em> não vão mais funcionar.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A família de funções do <span class="function"><a href="function.call-user-func.html" class="function">call_user_func()</a></span> agora propagam
+     <em>$this</em> mesmo que o invocador seja uma classe pai.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     As funções para array <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span>,
+     <span class="function"><a href="function.natcasesort.html" class="function">natcasesort()</a></span>, <span class="function"><a href="function.usort.html" class="function">usort()</a></span>,
+     <span class="function"><a href="function.uasort.html" class="function">uasort()</a></span>, <span class="function"><a href="function.uksort.html" class="function">uksort()</a></span>,
+     <span class="function"><a href="function.array-flip.html" class="function">array_flip()</a></span>, e <span class="function"><a href="function.array-unique.html" class="function">array_unique()</a></span>
+     não aceitam mais objetos enviados como argumentos. Para continuar enviando
+     objetos, primeiro converta o objeto para um array.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     O comportamento de funções com parametros por referência mas chamadas pelo valor mudou. Onde antes a função
+     aceitaria um argumento pelo valor,
+     um erro falta é emitido. Qualquer código anterior passando constantes ou
+     literais para funções esperando referências, devem ser alterados para associar
+     o valor a uma variável antes de chamar a função.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A nova biblioteca do mysqlnd precisa precisa do novo formato de senhas do MySQL 4.1 com 41 bytes.
+     O uso do antigo formato de 16 bytes faz com que o
+     <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> e funções similares emitam o erro:
+     <em>&quot;mysqlnd cannot connect to MySQL 4.1+ using old
+     authentication.&quot;</em>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A nova biblioteca do mysqlnd não lê os arquivos de configurações do mysql
+     (my.cnf/my.ini), como a antiga biblioteca faz. Se seu código confia nas configurações contidas no
+     arquivo de configuração, você pode ler explicitamente com a função
+     <span class="function"><a href="mysqli.options.html" class="function">mysqli_options()</a></span>. Perceba que isso significa que as constantes
+     específicas do PDO <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong>
+     e <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> não serão definidas se o suporte ao
+     MySQL no PDO for compilado com o mysqlnd.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     A / no final foi removida da classe <a href="class.splfileinfo.html" class="classname">SplFileInfo</a>
+     e outras classes de diretórios relacionados.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     O método mágico <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a>
+     não mais aceita argumentos.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Os métodos mágicos
+     <a href="language.oop5.overloading.html#object.get" class="link">__get()</a>,
+     <a href="language.oop5.overloading.html#object.set" class="link">__set()</a>,
+     <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>,
+     <a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a>, e
+     <a href="language.oop5.overloading.html#object.call" class="link">__call()</a> devem sempre
+     ser declarados como public e não podem mais ser static. As assinaturas de método agora são obrigatórias.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     O método mágico <a href="language.oop5.overloading.html#object.call" class="link">__call()</a>
+     agora é invocado no acesso de métodos private e protected.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function"><a href="function.func-get-arg.html" class="function">func_get_arg()</a></span>, <span class="function"><a href="function.func-get-args.html" class="function">func_get_args()</a></span> e
+     <span class="function"><a href="function.func-num-args.html" class="function">func_num_args()</a></span> não podem mais ser chamadas do escopo
+     mais alto de um arquivo que foi incluído pela função
+     <span class="function"><a href="function.include.html" class="function">include</a></span> ou <span class="function"><a href="function.require.html" class="function">require</a></span> de dentro da função
+     no arquivo que fez a chamada.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Uma camada de emulação para a extensão MHASH para encapsular a extensão Hash
+     foi adicionada. Entretando nem todos os algorítimos foram cobertos, notavelmente
+     o algorítimo de hash s2k. Isso significa que o s2k não está mais disponível
+     no PHP 5.3.0.
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   As seguintes palavras chaves agora estão reservadas e não podem ser utilizadas em funções,
+   classes, nomes e etc.
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="control-structures.goto.html" class="link">goto</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.namespaces.html" class="link">namespace</a>
+    </span>
+   </li>
+  </ul>
+ </div></div></div></body></html>

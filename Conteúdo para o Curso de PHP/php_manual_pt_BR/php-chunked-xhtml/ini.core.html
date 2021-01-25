@@ -1,0 +1,2472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Descri&ccedil;&atilde;o das principais diretivas do php.ini</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="ini.sections.html">« Lista das se&ccedil;&otilde;es do php.ini</a></li>
+      <li style="float: right;"><a href="extensions.html">Categoriza&ccedil;&atilde;o/Lista das Extens&otilde;es »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ini.html">php.ini directives</a></li>
+    <li>Descri&ccedil;&atilde;o das principais diretivas do php.ini</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="ini.core" class="section">
+  <h2 class="title">Descrição das principais diretivas do <var class="filename">php.ini</var></h2>
+  <p class="para">
+   Esta lista inclui as principais diretivas do <var class="filename">php.ini</var> que podemos definir para
+   configurar o PHP. Diretivas manipuladas por extensões são listadas
+   e detalhadas nas respectivas páginas de documentação da extensão;
+   Informações sobre diretivas de sessão, por exemplo, podem ser encontradas na
+   <a href="session.configuration.html" class="link">página de sessões</a>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Os padrões listados aqui são utilizados quando o <var class="filename">php.ini</var> não é carregado; os valores do <var class="filename">php.ini</var> de produção e desenvolvimento podem variar.
+   </p>
+  </p></blockquote>
+  <div class="section" id="ini.sect.language-options">
+   <h2 class="title">Opções de Linguagem</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Opções de Linguagem e Configurações Diversas</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Removida no PHP 7.0.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.precision" class="link">precision</a></td>
+        <td>&quot;14&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.serialize-precision" class="link">serialize_precision</a></td>
+        <td>&quot;-1&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>
+         Antes do PHP 5.3.5 o valor padrão era 100.
+         Antes do PHP 7.1.0 o valor padrão era 17.
+        </td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.y2k-compliance" class="link">y2k_compliance</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Removida no PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.allow-call-time-pass-reference" class="link">allow_call_time_pass_reference</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Removida no PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.disable-functions" class="link">disable_functions</a></td>
+        <td>&quot;&quot;</td>
+        <td>PHP_INI_SYSTEM apenas</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.disable-classes" class="link">disable_classes</a></td>
+        <td>&quot;&quot;</td>
+        <td><var class="filename">php.ini</var> apenas</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.exit-on-timeout" class="link">exit_on_timeout</a></td>
+        <td>&quot;&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.expose-php" class="link">expose_php</a></td>
+        <td>&quot;1&quot;</td>
+        <td><var class="filename">php.ini</var> apenas</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.hard-timeout" class="link">hard_timeout</a></td>
+        <td>&quot;2&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 7.1.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.exception-ignore-args" class="link">zend.exception_ignore_args</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 7.4.0</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.multibyte" class="link">zend.multibyte</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.script-encoding" class="link">zend.script_encoding</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.detect-unicode" class="link">zend.detect-unicode</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.signal-check" class="link">zend.signal_check</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.assertions" class="link">zend.assertions</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_ALL com restrições</td>
+        <td>Disponível a partir do PHP 7.0.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend.ze1-compatibility-mode" class="link">zend.ze1_compatibility_mode</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Removida no PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td>detect_unicode</td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.1.0. Renomeada para <a href="ini.core.html#ini.zend.detect-unicode" class="link">zend.detect-unicode</a> a partir do PHP 5.4.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.short-open-tag">
+       <code class="parameter">short_open_tag</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Informa ao PHP se a forma abreviada (<strong class="userinput"><code>&lt;? ?&gt;</code></strong>)
+        da tag de abertura do PHP é permitida. Se quiser usar o PHP em
+        conjunto com XML, esta opção pode ser desabilitada a fim de
+        usar <strong class="userinput"><code>&lt;?xml ?&gt;</code></strong> em linha. Caso contrário,
+        pode-se imprimir isto com o PHP, por exemplo <strong class="userinput"><code>&lt;?php echo &#039;&lt;?xml
+        version=&quot;1.0&quot;?&gt;&#039;; ?&gt;</code></strong>. Além disso, se desabilitada, deve ser usada
+        a forma extensa da tag de abertura do PHP (<strong class="userinput"><code>&lt;?php ?&gt;</code></strong>).
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Esta diretiva também afetava a forma abreviada
+         <strong class="userinput"><code>&lt;?=</code></strong> antes do PHP 5.4.0,
+         que é o mesmo que <strong class="userinput"><code>&lt;? echo</code></strong>. O uso desta
+         forma abreviada exigia que <code class="systemitem systemitem">short_open_tag</code>
+         estivesse habilitada.
+         A partir do PHP 5.4.0 <strong class="userinput"><code>&lt;?=</code></strong> está sempre disponível.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.asp-tags">
+       <code class="parameter">asp_tags</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Ativa o uso das tags estilo ASP &lt;% %&gt; além
+        das usuais tags &lt;?php ?&gt;. Isto inclui a
+        forma abreviada para impressão de valor de variável &lt;%= $value %&gt;. Para
+        mais informações, veja <a href="language.basic-syntax.phpmode.html" class="link">Escapando HTML</a>.
+       </span>
+       <p class="para">
+        <table class="doctable table">
+         <caption><strong>Changelog de <em>asp_tags</em></strong></caption>
+         
+          <thead>
+           <tr>
+            <th>Versão</th>
+            <th>Descrição</th>
+           </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+           <tr>
+            <td>7.0.0</td>
+            <td>
+             Removida do PHP.
+            </td>
+           </tr>
+
+          </tbody>
+         
+        </table>
+
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.precision">
+       <code class="parameter">precision</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        O número de dígitos significativos exibidos em números de ponto flutuante.
+        <em>-1</em> significa que um algoritmo avançado para arredondar
+        estes números será utilizado.
+       </span>
+      </dd>
+
+     
+
+     
+      <dt id="ini.serialize-precision">
+       <code class="parameter">serialize_precision</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        O número de dígitos significativos armazenados durante a serialização de números de pontos flutuantes.
+        <em>-1</em> significa que um algoritmo avançado para arredondar
+        estes números será utilizado.
+       </span>
+      </dd>
+
+     
+
+     
+      <dt id="ini.y2k-compliance">
+       <code class="parameter">y2k_compliance</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Assegura compatibilidade com o ano 2000 (irá causar problemas com navegadores não compatíveis)
+       </span>
+      </dd>
+
+     
+
+
+     
+      <dt id="ini.allow-call-time-pass-reference">
+       <code class="parameter">allow_call_time_pass_reference</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Define se irá alertar ou não quando argumentos são passados por referência durante chamadas de funções.
+        O método recomendado para especificar quais argumentos deveriam ser passados por
+        referência é na declaração da função. É recomendado tentar
+        desabilitar esta opção e certificar-se de que seus scripts funcionam corretamente com a opção desabilitada a fim de
+        garantir que eles irão funcionar em futuras versões da linguagem (será emitido
+        um alerta sempre que este recurso for usado).
+       </p>
+       <p class="para">
+        Passar argumentos por referência em chamadas de função foi reprovado por
+        razões de limpeza de código. Uma função pode modificar seus argumentos
+        de uma forma não documentada se não foi declarado que o argumento deve ser passado por
+        referência. Para previnir efeitos colaterais é melhor especificar quais
+        argumentos são passados por referência apenas na declaração da função.
+       </p>
+       <p class="para">
+        Veja também <a href="language.references.html" class="link">Explicação sobre Referências</a>.
+       </p>
+       <p class="para">
+        <table class="doctable table">
+         <caption><strong>Changelog de <em>allow_call_time_pass_reference</em></strong></caption>
+         
+          <thead>
+           <tr>
+            <th>Versão</th>
+            <th>Descrição</th>
+           </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+           <tr>
+            <td>5.4.0</td>
+            <td>
+             Removida do PHP.
+            </td>
+           </tr>
+
+           <tr>
+            <td>5.3.0</td>
+            <td>
+             Emite um erro do nível <strong><code>E_DEPRECATED</code></strong>.
+            </td>
+           </tr>
+
+           <tr>
+            <td>5.0.0</td>
+            <td>
+             Obsoleta, gera um erro do nível <strong><code>E_COMPILE_WARNING</code></strong>.
+            </td>
+           </tr>
+
+          </tbody>
+         
+        </table>
+
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.expose-php">
+       <code class="parameter">expose_php</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Expõe para o mundo que o PHP está instalado no servidor, o que inclui a
+        versão do PHP dentro do header HTTP (por exemplo, X-Powered-By: PHP/5.3.7).
+        Antes do PHP 5.5.0 os GUIDs do logotipo do PHP também eram expostos, portanto adicioná-los
+        à URL do seu script PHP iria exibir o logotipo apopriado
+        (por exemplo, <a href="https://www.php.net/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42" class="link external">&raquo;&nbsp;https://www.php.net/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42</a>).
+        Isto também afetava a saída da função <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>, como quando desabilitada, o logotipo PHP
+        e as informações de créditos não seriam mostrados.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         A partir do PHP 5.5.0, estes GUIDs e a função <span class="function"><a href="function.php-logo-guid.html" class="function">php_logo_guid()</a></span>
+         foram removidos do PHP e os GUIDs foram substituídos por URIs de dados.
+         Portanto, acessar o logotipo PHP adicionando o GUID ao URL não funciona mais.
+         Da mesma forma, desativar <code class="parameter">expose_php</code> não afetará a
+         exibição do logotipo PHP na função <span class="function"><a href="function.phpinfo.html" class="function">phpinfo()</a></span>.
+        </p>
+       </p></blockquote>
+       <p class="para">
+        Veja também <span class="function"><a href="function.php-logo-guid.html" class="function">php_logo_guid()</a></span> e <span class="function"><a href="function.phpcredits.html" class="function">phpcredits()</a></span>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.disable-functions">
+       <code class="parameter">disable_functions</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Esta diretiva permite desabilitar certas funções. Ela recebe
+        uma lista de nomes de funções separadas por vírgula.
+       </p>
+       <p class="para">
+        Apenas <a href="functions.internal.html" class="link">funções internas</a> podem
+        ser desabilitadas usando esta diretiva. <a href="functions.user-defined.html" class="link">Funções definidas pelo usuário</a>
+        não são afetadas.
+       </p>
+       <p class="para">
+        Esta diretiva deve ser configurada no <var class="filename">php.ini</var>. Por exemplo, ela
+        não pode ser configurada no <var class="filename">httpd.conf</var>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.disable-classes">
+       <code class="parameter">disable_classes</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Esta diretiva permite desabilitar certas classes. Ela recebe
+        uma lista de nomes de classes separadas por vírgula.
+       </span>
+       <span class="simpara">
+        Esta diretiva deve ser configurada no <var class="filename">php.ini</var>. Por exemplo, ela
+        não pode ser configurada no <var class="filename">httpd.conf</var>.
+       </span>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.assertions">
+       <code class="parameter">zend.assertions</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Quando configurada para <em>1</em>, codigo assertivo será gerado e
+        executado (modo de desenvolvimento). Quando configurada para <em>0</em>
+        então código assertivo será gerado mas ignorado (não executado)
+        em tempo de execução. Quando configurada para <em>-1</em> código assertivo não
+        será gerado, tornando as asserções sem custo (modo de produção).
+       </span>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Se um processo é iniciado em modo de produção, <a href="ini.core.html#ini.zend.assertions" class="link">zend.assertions</a>
+         não poderá ser modificada em tempo de execução, já que o código para as asserções não foi gerado.
+        </p>
+        <p class="para">
+         Se um processo é iniciado em modo de desenvolvimento, <a href="ini.core.html#ini.zend.assertions" class="link">zend.assertions</a>
+         não poderá ser configurada para <em>-1</em> em tempo de execução.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.ze1-compatibility-mode">
+       <code class="parameter">zend.ze1_compatibility_mode</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Ativa o modo de compatibilidade com Zend Engine 1 (PHP 4). Afeta
+        a clonagem, conversão (objetos sem propriedades são convertidos para <strong><code>FALSE</code></strong> ou 0) e a <a href="language.oop5.object-comparison.html" class="link">comparação de objetos</a>.
+        Neste modo, objetos são passados por valor em vez de referência por
+        padrão.
+       </p>
+       <p class="para">
+        Veja também seção entitulada
+        <a href="migration5.html" class="link">Migrando do PHP 4 para o PHP 5</a>.
+       </p>
+       <div class="warning"><strong class="warning">Aviso</strong>
+        <p class="simpara">Este recurso se tornou <em class="emphasis">OBSOLETO</em> e foi <em class="emphasis">REMOVIDO</em>
+        a partir do PHP 5.3.0.
+        </p>
+       </div>
+      </dd>
+
+     
+
+     
+      <dt id="ini.hard-timeout">
+       <code class="parameter">hard_timeout</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.exception-ignore-args">
+       <code class="parameter">zend.exception_ignore_args</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Exclui argumentos de rastreamentos de pilha (stack traces), gerados a partir de exceções.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.multibyte">
+       <code class="parameter">zend.multibyte</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Permite a análise de arquivos fontes em codificações multibyte. Habilitar zend.multibyte
+        é necessário para utilizar character sets como SJIS, BIG5, etc., que contém caracteres
+        especiais em dados de strings multibyte. Codificações compatíveis com ISO-8859-1 como UTF-8,
+        EUC, etc. não requerem esta opção.
+       </p>
+       <p class="para">
+        Habilitar o zend.multibyte requer que a extensão mbstring esteja disponível.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.script-encoding">
+       <code class="parameter">zend.script_encoding</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Este valor será usado a menos que uma diretiva
+        <a href="control-structures.declare.html#control-structures.declare.encoding" class="link">declare(encoding=...)</a>
+        apareça no início do script. Quando uma codificação incompatível com ISO-8859-1
+        é usada, ambas zend.multibyte e zend.script_encoding devem ser usadas.
+       </p>
+       <p class="para">
+        Strings literais serão transliteradas de zend.script_encoding para
+        mbstring.internal_encoding, como se a função
+        <span class="function"><a href="function.mb-convert-encoding.html" class="function">mb_convert_encoding()</a></span> tivesse sido chamada.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.detect-unicode">
+       <code class="parameter">zend.detect_unicode</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Verifica o BOM (Byte Order Mark) e determina se o arquivo contém caracteres
+        multibyte válidos.
+        Essa detecção é realizada antes do processamento de
+        <span class="function"><a href="function.halt-compiler.html" class="function">__halt_compiler()</a></span>.
+        Disponível apenas no modo Zend Multibyte.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend.signal-check">
+       <code class="parameter">zend.signal_check</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Verifica se há manipuladores de sinais substituídos no encerramento.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.exit-on-timeout">
+       <code class="parameter">exit_on_timeout</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Esta é uma diretiva unicamente do módulo mod_php do Apache1 que força um subprocesso do Apache a sair se ocorrer o timeout de execução do PHP.
+        Esse timeout causa uma chamada interna a longjmp() no Apache1 que pode deixar algumas extensões em um estado
+        inconsistente. Ao terminar o processo, quaisquer bloqueios ou memória pendentes serão liberados.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.resource-limits">
+   <h2 class="title">Limites de Recursos</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Limites de Recursos</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a></td>
+        <td>&quot;128M&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>&quot;8M&quot; antes do PHP 5.2.0, &quot;16M&quot; no PHP 5.2.0</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.memory-limit">
+       <code class="parameter">memory_limit</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Define a quantidade máxima de memória em bytes que um script
+        está permitido a alocar. Isto ajuda a previnir que scripts mal escritos
+        consumam toda a memória disponível no servidor. Note que
+        para que não haja limite de memória, esta diretiva deve ser configurada para <em>-1</em>.
+       </p>
+       <p class="para">
+        Antes do PHP 5.2.1, para utilizar esta diretiva ela precisava
+        ser habilitada em tempo de compilação usando
+        <strong class="option configure">--enable-memory-limit</strong> na
+        linha de configuração. Esta flag de tempo de compilação também era necessária para definir
+        as funções <span class="function"><a href="function.memory-get-usage.html" class="function">memory_get_usage()</a></span> e
+        <span class="function"><a href="function.memory-get-peak-usage.html" class="function">memory_get_peak_usage()</a></span> em versões anteriores à 5.2.1.
+       </p>
+
+       <span class="simpara">Quando um <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> é utilizado, o
+ valor é medido em bytes. A resumida notação, como descrito
+ <a href="faq.using.html#faq.using.shorthandbytes" class="link">neste FAQ</a>, pode também ser usada.
+ </span>
+
+      </dd>
+
+     
+    </dl>
+
+   </p>
+   <p class="para">
+    Veja também: <a href="info.configuration.html#ini.max-execution-time" class="link">max_execution_time</a>.
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.performance">
+   <h2 class="title">Ajustes de Desempenho</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Ajustes de Desempenho</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.realpath-cache-size" class="link">realpath_cache_size</a></td>
+        <td>&quot;4M&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.1.0. Antes do PHP 7.0.16 e 7.1.2, o padrão era <em>&quot;16K&quot;</em></td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.realpath-cache-ttl" class="link">realpath_cache_ttl</a></td>
+        <td>&quot;120&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.1.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      O uso da diretiva <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a> irá
+      <em class="emphasis">desativar</em> o cache do caminho real.
+     </p>
+    </p></blockquote>
+   </p>
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.realpath-cache-size">
+       <code class="parameter">realpath_cache_size</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Determina o tamanho do cache do realpath a ser usado pelo PHP. Este
+        valor deve ser aumentado em sistemas onde o PHP abre muitos arquivos, para
+        refletir a quantidade das operações de arquivo realizadas.
+       </p>
+       <p class="para">
+        O tamanho representa o número total de bytes nas strings de caminhos
+        armazenadas, mais o tamanho dos dados associados à entrada de cache. Isto
+        significa que para armazenar caminhos mais longos no cache, o tamanho de cache
+        deve ser maior. Esse valor não controla diretamente o número de
+        caminhos distintos que podem ser armazenados em cache.
+       </p>
+       <p class="para">
+        O tamanho necessário para os dados da entrada de cache depende do sistema operacional.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ini.realpath-cache-ttl">
+       <code class="parameter">realpath_cache_ttl</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Duração do tempo (em segundos) pela qual armazenar em cache as informações do realpath
+        para um dado arquivo ou diretório. Para sistemas com arquivos que raramente mudam,
+        considere aumentar o valor.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.data-handling">
+   <h2 class="title">Manipulação de Dados</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Opções de Configuração de Manipulação de Dados</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.arg-separator.output" class="link">arg_separator.output</a></td>
+        <td>&quot;&amp;&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.arg-separator.input" class="link">arg_separator.input</a></td>
+        <td>&quot;&amp;&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.variables-order" class="link">variables_order</a></td>
+        <td>&quot;EGPCS&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>PHP_INI_ALL no PHP &lt;= 5.0.5.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.request-order" class="link">request_order</a></td>
+        <td>&quot;&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.auto-globals-jit" class="link">auto_globals_jit</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Disponível a partir do PHP 5.0.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.register-globals" class="link">register_globals</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Removida no PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Obsoleta no PHP 5.3.0. Removida no PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.enable-post-data-reading" class="link">enable_post_data_reading</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a></td>
+        <td>&quot;8M&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.default-mimetype" class="link">default_mimetype</a></td>
+        <td>&quot;text/html&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.default-charset" class="link">default_charset</a></td>
+        <td>&quot;UTF-8&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Por padrão, &quot;UTF-8&quot; a partir do PHP &gt;= 5.6.0; vazio no PHP &lt; 5.6.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.always-populate-raw-post-data" class="link">always_populate_raw_post_data</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Removida no PHP 7.0.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.arg-separator.output">
+       <code class="parameter">arg_separator.output</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O separador usado em URLs gerados pelo PHP para separar argumentos.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.arg-separator.input">
+       <code class="parameter">arg_separator.input</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Lista de separadores usados pelo PHP para analisar URLs de entrada em variáveis.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Cada caractere nesta diretiva é considerado como separador!
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.variables-order">
+       <code class="parameter">variables_order</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Configura a ordem de análise das variáveis EGPCS (<em>E</em>nvironment,
+        <em>G</em>et, <em>P</em>ost,
+        <em>C</em>ookie e <em>S</em>erver).
+        Por exemplo, se variables_order estiver configurada
+        como <em>&quot;SP&quot;</em> então o PHP irá criar as variáveis
+        <a href="language.variables.predefined.html" class="link">superglobals</a> <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> e
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var>, mas não irá criar
+        <var class="varname"><var class="varname"><a href="reserved.variables.environment.html" class="classname">$_ENV</a></var></var>, <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> e
+        <var class="varname"><var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var></var>. Configurar como &quot;&quot; significa que nenhuma
+        <a href="language.variables.predefined.html" class="link">superglobals</a> será definida.
+       </p>
+       <p class="para">
+        Se a diretiva obsoleta
+        <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>
+        estiver ativada, então variables_order também
+        configura a ordem em que as variáveis <em>ENV</em>,
+        <em>GET</em>, <em>POST</em>,
+        <em>COOKIE</em> e <em>SERVER</em>
+        são preenchidas no escopo global. Então, por exemplo, se variables_order
+        estiver configurada como <em>&quot;EGPCS&quot;</em>, register_globals estiver ativada,
+        e ambas <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['action']</a></var></var> e
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['action']</a></var></var> estiverem definidas, então
+        <var class="varname"><var class="varname">$action</var></var> conterá o valor de
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST['action']</a></var></var> pois <em>P</em> vem
+        depois de <em>G</em> no valor da diretiva do nosso exemplo.
+       </p>
+       <div class="warning"><strong class="warning">Aviso</strong>
+        <p class="para">
+         Em ambas as SAPIs CGI e FastCGI,
+         <var class="varname"><var class="varname"><a href="reserved.variables.server.html" class="classname">$_SERVER</a></var></var> é
+         também preenchido por valores do ambiente; <em>S</em>
+         é sempre equivalente a <em>ES</em> independentemente da
+         localização de <em>E</em> em outros lugares nesta diretiva.
+        </p>
+       </div>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         O conteúdo e ordem de
+         <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var> é também
+         afetado por esta diretiva.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.request-order">
+       <code class="parameter">request_order</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Esta diretiva descreve a ordem na qual o PHP registra as variáves GET, POST
+        e Cookie no array _REQUEST. O registro é feito
+        da esquerda para direita, valores mais recentes sobrescrevem os valores mais antigos.
+       </p>
+       <p class="para">
+        Se esta diretiva não está definida <a href="ini.core.html#ini.variables-order" class="link">variables_order</a> é usada para o conteúdo de
+        <var class="varname"><var class="varname"><a href="reserved.variables.request.html" class="classname">$_REQUEST</a></var></var>.
+       </p>
+       <p class="para">
+        Note que os arquivos <var class="filename">php.ini</var> da distribuição padrão não contêm
+        o <em>&#039;C&#039;</em> para cookies, por motivos de segurança.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.auto-globals-jit">
+       <code class="parameter">auto_globals_jit</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Quando ativada, as variáveis SERVER, REQUEST e ENV são criadas quando elas são
+        usadas pela primeira vez (&quot;Just In Time&quot;) ao invés de quando o script inicia. Se estas
+        variáveis não são usadas dentro de um script, habilitar esta diretiva resultará
+        em um ganho de desempenho.
+       </p>
+       <p class="para">
+        As diretivas do PHP
+        <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+        <a href="ini.core.html#ini.register-long-arrays" class="link">register_long_arrays</a>
+        e <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a>
+        devem ser desabilitadas para que esta diretiva tenha algum efeito. A partir do PHP
+        5.1.3 não é necessário ter <a href="ini.core.html#ini.register-argc-argv" class="link">register_argc_argv</a> desabilitada.
+       </p>
+       <div class="warning"><strong class="warning">Aviso</strong>
+        <p class="para">
+         O uso das variáveis SERVER, REQUEST e ENV é verificado durante o tempo de compilação
+         então usá-las em, por exemplo, <a href="language.variables.variable.html" class="link">variáveis variáveis</a> não
+         causará sua inicialização.
+        </p>
+       </div>
+      </dd>
+
+     
+
+     
+      <dt id="ini.register-globals">
+       <code class="parameter">register_globals</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Registra ou não as variáveis EGPCS (Environment, GET,
+        POST, Cookie, Server) como variáveis globais.
+       </p>
+       <p class="para">
+        A partir do <a href="https://www.php.net/releases/4_2_0.php" class="link external">&raquo;&nbsp;PHP 4.2.0</a>
+        essa diretiva por padrão está <em class="emphasis">desabilitada</em>.
+       </p>
+       <p class="para">
+        Veja no capítulo sobre segurança a seção
+        <a href="security.globals.html" class="link">Utilizando register_globals</a>
+        para informações relacionadas.
+       </p>
+       <p class="para">
+        Note que <code class="systemitem systemitem">register_globals</code>
+        não pode ser definida em tempo de execução (<span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>). Entretanto, você pode
+        utilizar <var class="filename">.htaccess</var> caso seu host permita, como descrito
+        acima. Um exemplo de como ficaria o <var class="filename">.htaccess</var>:
+        <strong class="userinput"><code>php_flag register_globals off</code></strong>.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         <code class="systemitem systemitem">register_globals</code> é afetada
+         pela diretiva <a href="ini.core.html#ini.variables-order" class="link">variables_order
+         </a>.
+        </p>
+       </p></blockquote>
+       <div class="warning"><strong class="warning">Aviso</strong><p class="simpara">Esta funcionalidade tornou-se
+<em class="emphasis">OBSOLETA</em> desde o PHP 5.3.0 e foi <em class="emphasis">REMOVIDA</em>
+desde o PHP 5.4.0.</p></div>
+      </dd>
+
+     
+
+     
+      <dt id="ini.register-argc-argv">
+       <code class="parameter">register_argc_argv</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Informa ao PHP se deve declarar variáveis argv &amp; argc
+        (que podem conter as informações das requisições GET).
+       </span>
+       <span class="simpara">
+        Veja também <a href="features.commandline.html" class="link">PHP em linha de comando</a>.
+       </span>
+      </dd>
+
+     
+
+     
+      <dt id="ini.register-long-arrays">
+       <code class="parameter">register_long_arrays</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Informa ao PHP se deve ou não registrar as obsoletas
+        <a href="language.variables.predefined.html" class="link">variáveis
+        predefinidas</a> longas do tipo <var class="varname"><var class="varname">$HTTP_*_VARS</var></var>.
+        Quando habilitada (padrão), as variáveis PHP predefinidas
+        longas como <var class="varname"><var class="varname">$HTTP_GET_VARS</var></var> serão preenchidas.
+        Se você não as está usando, é recomendado desabilitar esta diretiva
+        por razões de performance. Em vez disso, utilize os arrays superglobais
+        como <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var>.
+       </span>
+       <span class="simpara">
+        Esta diretiva se tornou disponível no PHP 5.0.0.
+       </span>
+       <div class="warning"><strong class="warning">Aviso</strong><p class="simpara">Esta funcionalidade tornou-se
+<em class="emphasis">OBSOLETA</em> desde o PHP 5.3.0 e foi <em class="emphasis">REMOVIDA</em>
+desde o PHP 5.4.0.</p></div>
+      </dd>
+
+     
+
+     
+      <dt id="ini.enable-post-data-reading">
+       <code class="parameter">enable_post_data_reading</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Desabilitar esta opção faz com que <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> e
+        <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var> <em class="emphasis">não</em> sejam preenchidos.
+        A única forma de ler dados postados será através do stream wrapper
+        <a href="wrappers.php.html" class="link">php://input</a>.
+        Isto pode ser útil para intermediar requisições ou para processar
+        dados POST de uma maneira eficiente em termos de memória alocada.
+       </span>
+      </dd>
+
+     
+
+     
+      <dt id="ini.post-max-size">
+       <code class="parameter">post_max_size</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <span class="simpara">
+        Configura o tamanho máximo dos dados postados. Esta configuração também afeta
+        o upload de arquivos. Para carregar arquivos grandes este valor deve ser maior
+        que <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>.
+       </span>
+       <span class="simpara">
+        De maneira geral
+        <a href="ini.core.html#ini.memory-limit" class="link">memory_limit</a> deve ser
+        maior que <code class="parameter">post_max_size</code>.
+       </span>
+
+       <span class="simpara">Quando um <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> é utilizado, o
+ valor é medido em bytes. A resumida notação, como descrito
+ <a href="faq.using.html#faq.using.shorthandbytes" class="link">neste FAQ</a>, pode também ser usada.
+ </span>
+
+       <span class="simpara">
+        Se o tamanho dos dados postados for maior que post_max_size então as variáveis
+        <a href="language.variables.superglobals.html" class="link">superglobals</a>
+        <var class="varname"><var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var></var> e <var class="varname"><var class="varname"><a href="reserved.variables.files.html" class="classname">$_FILES</a></var></var>
+        ficarão vazias. Isto pode ser observado de várias maneiras, por exemplo, passando uma
+        variável <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var></var> ao script que processará os dados,
+        por exemplo, <em>&lt;form action=&quot;edit.php?processed=1&quot;&gt;</em>,
+        e então verificando se <var class="varname"><var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET['processed']</a></var></var> está preenchida.
+       </span>
+       <p class="para">
+        <blockquote class="note"><p><strong class="note">Nota</strong>: 
+         <p class="para">
+          O PHP permite sufixos para valores em bytes, incluindo K (kilo), M (mega)
+          e G (giga). O PHP fará as conversões automaticamente se você
+          utilizar qualquer um destes. Cuidado para não exceder o limite de inteiros sinalizados de 32 bit
+          (ao usar versões de 32 bit) uma vez que isso fará o script
+          falhar.
+         </p>
+        </p></blockquote>
+       </p>
+       <p class="para">
+        <table class="doctable table">
+         <caption><strong>Changelog de <em>post_max_size</em></strong></caption>
+         
+          <thead>
+           <tr>
+            <th>Versão</th>
+            <th>Descrição</th>
+           </tr>
+
+          </thead>
+
+          <tbody class="tbody">
+           <tr>
+            <td>5.3.4</td>
+            <td>
+             <code class="parameter">post_max_size</code> = 0 não irá desabilitar o limite quando o conteúdo
+             for do tipo application/x-www-form-urlencoded ou não estiver registrado no PHP.
+            </td>
+           </tr>
+
+           <tr>
+            <td>5.3.2 , 5.2.12</td>
+            <td>
+             Permite tamanho ilimitado de dados postados ao configurar <code class="parameter">post_max_size</code> como 0.
+            </td>
+           </tr>
+
+          </tbody>
+         
+        </table>
+
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.auto-prepend-file">
+       <code class="parameter">auto_prepend_file</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Especifica o nome de um arquivo que é automaticamente analisado
+        antes do arquivo principal. O arquivo é incluído como se tivesse sido
+        chamado com <span class="function"><a href="function.require.html" class="function">require</a></span>, então
+        <a href="ini.core.html#ini.include-path" class="link">include_path</a> é utilizado.</p>
+       <p class="para">
+        O valor especial <em>none</em>
+        desativa a auto-inclusão.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.auto-append-file">
+       <code class="parameter">auto_append_file</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Especifica o nome de um arquivo que é automaticamente analisado
+        depois do arquivo principal. O arquivo é incluído como se tivesse sido
+        chamado com <span class="function"><a href="function.require.html" class="function">require</a></span>, então
+        <a href="ini.core.html#ini.include-path" class="link">include_path</a> é utilizado.</p>
+       <p class="para">
+        O valor especial <em>none</em>
+        desativa a auto-inclusão.
+        <blockquote class="note"><p><strong class="note">Nota</strong>: 
+         <span class="simpara">
+          Se o script for terminado com <span class="function"><a href="function.exit.html" class="function">exit()</a></span>,
+          então a auto-inclusão <em class="emphasis">não</em> ocorrerá.</span>
+        </p></blockquote>
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.default-mimetype">
+       <code class="parameter">default_mimetype</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Por padrão o PHP irá imprimir um media type utilizando o header
+        Content-Type. Para desabilitar o envio da codificação configure esta opção como vazio.
+       </p>
+       <p class="para">
+        O padrão interno do PHP é o media type text/html.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.default-charset">
+       <code class="parameter">default_charset</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        A partir do PHP 5.6, &quot;UTF-8&quot; é o valor padrão e o valor desta diretiva é utilizado
+        como o character set padrão para
+        <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span>,
+        <span class="function"><a href="function.html-entity-decode.html" class="function">html_entity_decode()</a></span> e
+        <span class="function"><a href="function.htmlspecialchars.html" class="function">htmlspecialchars()</a></span> se o parâmetro
+        <code class="parameter">encoding</code> for omitido. O valor de
+        <code class="parameter">default_charset</code> também será utilizado para configurar o
+        character set padrão para as funções <a href="book.iconv.html" class="link">iconv</a>
+        se as opções de configuração
+        <a href="iconv.configuration.html#ini.iconv.input-encoding" class="link"><code class="parameter">iconv.input_encoding</code></a>,
+        <a href="iconv.configuration.html#ini.iconv.output-encoding" class="link"><code class="parameter">iconv.output_encoding</code></a> e
+        <a href="iconv.configuration.html#ini.iconv.internal-encoding" class="link"><code class="parameter">iconv.internal_encoding</code></a>
+        não estiverem definidas, e também para as funções
+        <a href="book.mbstring.html" class="link">mbstring</a> se as opções de configuração
+        <a href="mbstring.configuration.html#ini.mbstring.http-input" class="link"><code class="parameter">mbstring.http_input</code></a>,
+        <a href="mbstring.configuration.html#ini.mbstring.http-output" class="link"><code class="parameter">mbstring.http_output</code></a> e
+        <a href="mbstring.configuration.html#ini.mbstring.internal-encoding" class="link"><code class="parameter">mbstring.internal_encoding</code></a>
+        não estiverem definidas.
+       </p>
+       <p class="para">
+        Todas as versões do PHP usarão este valor como o charset no
+        header padrão Content-Type enviado pelo PHP caso o header não seja sobrescrito
+        por uma chamada à função <span class="function"><a href="function.header.html" class="function">header()</a></span>.
+       </p>
+       <p class="para">
+        Configurar <code class="parameter">default_charset</code> para um valor vazio
+        não é recomendado.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.input-encoding">
+       <code class="parameter">input_encoding</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Disponível a partir do PHP 5.6.0. Esta configuração é utilizada por módulos multibyte
+        como mbstring e iconv. O padrão é vazio.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.output-encoding">
+       <code class="parameter">output_encoding</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Disponível a partir do PHP 5.6.0. Esta configuração é utilizada por módulos multibyte
+        como mbstring e iconv. O padrão é vazio.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.internal-encoding">
+       <code class="parameter">internal_encoding</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Disponível a partir do PHP 5.6.0. Esta configuração é utilizada por módulos multibyte
+        como mbstring e iconv. O padrão é vazio. Se vazio,
+        <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> é utilizado.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.always-populate-raw-post-data">
+       <code class="parameter">always_populate_raw_post_data</code>
+       <span class="type"><a href="language.pseudo-types.html#language.types.mixed" class="type mixed">mixed</a></span>
+      </dt>
+
+      <dd>
+
+       <div class="warning"><strong class="warning">Aviso</strong><p class="simpara">Este recurso está
+<em class="emphasis">OBSOLETO</em> desde o PHP 5.6.0, e
+<em class="emphasis">REMOVIDO</em> desde o PHP 7.0.0.</p></div>
+       <p class="para">
+        Se configurada para <strong><code>TRUE</code></strong>, o PHP sempre preencherá
+        <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> com os dados POST brutos.
+        Caso contrário, a variável é preenchida somente quando o MIME type dos
+        dados não é reconhecido.
+       </p>
+       <p class="para">
+        O método recomendado de acessar dados POST brutos é
+        <a href="wrappers.php.html" class="link">php://input</a>, e
+        <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> está obsoleta a partir do PHP 5.6.0.
+        Configurar <code class="parameter">always_populate_raw_post_data</code>
+        para <em>-1</em> irá optar pelo novo comportamento que será
+        implementado numa futura versão do PHP, no qual
+        <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> nunca é definida.
+       </p>
+       <p class="para">
+        Independente da configuração, <var class="varname"><var class="varname"><a href="reserved.variables.httprawpostdata.html" class="classname">$HTTP_RAW_POST_DATA</a></var></var> não
+        está disponível com <em>enctype=&quot;multipart/form-data&quot;</em>.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </p>
+   <p class="para">
+    Veja também: <a href="info.configuration.html#ini.magic-quotes-gpc" class="link">magic_quotes_gpc</a>,
+    <a href="info.configuration.html#ini.magic-quotes-runtime" class="link">magic_quotes_runtime</a>,
+    e
+    <a href="sybase.configuration.html#ini.magic-quotes-sybase" class="link">magic_quotes_sybase</a>.
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.path-directory">
+   <h2 class="title">Caminhos e Diretórios</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Caminhos e Opções de Configuração de Diretórios</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.include-path" class="link">include_path</a></td>
+        <td>&quot;.;/path/to/php/pear&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_ALL</td>
+        <td>PHP_INI_SYSTEM no PHP &lt; 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.doc-root" class="link">doc_root</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.user-dir" class="link">user_dir</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.user-ini.cache-ttl" class="link">user_ini.cache_ttl</a></td>
+        <td>&quot;300&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.user-ini.filename" class="link">user_ini.filename</a></td>
+        <td>&quot;.user.ini&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.extension-dir" class="link">extension_dir</a></td>
+        <td>&quot;/path/to/php&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.extension" class="link">extension</a></td>
+        <td>NULL</td>
+        <td>Apenas no <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a></td>
+        <td>NULL</td>
+        <td>Apenas no <var class="filename">php.ini</var></td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend-extension-debug" class="link">zend_extension_debug</a></td>
+        <td>NULL</td>
+        <td>Apenas no <var class="filename">php.ini</var></td>
+        <td>Disponível antes do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend-extension-debug-ts" class="link">zend_extension_debug_ts</a></td>
+        <td>NULL</td>
+        <td>Apenas no <var class="filename">php.ini</var></td>
+        <td>Disponível antes do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.zend-extension-ts" class="link">zend_extension_ts</a></td>
+        <td>NULL</td>
+        <td>Apenas no <var class="filename">php.ini</var></td>
+        <td>Disponível antes do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.check-shebang-line" class="link">cgi.check_shebang_line</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.2.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.discard-path" class="link">cgi.discard_path</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.fix-pathinfo" class="link">cgi.fix_pathinfo</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>PHP_INI_ALL antes do PHP 5.2.1.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>PHP_INI_ALL antes ao PHP 5.2.1.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.nph" class="link">cgi.nph</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.3.0.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.redirect-status-env" class="link">cgi.redirect_status_env</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>PHP_INI_ALL antes do PHP 5.2.1.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.cgi.rfc2616-headers" class="link">cgi.rfc2616_headers</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.fastcgi.impersonate" class="link">fastcgi.impersonate</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>PHP_INI_ALL antes do PHP 5.2.1.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.fastcgi.logging" class="link">fastcgi.logging</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>PHP_INI_ALL antes do PHP 5.2.1.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.include-path">
+       <code class="parameter">include_path</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Especifica uma lista de diretórios onde as funções
+        <span class="function"><a href="function.require.html" class="function">require</a></span>, <span class="function"><a href="function.include.html" class="function">include</a></span>,
+        <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, <span class="function"><a href="function.file.html" class="function">file()</a></span>,
+        <span class="function"><a href="function.readfile.html" class="function">readfile()</a></span> e <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>
+        procuram por arquivos. O formato é como a variável de ambiente
+        <var class="envar">PATH</var>: uma lista de diretórios
+        separados por dois pontos no Unix ou ponto e vírgula no Windows.
+       </p>
+       <p class="para">
+        O PHP considera cada item no include_path separadamente ao procurar por
+        arquivos para incluir. Ele irá verificar o primeiro caminho, e se não o encontrar,
+        verificar o próximo caminho, até que encontre o arquivo incluído ou
+        retorne com um
+        <strong><code>E_WARNING</code></strong>
+        ou um <strong><code>E_ERROR</code></strong>.
+        Você pode modificar ou configurar o include_path em tempo de execução usando
+        <span class="function"><a href="function.set-include-path.html" class="function">set_include_path()</a></span>.
+       </p>
+       <p class="para">
+        <div class="example" id="example-6574">
+         <p><strong>Exemplo #1 include_path no Unix</strong></p>
+         <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">include_path=&quot;.:/php/includes&quot;</pre>
+</div>
+         </div>
+
+        </div>
+       </p>
+       <p class="para">
+        <div class="example" id="example-6575">
+         <p><strong>Exemplo #2 include_path no Windows</strong></p>
+         <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">include_path=&quot;.;c:\php\includes&quot;</pre>
+</div>
+         </div>
+
+        </div>
+       </p>
+       <p class="para">
+        Utilizar um <em>.</em> no include_path permite
+        inclusões relativas ao diretório atual. Entretanto
+        é mais eficiente utilizar explicitamente <em>include
+        &#039;./arquivo&#039;</em> em vez de fazer o PHP sempre procurar no diretório
+        atual a cada inclusão.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Variáveis <em>ENV</em> também estão acessíveis em arquivos .ini.
+         Assim é possível referenciar o diretório home utilizando
+         <em>${LOGIN}</em> e <em>${USER}</em>.
+        </p>
+        <p class="para">
+         Variáveis de ambiente podem variar entre APIs de servidor já que esses ambientes
+         podem ser diferentes.
+        </p>
+       </p></blockquote>
+       <p class="para">
+        <div class="example" id="example-6576">
+         <p><strong>Exemplo #3 include_path do Unix utilizando a variável de ambiente ${USER}</strong></p>
+         <div class="example-contents">
+<div class="php.inicode"><pre class="php.inicode">include_path = &quot;.:${USER}/pear/php&quot;</pre>
+</div>
+         </div>
+
+        </div>
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.open-basedir">
+       <code class="parameter">open_basedir</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Limita os arquivos que podem ser acessados pelo PHP à árvore de diretório
+        especificada, incluindo o próprio arquivo. Esta diretiva
+        <em class="emphasis">NÃO</em> é afetada pelo Modo Seguro estar
+        habilitado ou desabilitado.
+       </p>
+       <p class="para">
+        Quando um script tenta acessar o sistema de arquivos, por exemplo utilizando
+        <span class="function"><a href="function.include.html" class="function">include</a></span> ou <span class="function"><a href="function.fopen.html" class="function">fopen()</a></span>, a localização do arquivo
+        é verificada.
+        Quando o arquivo está fora da árvore de diretório especificada, o PHP se recusará a acessá-lo.
+        Todos os links simbólicos são resolvidos, então não é possível evitar esta restrição
+        com um link simbólico. Se o arquivo não existe então o link simbólico não pode ser
+        resolvido e o nome do arquivo é comparado a um <strong class="option unknown">open_basedir</strong> (resolvido).
+       </p>
+       <p class="para">
+        <strong class="option unknown">open_basedir</strong> pode afetar mais que apenas as funções de sistema de arquivos; por exemplo,
+        se o <em>MySQL</em> está configurado para utilizar os drivers <em>mysqlnd</em>,
+        <em>LOAD DATA INFILE</em> será afetado por <strong class="option unknown">open_basedir</strong>.
+        Grande parte da funcionalidade extendida do PHP utiliza <em>open_basedir</em> desta maneira.
+       </p>
+       <p class="para">
+        O valor especial <code class="systemitem systemitem">.</code>
+        indica que o diretório atual do script será utilizado como o
+        diretório base. Isto é, no entanto, perigoso pois o diretório atual
+        do script pode ser facilmente alterado com <span class="function"><a href="function.chdir.html" class="function">chdir()</a></span>.
+       </p>
+       <p class="para">
+        No <var class="filename">httpd.conf</var> <strong class="option unknown">open_basedir</strong> pode ser desabilitada
+        (por exemplo, em alguns hosts virtuais)
+        <a href="configuration.changes.html#configuration.changes.apache" class="link">da mesma forma</a> que
+        quaisquer outras diretivas de configuração com &quot;<em>php_admin_value open_basedir
+        none</em>&quot;.
+       </p>
+       <p class="para">
+        No Windows os diretórios são separados com um ponto e vírgula. Em todos
+        os outros sistemas os diretórios são separados com dois pontos. Como um
+        módulo Apache os caminhos de <strong class="option unknown">open_basedir</strong> de diretórios pai agora são
+        automaticamente herdados.
+       </p>
+       <p class="para">
+        A restrição especificada com <strong class="option unknown">open_basedir</strong> é um
+        nome de diretório a partir do PHP 5.2.16 e 5.3.4. Versões anteriores o usavam
+        como um prefixo. Isto significa que &quot;<em>open_basedir
+        = /dir/incl</em>&quot; também permitia acessar &quot;<em>/dir/include</em>&quot; e
+        &quot;<em>/dir/incls</em>&quot; caso existissem. Quando desejar restringir o acesso
+        apenas ao diretório especificado termine o caminho com uma barra. Por exemplo:
+        <em>open_basedir = /dir/incl/</em>
+       </p>
+       <p class="para">
+        O padrão é permitir que todos os arquivos sejam abertos.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         A partir do PHP 5.3.0 open_basedir pode ser restringido em tempo de execução. Isto significa
+         que se open_basedir é configurado para <em>/www/</em> no <var class="filename">php.ini</var>
+         então um script pode restringir a configuração para
+         <em>/www/tmp/</em> em tempo de execução com
+         <span class="function"><a href="function.ini-set.html" class="function">ini_set()</a></span>. Ao listar vários diretórios é
+         possível utilizar a constante <strong><code>PATH_SEPARATOR</code></strong> como um separador
+         independentemente do sistema operacional.
+        </p>
+       </p></blockquote>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         O uso da diretiva open_basedir definirá <a href="ini.core.html#ini.realpath-cache-size" class="link">realpath_cache_size</a>
+         como <em>0</em> e assim <em class="emphasis">desabilitará</em> o cache do caminho real.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.doc-root">
+       <code class="parameter">doc_root</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O &quot;diretório raiz&quot; do PHP no servidor. Utilizado apenas
+        se não estiver vazio. Se o PHP estiver configurado com <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe mode</a>, então nenhum arquivo fora
+        deste diretório será servido.
+        Se o PHP não foi compilado com FORCE_REDIRECT, você <em class="emphasis">deve
+        </em> configurar doc_root se estiver rodando o PHP em modo CGI em qualquer
+        servidor web (diferente do IIS). A alternativa é utilizar a configuração
+        <a href="ini.core.html#ini.cgi.force-redirect" class="link">
+         cgi.force_redirect</a> abaixo.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.user-ini.cache-ttl">
+       <code class="parameter">user_ini.cache_ttl</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.user-ini.filename">
+       <code class="parameter">user_ini.filename</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.user-dir">
+       <code class="parameter">user_dir</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O nome base do diretório utilizado como diretório home do usuário pelos
+        arquivos do PHP, por exemplo <var class="filename">public_html
+        </var>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.extension-dir">
+       <code class="parameter">extension_dir</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O diretório no qual o PHP deve procurar por extensões carregadas
+        dinamicamente. Veja também: <a href="info.configuration.html#ini.enable-dl" class="link">enable_dl</a>
+        e <span class="function"><a href="function.dl.html" class="function">dl()</a></span>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.extension">
+       <code class="parameter">extension</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Quais extensões carregáveis dinamicamente carregar quando o PHP inicia.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend-extension">
+       <code class="parameter">zend_extension</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Nome da extensão Zend carregável dinamicamente (por exemplo
+        <a href="book.apd.html" class="link">APD</a>) a carregar quando o PHP inicia.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend-extension-debug">
+       <code class="parameter">zend_extension_debug</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Variante de <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        para extensões compiladas com informação de debug antes do PHP 5.3.0.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend-extension-debug-ts">
+       <code class="parameter">zend_extension_debug_ts</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Variante de <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        para extensões compiladas com informação de debug e thread safety antes do PHP
+        5.3.0.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.zend-extension-ts">
+       <code class="parameter">zend_extension_ts</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Variante de <a href="ini.core.html#ini.zend-extension" class="link">zend_extension</a>
+        para extensões compiladas com thread safety antes do PHP 5.3.0.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.check-shebang-line">
+       <code class="parameter">cgi.check_shebang_line</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Controla se o PHP <acronym title="Common Gateway Interface">CGI</acronym> verifica linhas iniciando
+        com <em>#!</em> (shebang) no início do script em execução.
+        Esta linha pode ser necessária se o script suporta execução tanto como
+        script autônomo e via PHP <acronym title="Common Gateway Interface">CGI</acronym>. O PHP em modo
+        <acronym title="Common Gateway Interface">CGI</acronym> pula esta linha e ignora seu conteúdo se
+        esta diretiva estiver habilitada.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.discard-path">
+       <code class="parameter">cgi.discard_path</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Se habilitada, o binário PHP CGI pode ser colocado com segurança fora
+        da árvore de diretório web e não será possível contornar a segurança .htaccess.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.fix-pathinfo">
+       <code class="parameter">cgi.fix_pathinfo</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Fornece suporte <em class="emphasis">real</em> a <em>PATH_INFO</em>/
+        <em>PATH_TRANSLATED</em> para <acronym title="Common Gateway Interface">CGI</acronym>.
+        O comportamento anterior do PHP era definir <em>PATH_TRANSLATED</em>
+        como <em>SCRIPT_FILENAME</em> e não perceber o que <em>
+        PATH_INFO</em> é. Para mais informações sobre
+        <em>PATH_INFO</em>, veja as especificações do modo <acronym title="Common Gateway Interface">CGI</acronym>.
+        Configurar esta diretiva para <em>1</em> fará o modo
+        <acronym title="Common Gateway Interface">CGI</acronym> corrigir seus caminhos para obedecer à especificação.
+        Configurar com zero faz o PHP se comportar como antes. Ela é habilitada por
+        padrão. Você deve corrigir seus scripts de forma a usar
+        <em>SCRIPT_FILENAME</em> ao invés de
+        <em>PATH_TRANSLATED</em>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.force-redirect">
+       <code class="parameter">cgi.force_redirect</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        cgi.force_redirect é necessário para prover segurança ao rodar o PHP em modo
+        <acronym title="Common Gateway Interface">CGI</acronym> na maioria dos servidores web. Se deixada indefinida, o PHP
+        irá habilitá-la por padrão. Você pode desabilitá-la <em class="emphasis">por sua conta e
+        risco</em>.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Usuários do Windows: Ao utilizar o IIS esta opção <em class="emphasis">deve</em>
+         ser desabilitada. O mesmo vale para servidores OmniHTTPD e Xitami.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.nph">
+       <code class="parameter">cgi.nph</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Se cgi.nph estiver habilitada, forçará o CGI a enviar sempre Status: 200 em
+        todas as requisições.
+        </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.redirect-status-env">
+       <code class="parameter">cgi.redirect_status_env</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Se cgi.force_redirect estiver habilitada e você não está rodando sob
+        servidores web Apache ou Netscape (iPlanet), você <em class="emphasis">pode</em>
+        precisar configurar um nome de variável de ambiente que o PHP irá procurar
+        para saber que é correto continuar a execução.
+       </p>
+       <blockquote class="note"><p><strong class="note">Nota</strong>: 
+        <p class="para">
+         Configurar esta variável <em class="emphasis">pode</em> causar problemas de segurança,
+         <em class="emphasis">tenha certeza do que está fazendo antes de alterar</em>.
+        </p>
+       </p></blockquote>
+      </dd>
+
+     
+
+     
+      <dt id="ini.cgi.rfc2616-headers">
+       <code class="parameter">cgi.rfc2616_headers</code>
+       <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      </dt>
+
+      <dd>
+
+      <p class="para">
+        Indica ao PHP qual o tipo de headers usar ao enviar o código de resposta
+        HTTP. Se configurada para 0, o PHP envia um header &quot;Status:&quot; da <a href="http://www.faqs.org/rfcs/rfc3875" class="link external">&raquo;&nbsp;RFC 3875</a>
+         que é suportado pelo Apache e outros servidores web. Quando esta opção
+         é configurada para 1, o PHP enviará headers em conformidade com a
+        <a href="http://www.faqs.org/rfcs/rfc2616" class="link external">&raquo;&nbsp;RFC 2616</a>.
+       </p>
+       <p class="para">
+        Se esta opção estiver habilitada e o PHP estiver rodando em um ambiente CGI (por exemplo, PHP-FPM)
+        não devem ser utilizados headers de resposta de status HTTP no padrão RFC 2616. Em vez disso,
+        deve ser usado o seu equivalente RFC 3875, por exemplo, em vez de header(&quot;HTTP/1.0 404 Not found&quot;);
+        deve ser usado header(&quot;Status: 404 Not Found&quot;);.
+       </p>
+       <p class="para">
+        Deixe-a configurada para 0 a não ser que saiba exatamente o que está fazendo.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.fastcgi.impersonate">
+       <code class="parameter">fastcgi.impersonate</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O FastCGI rodando no IIS (em sistemas baseados em WINNT) suporta a habilidade de representar
+        os tokens de segurança do cliente que faz a requisição. Isso permite ao IIS definir o
+        contexto de segurança no qual a requisição executa. O mod_fastcgi rodando no Apache
+        atualmente não suporta esta funcionalidade (17/03/2002)
+        Configure para 1 ao rodar no ISS. O padrão é zero.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.fastcgi.logging">
+       <code class="parameter">fastcgi.logging</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Ativa o logging do SAPI ao utilizar o FastCGI. O padrão é
+        habilitar o logging.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.file-uploads">
+   <h2 class="title">Upload de Arquivos</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Opções de Configurações de Upload de Arquivos</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.file-uploads" class="link">file_uploads</a></td>
+        <td>&quot;1&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a></td>
+        <td>NULL</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="info.configuration.html#ini.max-input-nesting-level" class="link">max_input_nesting_level</a></td>
+        <td>64</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Disponível a partir do PHP 5.3.9.</td>
+       </tr>
+
+       <tr>
+        <td><a href="info.configuration.html#ini.max-input-vars" class="link">max_input_vars</a></td>
+        <td>1000</td>
+        <td>PHP_INI_PERDIR</td>
+        <td>Disponível a partir do PHP 5.3.9.</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a></td>
+        <td>&quot;2M&quot;</td>
+        <td>PHP_INI_PERDIR</td>
+        <td class="empty">&nbsp;</td>
+       </tr>
+
+       <tr>
+        <td><a href="ini.core.html#ini.max-file-uploads" class="link">max_file_uploads</a></td>
+        <td>20</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Disponível a partir do PHP 5.2.12.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.file-uploads">
+       <code class="parameter">file_uploads</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Permite ou não
+        <a href="features.file-upload.html" class="link">upload de arquivos</a> através do HTTP. Veja também as diretivas
+        <a href="ini.core.html#ini.upload-max-filesize" class="link">upload_max_filesize</a>,
+        <a href="ini.core.html#ini.upload-tmp-dir" class="link">upload_tmp_dir</a> e
+        <a href="ini.core.html#ini.post-max-size" class="link">post_max_size</a>.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.upload-tmp-dir">
+       <code class="parameter">upload_tmp_dir</code>
+       <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O diretório temporário utilizado para armazenar arquivos durante o
+        upload. Precisa ter permissão de escrita para qualquer usuário que o PHP
+        esteja usando para rodar. Se não especificado o PHP usará o padrão do sistema.
+       </p>
+       <p class="para">
+        Se o diretório especificado aqui não tiver permissão de escrita, o PHP tenta o
+        diretório temporário padrão do sistema. Se
+        <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a> estiver habilitado, então
+        o diretório padrão do sistema deve ser permitido para que o upload
+        tenha sucesso.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="ini.upload-max-filesize">
+       <code class="parameter">upload_max_filesize</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O tamanho máximo de um arquivo enviado.
+       </p>
+
+       <span class="simpara">Quando um <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> é utilizado, o
+ valor é medido em bytes. A resumida notação, como descrito
+ <a href="faq.using.html#faq.using.shorthandbytes" class="link">neste FAQ</a>, pode também ser usada.
+ </span>
+
+      </dd>
+
+     
+
+     
+      <dt id="ini.max-file-uploads">
+       <code class="parameter">max_file_uploads</code>
+       <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        O número máximo de arquivos permitidos simultaneamente durante um upload.
+        A partir do PHP 5.3.4 os campos de upload deixados em branco no envio não
+        contam para este limite.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.sql-general">
+   <h2 class="title">SQL Geral</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Opções de Configurações Gerais de SQL</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.sql.safe-mode" class="link">sql.safe_mode</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_SYSTEM</td>
+        <td>Removido no PHP 7.2.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.sql.safe-mode">
+       <code class="parameter">sql.safe_mode</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Se habilitada as funções de conexão de bancos de dados que especifiquem valores padrão
+        usarão esses valores no lugar de quaisquer argumentos passados pelo usuário. Para detalhes
+        sobre os valores padrão, veja a documentação das funções
+        de conexão relevantes.
+       </p>
+       <div class="warning"><strong class="warning">Aviso</strong>
+        <p class="simpara">
+         Este recurso foi <em class="emphasis">REMOVIDO</em> a partir do PHP 7.2.0.
+        </p>
+       </div>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+  </div>
+
+  <div class="section" id="ini.sect.windows">
+   <h2 class="title">Windows</h2>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Opções de Configurações Específicas do Windows</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Nome</th>
+        <th>Padrão</th>
+        <th>Modificável</th>
+        <th>Changelog</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td><a href="ini.core.html#ini.windows-show-crt-warning" class="link">windows.show_crt_warning</a></td>
+        <td>&quot;0&quot;</td>
+        <td>PHP_INI_ALL</td>
+        <td>Disponível a partir do PHP 5.4.0.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+
+   <p class="para">Uma rápida explicação das
+diretivas de configuração.</p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt id="ini.windows-show-crt-warning">
+       <code class="parameter">windows.show_crt_warning</code>
+       <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Esta diretiva exibe os alertas do CRT do Windows quando habilitada. Estes
+        alertas eram exibidos por padrão até o PHP 5.4.0.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+  </div>
+
+ </div></div></div></body></html>

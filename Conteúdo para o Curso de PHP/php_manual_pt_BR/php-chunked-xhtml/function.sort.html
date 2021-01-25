@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Ordena um array</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.sizeof.html">« sizeof</a></li>
+      <li style="float: right;"><a href="function.uasort.html">uasort »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.array.html">Fun&ccedil;&otilde;es para Array</a></li>
+    <li>Ordena um array</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.sort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sort</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p><p class="refpurpose"><span class="refname">sort</span> &mdash; <span class="dc-title">Ordena um array</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.sort-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>sort</strong></span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$array</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$sort_flags</code><span class="initializer"> = SORT_REGULAR</span></span>
+  ] ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Essa função ordena um array. Os elementos serão ordenados
+   do menor para o maior ao final da execução dessa função.
+  </p>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+ <p class="para">
+  Se dois itens são comparados como iguais, sua ordenação no array final é indefinidia.
+ </p>
+</p></blockquote>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.sort-parameters">
+  <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       O array de entrada.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">sort_flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       O segundo parâmetro opcional <code class="parameter">sort_flags</code>
+       pode ser usado para modificar o comportamento da ordenação usando estes valores:
+      </p>
+      <p class="para">
+       Flags para tipo de ordenação:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara"><strong><code>SORT_REGULAR</code></strong> - compara os itens normalmente
+         (não modifica o tipo)</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><strong><code>SORT_NUMERIC</code></strong> - compara os items numericamente</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><strong><code>SORT_STRING</code></strong> - compara os itens como strings</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>SORT_LOCALE_STRING</code></strong> - compara os itens como
+          strings, utilizando o locale atual. Utiliza o locale
+          que pode ser modificado com <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>SORT_NATURAL</code></strong> - compara os itens como strings
+          utilizando &quot;ordenação natural&quot; tipo <span class="function"><a href="function.natsort.html" class="function">natsort()</a></span>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>SORT_FLAG_CASE</code></strong> - pode ser combinado
+          (bitwise OR) com
+          <strong><code>SORT_STRING</code></strong> ou
+          <strong><code>SORT_NATURAL</code></strong> para ordenar strings sem considerar maiúsculas e minúsculas
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sort-returnvalues">
+  <h3 class="title">Valor Retornado</h3>
+  <p class="para">
+   Retorna <strong><code>TRUE</code></strong> em caso de sucesso ou <strong><code>FALSE</code></strong> em caso de falha.
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.sort-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Versão</th>
+      <th>Descrição</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.4.0</td>
+      <td>
+       Acrescentado suporte a <strong><code>SORT_NATURAL</code></strong> e
+       <strong><code>SORT_FLAG_CASE</code></strong> em <code class="parameter">sort_flags</code>
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.0.2</td>
+      <td>
+       Adicionado <strong><code>SORT_LOCALE_STRING</code></strong>
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.sort-examples">
+  <h3 class="title">Exemplos</h3>
+  <p class="para">
+   <div class="example" id="example-6026">
+    <p><strong>Exemplo #1 Exemplo de <span class="function"><strong>sort()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"lemon"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"banana"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"fruits["&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"]&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+fruits[0] = apple
+fruits[1] = banana
+fruits[2] = lemon
+fruits[3] = orange
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   As frutas foram classificadas em ordem alfabética.
+  </p>
+  <p class="para">
+   <div class="example" id="example-6027">
+    <p><strong>Exemplo #2 Exemplo de <span class="function"><strong>sort()</strong></span> utilizando comparações naturais
+    ignorando maiúsculas e minúculas</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fruits&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Orange1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Orange3"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange20"<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SORT_NATURAL&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">SORT_FLAG_CASE</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$fruits&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"fruits["&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"]&nbsp;=&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$val&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+fruits[0] = Orange1
+fruits[1] = orange2
+fruits[2] = Orange3
+fruits[3] = orange20
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   A lista foi ordenada como se tivesse sido utilizada <span class="function"><a href="function.natcasesort.html" class="function">natcasesort()</a></span>.
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.sort-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: <span class="simpara">Esta função
+  define novas chaves para os elementos em <code class="parameter">array</code>.
+  Ela irá remover qualquer chave que você tenha definido, ao invés
+  de simplesmente reordenar as chaves.</span></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <span class="simpara">
+    Como muitas funções de ordenação do PHP, <span class="function"><strong>sort()</strong></span> usa uma
+    implementação da <a href="http://en.wikipedia.org/wiki/Quicksort" class="link external">&raquo;&nbsp;Quicksort</a>.
+    O pivot é escolhido no meio da partição, o que resulta num processamento rápido
+    para arrays já ordenados. Mas isso é um detalhe de implementação, que não
+    pode ser garantido.
+   </span>
+  </p></blockquote>
+  <div class="warning"><strong class="warning">Aviso</strong>
+   <p class="simpara">
+    Tenha cuidado quando ordenando arrays com vários tipos de valores, porque
+    <span class="function"><strong>sort()</strong></span> pode produzir um resultado indesejado.
+   </p>
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.sort-seealso">
+  <h3 class="title">Veja Também</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.asort.html" class="function" rel="rdfs-seeAlso">asort()</a> - Ordena um array mantendo a associa&ccedil;&atilde;o entre &iacute;ndices e valores</span></li>
+    <li class="member">A <a href="array.sorting.html" class="link">comparação de funções de organização de array</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Verifica se uma vari&aacute;vel global est&aacute; registrada numa sess&atilde;o</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.session-id.html">« session_id</a></li>
+      <li style="float: right;"><a href="function.session-module-name.html">session_module_name »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.session.html">Fun&ccedil;&otilde;es para Sess&atilde;o</a></li>
+    <li>Verifica se uma vari&aacute;vel global est&aacute; registrada numa sess&atilde;o</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.session-is-registered" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_is_registered</h1>
+  <p class="verinfo">(PHP 4, PHP 5 &lt; 5.4.0)</p><p class="refpurpose"><span class="refname">session_is_registered</span> &mdash; <span class="dc-title">Verifica se uma variável global está registrada numa sessão</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.session-is-registered-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>session_is_registered</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   ) : <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Verifica se uma variável global está registrada numa sessão.
+  </p>
+  <div class="warning"><strong class="warning">Aviso</strong><p class="simpara">Esta função tornou-se
+<em class="emphasis">OBSOLETA</em> desde o PHP 5.3.0 e foi <em class="emphasis">REMOVIDA</em> desde o PHP 5.4.0.</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.session-is-registered-parameters">
+  <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       O nome da variável.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.session-is-registered-returnvalues">
+  <h3 class="title">Valor Retornado</h3>
+  <p class="para">
+   <span class="function"><strong>session_is_registered()</strong></span> retorna <strong><code>TRUE</code></strong> se há uma
+   variável global com o nome <code class="parameter">name</code> registrado na
+   sessão atual, <strong><code>FALSE</code></strong> caso contrário.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.session-is-registered-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Se <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var> (ou <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var>
+    para PHP 4.0.6 ou inferior) é usada, use <span class="function"><a href="function.isset.html" class="function">isset()</a></span> para checar se 
+    uma variável está registrada em <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>.
+   </p>
+  </p></blockquote>
+  <div class="caution"><strong class="caution">Cuidado</strong>
+   <p class="para">
+    Se você está usando <var class="varname"><var class="varname"><a href="reserved.variables.session.html" class="classname">$_SESSION</a></var></var>
+    (ou <var class="varname"><var class="varname">$HTTP_SESSION_VARS</var></var>), não utilize
+    <span class="function"><a href="function.session-register.html" class="function">session_register()</a></span>,
+    <span class="function"><strong>session_is_registered()</strong></span> e
+    <span class="function"><a href="function.session-unregister.html" class="function">session_unregister()</a></span>.
+   </p>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

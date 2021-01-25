@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>do-while</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="control-structures.while.html">« while</a></li>
+      <li style="float: right;"><a href="control-structures.for.html">for »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.control-structures.html">Estruturas de Controle</a></li>
+    <li>do-while</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="control-structures.do.while" class="sect1">
+ <h2 class="title"><em>do-while</em></h2>
+ <p class="verinfo">(PHP 4, PHP 5, PHP 7)</p>
+ <p class="simpara">
+  Os laços <em>do-while</em> é muito similar aos laços
+  <em>while</em>, com exceção que a expressão de avaliação é
+  verificada ao final de cada iteração em vez de no começo.
+  A maior diferença para o laço <em>while</em> é
+  que a primeira iteração do laço <em>do-while</em>
+  sempre é executada (a expressão de avaliação é executada somente no final
+  da iteração), considerando que no laço <em>while</em> não é
+  necessariamente executada (a expressão de avaliação é
+  executada no começo de cada iteração, se avaliada como
+  <strong><code>FALSE</code></strong> logo no começo, a execução do laço
+  será abortada imediatamente).
+ </p>
+ <p class="para">
+  Só há uma sintaxe para o laço <em>do-while</em>:
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+   O laço acima será executado somente uma vez, pois após a primeira
+   iteração, quando a expressão de avaliação for executada, resultará em
+   <strong><code>FALSE</code></strong> (<var class="varname"><var class="varname">$i</var></var> não é maior que 0) e a execução do laço
+   será encerrada.
+ </p>
+ <p class="para">
+  Usuário avançados de C devem estar familiarizados com um uso diferente do laço
+  <em>do-while</em>, que permite parar a execução no meio
+  do bloco de códigos, encapsulando-os em um
+  <em>do-while</em> (0), e usando o <a href="control-structures.break.html" class="link"><em>break</em></a>
+  .  O código a seguir demonstra isso:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;not&nbsp;big&nbsp;enough"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">$factor</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$minimum_limit</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;ok"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;process&nbsp;i&nbsp;*/<br /><br /></span><span style="color: #007700">}&nbsp;while&nbsp;(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Não se preocupe se não entender isso neste momento.
+  Pode-se criar scripts simples ou mesmo poderosos sem usar esse
+  &#039;recurso&#039;.
+  Desde o PHP 5.3.0, é possível usar o operador
+  <a href="control-structures.goto.html" class="link"><em>goto</em></a>
+  ao invés desse hack.
+ </p>
+</div></div></div></body></html>

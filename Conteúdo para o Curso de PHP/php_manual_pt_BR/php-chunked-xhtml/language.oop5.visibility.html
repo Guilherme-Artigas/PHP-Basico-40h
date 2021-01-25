@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Visibilidade</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.oop5.decon.html">« Construtores e Destrutores</a></li>
+      <li style="float: right;"><a href="language.oop5.inheritance.html">Heran&ccedil;a de Objetos= »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.oop5.html">Classes e Objetos</a></li>
+    <li>Visibilidade</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.oop5.visibility" class="sect1">
+  <h2 class="title">Visibilidade</h2>
+  <p class="para">
+   A visibilidade de uma propriedade ou método pode ser definida prefixando a
+   declaração com as palavras-chave: <em class="emphasis">public</em>,
+   <em class="emphasis">protected</em> or
+   <em class="emphasis">private</em>. Itens declarados como públicos podem ser
+   acessados de qualquer lugar. Membros declarados como protegidos só podem ser acessados
+   na classe declarante e suas classes herdeiras. Membros
+   declarados como privados só podem ser acessados na classe que define
+   o membro privado.
+  </p>
+
+  <div class="sect2" id="language.oop5.visibility-members">
+   <h3 class="title">Visibilidade de propriedades</h3>
+   <p class="para">
+    Propriedades de classes devem ser declarados como públicas, privadas ou
+    protegidas. Se declarado com <em class="emphasis">var</em>
+    a propriedade será definida como pública.
+   </p>
+   <p class="para">
+    <div class="example" id="example-216">
+     <p><strong>Exemplo #1 Declaração de propriedade</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;Define&nbsp;MinhaClasse<br />&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MinhaClasse<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$publica&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Public'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$protegida&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Protected'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$privada&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Private'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">imprimeAlo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">publica</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protegida</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">privada</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MinhaClasse</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">publica</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Funciona<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protegida</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Erro&nbsp;Fatal<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">privada</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Erro&nbsp;Fatal<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imprimeAlo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Mostra&nbsp;Public,&nbsp;Protected&nbsp;e&nbsp;Private<br /><br /><br />/**<br />&nbsp;*&nbsp;Define&nbsp;MinhaClasse2<br />&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MinhaClasse2&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MinhaClasse<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Nós&nbsp;podemos&nbsp;redeclarar&nbsp;as&nbsp;propriedades&nbsp;públicas&nbsp;e&nbsp;protegidas&nbsp;mas&nbsp;não&nbsp;as&nbsp;privadas<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">protected&nbsp;</span><span style="color: #0000BB">$protegida&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Protected2'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">imprimeAlo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">publica</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protegida</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">privada</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MinhaClasse2</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">publica</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Works<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">privada</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Undefined<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">protegida</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Fatal&nbsp;Error<br /></span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imprimeAlo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Mostra&nbsp;Public,&nbsp;Protected2,&nbsp;Undefined<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     O uso da declaração de variável com a palavra-chave
+     <em class="emphasis">var</em> ainda é suportada por razões de
+     compatibilidade (como um sinônimo para a palavra-chave public). Em versões do PHP anteriores ao 5.1.3,
+     isso gerará um aviso do tipo <strong><code>E_STRICT</code></strong>.
+    </span>
+   </p></blockquote>
+  </div>
+
+  <div class="sect2" id="language.oop5.visiblity-methods">
+   <h3 class="title">Visibilidades de métodos</h3>
+   <p class="para">
+    Métodos de classe podem ser definidos como público, privado
+    ou protegido. Métodos sem qualquer declaração explícita serão
+    definidos como público.
+   </p>
+   <p class="para">
+    <div class="example" id="example-217">
+     <p><strong>Exemplo #2 Declaração de método</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;Define&nbsp;MinhaClasse<br />&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MinhaClasse<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Declara&nbsp;um&nbsp;construtor&nbsp;público<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Declara&nbsp;um&nbsp;método&nbsp;public<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">MeuPublico</span><span style="color: #007700">()&nbsp;{&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Declara&nbsp;um&nbsp;método&nbsp;protected<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">MeuProtegido</span><span style="color: #007700">()&nbsp;{&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Declara&nbsp;um&nbsp;método&nbsp;private<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">private&nbsp;function&nbsp;</span><span style="color: #0000BB">MeuPrivado</span><span style="color: #007700">()&nbsp;{&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Esse&nbsp;é&nbsp;public<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPublico</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuProtegido</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPrivado</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$minhaclasse&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MinhaClasse</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$minhaclasse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPublico</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Funciona<br /></span><span style="color: #0000BB">$minhaclasse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuProtegido</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Erro&nbsp;Fatal<br /></span><span style="color: #0000BB">$minhaclasse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPrivado</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Erro&nbsp;Fatal<br /></span><span style="color: #0000BB">$minhaclasse</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Public,&nbsp;Protected&nbsp;e&nbsp;Private&nbsp;funcionam<br /><br /><br />/**<br />&nbsp;*&nbsp;Define&nbsp;MinhaClasse2<br />&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MinhaClasse2&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MinhaClasse<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Esse&nbsp;é&nbsp;public<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">Foo2</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPublico</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuProtegido</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPrivado</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Erro&nbsp;Fatal<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />}<br /><br /></span><span style="color: #0000BB">$minhaclasse2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MinhaClasse2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$minhaclasse2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">MeuPublico</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Funciona<br /></span><span style="color: #0000BB">$minhaclasse2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Foo2</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Public&nbsp;e&nbsp;Protected&nbsp;funcionam,&nbsp;Private&nbsp;não<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Bar<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testPublic</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testPublic</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Bar::testPublic\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Bar::testPrivate\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Bar<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testPublic</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Foo::testPublic\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">testPrivate</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Foo::testPrivate\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$myFoo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$myFoo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">test</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;Bar::testPrivate<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Foo::testPublic<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  <div class="sect2" id="language.oop5.visibility-other-objects">
+   <h3 class="title">Visibilidade de outros objetos</h3>
+   <p class="para">
+    Objetos do mesmo tipo terão acesso a outros mementos privados e
+    protegidos mesmo que não sejam da mesma instância. Isso acontece
+    por que os detalhes específicos de implementação já são conhecidos dentro
+    destes objetos.
+   </p>
+   <div class="example" id="example-218">
+    <p><strong>Exemplo #3 Acessando membros privados entre objetos do mesmo tipo</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Test<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Acessou&nbsp;o&nbsp;método&nbsp;privado.'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(</span><span style="color: #0000BB">Test&nbsp;$other</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Pode-se&nbsp;alterar&nbsp;a&nbsp;propriedade&nbsp;privada:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Pode-se&nbsp;chamar&nbsp;método&nbsp;privado:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$other</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$test&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$test</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baz</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">(</span><span style="color: #DD0000">'other'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(5) &quot;hello&quot;
+Acessou o método privado.
+</pre></div>
+    </div>
+   </div>
+  </div>
+ </div></div></div></body></html>

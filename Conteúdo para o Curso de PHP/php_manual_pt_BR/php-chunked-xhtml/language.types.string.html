@@ -1,0 +1,1044 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Strings</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.types.float.html">« N&uacute;meros de ponto flutuante</a></li>
+      <li style="float: right;"><a href="language.types.array.html">Arrays »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.types.html">Tipos</a></li>
+    <li>Strings</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.types.string" class="sect1">
+ <h2 class="title">Strings</h2>
+
+ <p class="para">
+  Uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é uma série de caracteres, onde um caractere é
+  o mesmo que um byte. Isso significa que o PHP possui suporte a um conjunto de apenas 256 caracteres,
+  e, portanto, não possui suporte nativo a Unicode. Veja mais
+  <a href="language.types.string.html#language.types.string.details" class="link"> detalhes do tipo
+  string</a>.
+ </p>
+
+ <blockquote class="note"><p><strong class="note">Nota</strong>: 
+  <span class="simpara">
+   A partir do PHP 7.0.0, não há restrições particulares em relação ao tamanho de uma
+   uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> em compilações de 64 bits. Em compilações de 32 bits e em
+   versões anteriores, uma
+   <span class="type"><a href="language.types.string.html" class="type string">string</a></span> pode ter o tamanho de até 2GB (máximo de 2147483647 bytes)
+  </span>
+ </p></blockquote>
+
+ <div class="sect2" id="language.types.string.syntax">
+  <h3 class="title">Sintaxe</h3>
+
+  <p class="para">
+   Uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> literal pode ser especificada de quatro formas diferentes.
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.string.html#language.types.string.syntax.single" class="link">aspas simples</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.string.html#language.types.string.syntax.double" class="link">aspas duplas</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">sintaxe heredoc</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.types.string.html#language.types.string.syntax.nowdoc" class="link">sintaxe nowdoc</a>
+     (a partir do PHP 5.3.0)
+    </span>
+   </li>
+  </ul>
+
+  <div class="sect3" id="language.types.string.syntax.single">
+   <h4 class="title">Aspas simples</h4>
+
+   <p class="para">
+    A maneira mais simples de se especificar uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é
+    delimitá-la entre aspas simples (o caractere <em>&#039;</em>).
+   </p>
+
+   <p class="para">
+    Para especificar um apóstrofo, escape-o com uma contrabarra
+    (<em>\</em>). Para especificar uma contrabarra literal, dobre-a
+    (<em>\\</em>). Todas as outras ocorrências da contrabarra serão tratadas
+    como uma contrabarra literal: isso significa que outras sequências de escape que
+    se esteja acostumado a utilizar, como <em>\r</em> ou <em>\n</em>, serão
+    literalmente impressas em vez de ter qualquer significado
+    especial.
+   </p>
+
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <span class="simpara">
+     Diferentemente das sintaxes <a href="language.types.string.html#language.types.string.syntax.double" class="link">com aspas duplas</a>
+     e <a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">heredoc</a>,
+     <a href="language.variables.html" class="link">variáveis</a> e sequências de escape
+     para caracteres especiais <em class="emphasis">não</em> serão expandidas quando ocorrerem
+     dentro de uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> delimitada por aspas simples.
+     </span>
+    </p></blockquote>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'isto&nbsp;é&nbsp;uma&nbsp;string&nbsp;comum'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">'Você&nbsp;pode&nbsp;incluir&nbsp;novas&nbsp;linhas&nbsp;em&nbsp;strings,<br />dessa&nbsp;maneira&nbsp;que&nbsp;estará<br />tudo&nbsp;bem'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Imprime:&nbsp;Arnold&nbsp;disse&nbsp;uma&nbsp;vez:&nbsp;"I'll&nbsp;be&nbsp;back"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Arnold&nbsp;disse&nbsp;uma&nbsp;vez:&nbsp;"I\'ll&nbsp;be&nbsp;back"'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Imprime:&nbsp;Você&nbsp;tem&nbsp;certeza&nbsp;em&nbsp;apagar&nbsp;C:\*.*?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Você&nbsp;tem&nbsp;certeza&nbsp;em&nbsp;apagar&nbsp;C:\\*.*?'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Imprime:&nbsp;Você&nbsp;tem&nbsp;certeza&nbsp;em&nbsp;apagar&nbsp;C:\*.*?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Você&nbsp;tem&nbsp;certeza&nbsp;em&nbsp;apagar&nbsp;C:\*.*?'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Imprime:&nbsp;Isto&nbsp;não&nbsp;será&nbsp;substituido:&nbsp;\n&nbsp;uma&nbsp;nova&nbsp;linha<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Isto&nbsp;não&nbsp;será&nbsp;substituido:&nbsp;\n&nbsp;uma&nbsp;nova&nbsp;linha'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Imprime:&nbsp;Variáveis&nbsp;$também&nbsp;não&nbsp;$expandem<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Variáveis&nbsp;$também&nbsp;não&nbsp;$expandem'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="language.types.string.syntax.double">
+   <h4 class="title">Aspas duplas</h4>
+
+   <p class="para">
+    Se a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> for delimitada entre aspas duplas (&quot;), o PHP
+    interpretará a seguinte sequência de escape como caracteres especiais:
+   </p>
+
+   <table class="doctable table">
+    <caption><strong>Sequências de escape</strong></caption>
+
+    
+     <thead>
+      <tr>
+       <th>Sequências</th>
+       <th>Significado</th>
+      </tr>
+
+     </thead>
+
+
+     <tbody class="tbody">
+      <tr>
+       <td><em>\n</em></td>
+       <td>fim de linha (LF ou 0x0A (10) em ASCII)</td>
+      </tr>
+
+      <tr>
+       <td><em>\r</em></td>
+       <td>retorno de carro (CR ou 0x0D (13) em ASCII)</td>
+      </tr>
+
+      <tr>
+       <td><em>\t</em></td>
+       <td>TAB horizontal (HT ou 0x09 (9) em ASCII)</td>
+      </tr>
+
+      <tr>
+       <td><em>\v</em></td>
+       <td>TAB vertical (VT ou 0x0B (11) em ASCII) (a partir do PHP 5.2.5)</td>
+      </tr>
+
+      <tr>
+       <td><em>\e</em></td>
+       <td>escape (ESC or 0x1B (27) em ASCII) (a partir do PHP 5.4.4)</td>
+      </tr>
+
+      <tr>
+       <td><em>\f</em></td>
+       <td>form feed (FF ou 0x0C (12) em ASCII) (a partir do PHP 5.2.5)</td>
+      </tr>
+
+      <tr>
+       <td><em>\\</em></td>
+       <td>contrabarra ou barra invertida</td>
+      </tr>
+
+      <tr>
+       <td><em>\$</em></td>
+       <td>sinal de cifrão</td>
+      </tr>
+
+      <tr>
+       <td><em>\&quot;</em></td>
+       <td>aspas duplas</td>
+      </tr>
+
+      <tr>
+       <td><em>\[0-7]{1,3}</em></td>
+       <td>
+        a sequência de caracteres correspondente a expressão regular é um
+        caractere em notação octal, que silenciosamente é extravasada para caber em um byte
+        (e.g. &quot;\400&quot; === &quot;\000&quot;)
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>\x[0-9A-Fa-f]{1,2}</em></td>
+       <td>
+        a sequência de caracteres correspondente a expressão regular é um
+        caractere em notação hexadecimal
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>\u{[0-9A-Fa-f]+}</em></td>
+       <td>
+        a sequência de caracteres correspondente a expressão regular é um
+        código Unicode, que será impresso como uma string que representa um código
+        UTF-8 (adicionado no PHP 7.0.0)
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+
+   <p class="para">
+    Como com as <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s entre aspas simples, escapar qualquer outro caractere
+    resultará em uma contrabarra sendo impressa. Em versões anteriores ao PHP 5.1.1, a contrabarra em
+    <em>\{$var}</em> não era impressa.
+   </p>
+
+   <p class="para">
+    O recurso mais importante de <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s delimitadas por aspas duplas é o fato de que
+    nomes de variáveis serão expandidos. Veja
+    <a href="language.types.string.html#language.types.string.parsing" class="link">interpretação de strings</a> para
+    detalhes.
+   </p>
+  </div>
+
+  <div class="sect3" id="language.types.string.syntax.heredoc">
+   <h4 class="title">Heredoc</h4>
+
+   <p class="simpara">
+    Uma terceira maneira de delimitar <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s é a sintaxe heredoc:
+    <em>&lt;&lt;&lt;</em>. Após este operador, um identificador é
+    fornecido seguido de uma nova linha. A própria <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é colocada em seguida e a seguir
+    o mesmo identificador novamente para fechar a string.
+   </p>
+
+   <p class="simpara">
+    O identificador de fechamento <em class="emphasis">precisa</em> começar na primeira
+    coluna da linha. Além disso, o identificador precisa seguir as mesmas regras de nomeação
+    como qualquer outro rótulo no PHP: deve conter somente caracteres alfanuméricos e
+    sublinhados, e precisa começar com um caractere não numérico ou sublinhado.
+   </p>
+
+   <div class="warning"><strong class="warning">Aviso</strong>
+    <p class="simpara">
+     É muito importante notar que a linha que contêm o identificador de fechamento não
+     deve conter nenhum outro caractere, com exceção do ponto-e-vírgula (<em>;</em>).
+     Isso significa que o identificador
+     <em class="emphasis">não deve ser indentado</em> e não deve ter nenhum espaço
+     ou tabulações antes ou depois do ponto-e-vírgula. Também é importante perceber que
+     o primeiro caractere antes do identificador de fechamento deve ser uma nova linha como
+     definido pelo sistema operacional local. Isso é, <em>\n</em> em
+     sistemas UNIX, incluindo o MAC OS X. O identificador de fechamento também deve ser
+     seguido por uma nova linha.
+    </p>
+
+    <p class="simpara">
+     Se essa regra for quebrada e o identificador de fechamento não estiver &quot;limpo&quot;, ele
+     não será considerado um identificador de fechamento, e o PHP continuará procurando por
+     um. Se um identificador de fechamento apropriado não for encontrado antes do final do
+     arquivo atual, um erro de interpretação será lançado na última linha.
+    </p>
+
+    <div class="example" id="example-62">
+     <p><strong>Exemplo #1 Exemplo inválido</strong></p>
+     <div class="example-contents">
+      
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOT<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">&nbsp;&nbsp;&nbsp;&nbsp;EOT;<br />}<br /></span><span style="color: #FF8000">//&nbsp;O&nbsp;identifcador&nbsp;não&nbsp;deve&nbsp;ser&nbsp;indentado<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    <div class="example" id="example-63">
+     <p><strong>Exemplo #2 Exemplo válido</strong></p>
+     <div class="example-contents">
+      
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOT<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">EOT;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+    <p class="para">
+     Heredocs não podem ser usados para inicializar propriedades de classe. A partir do php 5.3,
+     esta limitação é válida apenas para heredocs contendo variáveis.
+    </p>
+
+   </div>
+
+   <p class="para">
+    Textos heredoc se comportam como <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s delimitadas por aspas duplas, sem
+    as aspas duplas. Isso significa que aspas simples em heredocs não precisam ser
+    escapadas, apesar de que os códigos de escape listados acima podem continuar sendo utilizados. Variáveis
+    são expandidas, mas o mesmo cuidado deve ser tomado ao expressar variáveis complexas
+    dentro do heredoc assim como nas <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s.
+   </p>
+
+   <div class="example" id="example-64">
+    <p><strong>Exemplo #3 Exemplo de delimitação de strings heredoc</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">Exemplo&nbsp;de&nbsp;uma&nbsp;string<br />distribuída&nbsp;em&nbsp;várias&nbsp;linhas<br />utilizando&nbsp;a&nbsp;sintaxe&nbsp;heredoc.<br /></span><span style="color: #007700">EOD;<br /><br /></span><span style="color: #FF8000">/*&nbsp;Exemplo&nbsp;mais&nbsp;complexo,&nbsp;com&nbsp;variáveis&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'Bar1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar3'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Meu&nbsp;nome'</span><span style="color: #007700">;<br /><br />echo&nbsp;&lt;&lt;&lt;EOT<br /></span><span style="color: #DD0000">Meu&nbsp;nome&nbsp;é&nbsp;"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">".&nbsp;Eu&nbsp;estou&nbsp;imprimindo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #DD0000">.<br />Agora,&nbsp;eu&nbsp;estou&nbsp;imprimindo&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}</span><span style="color: #DD0000">.<br />Isto&nbsp;deve&nbsp;imprimir&nbsp;um&nbsp;'A'&nbsp;maiúsculo:&nbsp;\x41<br /></span><span style="color: #007700">EOT;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+My name is &quot;MyName&quot;. I am printing some Foo.
+Now, I am printing some Bar2.
+This should print a capital &#039;A&#039;: A</pre></div>
+    </div>
+   </div>
+
+   <p class="para">
+    É possível também utilizar a sintaxe Heredoc para passar dados para argumentos de
+    funções:
+   </p>
+
+   <div class="example" id="example-65">
+    <p><strong>Exemplo #4 Exemplo de Heredoc em argumentos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(array(&lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">foobar!<br /></span><span style="color: #007700">EOD<br />));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+    <p class="para">
+     A partir do PHP 5.3.0, é possível inicializar variáveis estáticas e
+     propriedades/constantes de classe utilizando a sintaxe heredoc:
+    </p>
+
+   <div class="example" id="example-66">
+    <p><strong>Exemplo #5 Utilizando o Heredoc na inicialização de valores estáticos</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Variáveis&nbsp;estáticas<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;LABEL<br /></span><span style="color: #DD0000">Nothing&nbsp;in&nbsp;here...<br /></span><span style="color: #007700">LABEL;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Classe&nbsp;propriedades/constantes<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">BAR&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;FOOBAR<br /></span><span style="color: #DD0000">Constant&nbsp;example<br /></span><span style="color: #007700">FOOBAR;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;FOOBAR<br /></span><span style="color: #DD0000">Property&nbsp;example<br /></span><span style="color: #007700">FOOBAR;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="para">
+    A partir do PHP 5.3.0, o identificador de abertura do Heredoc pode ser opcionalmente
+    delimitado por aspas duplas:
+   </p>
+
+   <div class="example" id="example-67">
+    <p><strong>Exemplo #6 Usando aspas duplas no Heredoc</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;&lt;&lt;&lt;"FOOBAR"<br /></span><span style="color: #DD0000">Hello&nbsp;World!<br /></span><span style="color: #007700">FOOBAR;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="language.types.string.syntax.nowdoc">
+   <h4 class="title">Nowdoc</h4>
+
+   <p class="para">
+    Nowdocs estão para aspas simples assim como os heredocs estão para aspas duplas em
+    strings. Um nowdoc é especificado similarmente a um heredoc, mas <em class="emphasis">
+    nenhuma interpretação é feita</em> dentro de um nowdoc. A construção é ideal para
+    colocar códigos PHP ou outros grandes blocos de texto sem a necessidade de
+    usar escapes. Compartilha algumas características em comum com a construção SGML
+    <em>&lt;![CDATA[ ]]&gt;</em>, assim é declarado um bloco de
+    texto onde nada será analisado.
+   </p>
+
+   <p class="para">
+    Um nowdoc é identificado com a mesma sequência <em>&lt;&lt;&lt;</em>
+    usada para heredocs, mas o identificador precisa ficar entre
+    aspas simples, por exemplo. <em>&lt;&lt;&lt;&#039;EOT&#039;</em>. Todas as regras para
+    identificadores heredoc também se aplicam para identificadores nowdoc, especialmente aquelas
+    referentes a aparência do identificador de fechamento.
+   </p>
+
+   <div class="example" id="example-68">
+    <p><strong>Exemplo #7 Exemplo de string em Nowdoc</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;&lt;&lt;&lt;'EOD'<br /></span><span style="color: #DD0000">Example&nbsp;of&nbsp;string&nbsp;spanning&nbsp;multiple&nbsp;lines<br />using&nbsp;nowdoc&nbsp;syntax.&nbsp;Backslashes&nbsp;are&nbsp;always&nbsp;treated&nbsp;literally,<br />e.g.&nbsp;\\&nbsp;and&nbsp;\'.<br /></span><span style="color: #007700">EOD;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Example of string spanning multiple lines
+using nowdoc syntax. Backslashes are always treated literally,
+e.g. \\ and \&#039;.
+</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-69">
+    <p><strong>Exemplo #8 Exemplo de Nowdoc, com variáveis</strong></p>
+    <div class="example-contents">
+        <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Foo'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'Bar1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bar3'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'MyName'</span><span style="color: #007700">;<br /><br />echo&nbsp;&lt;&lt;&lt;'EOT'<br /></span><span style="color: #DD0000">My&nbsp;name&nbsp;is&nbsp;"$name".&nbsp;I&nbsp;am&nbsp;printing&nbsp;some&nbsp;$foo-&gt;foo.<br />Now,&nbsp;I&nbsp;am&nbsp;printing&nbsp;some&nbsp;{$foo-&gt;bar[1]}.<br />This&nbsp;should&nbsp;not&nbsp;print&nbsp;a&nbsp;capital&nbsp;'A':&nbsp;\x41<br /></span><span style="color: #007700">EOT;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+My name is &quot;$name&quot;. I am printing some $foo-&gt;foo.
+Now, I am printing some {$foo-&gt;bar[1]}.
+This should not print a capital &#039;A&#039;: \x41</pre></div>
+    </div>
+   </div>
+
+   <div class="example" id="example-70">
+    <p><strong>Exemplo #9 Exemplo de dado estático</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;'EOT'<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">EOT;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Suporte a Nowdoc foi adicionado no PHP 5.3.0.
+    </p>
+   </p></blockquote>
+
+  </div>
+
+  <div class="sect3" id="language.types.string.parsing">
+   <h4 class="title">Interpretação de variáveis</h4>
+
+   <p class="simpara">
+    Quando uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é especificada dentro de aspas duplas ou heredoc,
+    as <a href="language.variables.html" class="link">variáveis</a> são interpretadas dentro delas.
+   </p>
+
+   <p class="simpara">
+    Há dois tipos de sintaxe: uma
+    <a href="language.types.string.html#language.types.string.parsing.simple" class="link">simples</a> e uma
+    <a href="language.types.string.html#language.types.string.parsing.complex" class="link">complexa</a>.
+    A sintaxe simples é a mais comum e conveniente. Provê uma maneira de
+    interpretar uma variável, o valor de um <span class="type"><a href="language.types.array.html" class="type array">array</a></span> ou uma propriedade de <span class="type"><span class="type objeto">objeto</span></span>
+    em uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> com o mínimo de esforço.
+   </p>
+
+   <p class="simpara">
+    A sintaxe complexa pode ser reconhecida
+    pelas chaves envolvendo a expressão.
+   </p>
+
+   <div class="sect4" id="language.types.string.parsing.simple">
+    <h5 class="title">Sintaxe simples</h5>
+
+    <p class="simpara">
+     Se um sinal de cifrão (<em>$</em>) for encontrado, o interpretador tentará
+     obter tantos identificadores quantos forem possíveis para formar um nome de variável válido.
+     Envolva o nome da variável com chaves para especificar explicitamente o fim do
+     nome.
+    </p>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$juice&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juice</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Invalid.&nbsp;"s"&nbsp;is&nbsp;a&nbsp;valid&nbsp;character&nbsp;for&nbsp;a&nbsp;variable&nbsp;name,&nbsp;but&nbsp;the&nbsp;variable&nbsp;is&nbsp;$juice.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;juice&nbsp;made&nbsp;of&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #DD0000">."</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Valid.&nbsp;Explicitly&nbsp;specify&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;variable&nbsp;name&nbsp;by&nbsp;enclosing&nbsp;it&nbsp;in&nbsp;braces:<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;juice&nbsp;made&nbsp;of&nbsp;</span><span style="color: #007700">${</span><span style="color: #0000BB">juice</span><span style="color: #007700">}</span><span style="color: #DD0000">s."</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <p class="para">O exemplo acima irá imprimir:</p>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+He drank some apple juice.
+He drank some juice made of .
+He drank some juice made of apples.
+</pre></div>
+     </div>
+    </div>
+
+    <p class="simpara">
+     Similarmente, um índice de <span class="type"><a href="language.types.array.html" class="type array">array</a></span> ou uma propriedade de um <span class="type"><span class="type objeto">objeto</span></span>
+     podem ser interpretados. Com índices de arrays, o fechamento de colchetes
+     (<em>]</em>) marca o final do índice. A mesma regra aplica-se a
+     propriedade de objetos, assim como para variáveis simples.
+    </p>
+
+    <div class="example" id="example-71"><p><strong>Exemplo #10 Exemplo com sintaxe simples</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$juices&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"apple"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"orange"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"koolaid1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"purple"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"He&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">koolaid1</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">people&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$john&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"John&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$jane&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Jane&nbsp;Smith"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$robert&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Robert&nbsp;Paulsen"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$smith&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Smith"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$people&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">people</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;drank&nbsp;some&nbsp;</span><span style="color: #0000BB">$juices</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]</span><span style="color: #DD0000">&nbsp;juice."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">&nbsp;then&nbsp;said&nbsp;hello&nbsp;to&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">jane</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">john</span><span style="color: #DD0000">'s&nbsp;wife&nbsp;greeted&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">."</span><span style="color: #007700">.</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">robert</span><span style="color: #DD0000">&nbsp;greeted&nbsp;the&nbsp;two&nbsp;</span><span style="color: #0000BB">$people</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">smiths</span><span style="color: #DD0000">."</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;Won't&nbsp;work<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+He drank some apple juice.
+He drank some orange juice.
+He drank some purple juice.
+John Smith drank some apple juice.
+John Smith then said hello to Jane Smith.
+John Smith&#039;s wife greeted Robert Paulsen.
+Robert Paulsen greeted the two .
+</pre></div>
+     </div>
+    </div>
+
+    <p class="simpara">
+     A partir do PHP 7.1.0 índices numéricos <em class="emphasis">negativos</em> são
+     suportados.
+    </p>
+
+    <div class="example" id="example-72"><p><strong>Exemplo #11 Índices numéricos negativos</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'string'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"The&nbsp;character&nbsp;at&nbsp;index&nbsp;-2&nbsp;is&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #007700">[-</span><span style="color: #0000BB">2</span><span style="color: #007700">]</span><span style="color: #DD0000">."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$string</span><span style="color: #007700">[-</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'o'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Changing&nbsp;the&nbsp;character&nbsp;at&nbsp;index&nbsp;-3&nbsp;to&nbsp;o&nbsp;gives&nbsp;</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>O exemplo acima irá imprimir:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+The character at index -2 is n.
+Changing the character at index -3 to o gives strong.
+</pre></div>
+     </div>
+    </div>
+
+    <p class="simpara">
+     Para qualquer coisa mais complexa, utilize a sintaxe complexa.
+    </p>
+   </div>
+
+   <div class="sect4" id="language.types.string.parsing.complex">
+    <h5 class="title">Sintaxe complexa (chaves)</h5>
+
+    <p class="simpara">
+     Isto não é chamado sintaxe complexa porque a sintaxe é complexa,
+     mas sim porque permite a utilização de expressões complexas.
+    </p>
+
+    <p class="simpara">
+     Qualquer variável escalar, elemento de um array ou propriedade de um objeto com uma representação de uma
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span> pode ser incluída com essa sintaxe.
+     Simplesmente escreva a expressão da mesma forma como apareceria fora da
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span> e então coloque-o entre <em>{</em> e
+     <em>}</em>. Já que que <em>{</em> não pode escapado, esta
+     sintaxe será somente reconhecida quando o <em>$</em> seguir,
+     imediatamente, o <em>{</em>. Use <em>{\$</em> para obter um literal
+     <em>{$</em>. Alguns exemplos que tornam isto claro:
+    </p>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Show&nbsp;all&nbsp;errors<br /></span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$great&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'fantastic'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Won't&nbsp;work,&nbsp;outputs:&nbsp;This&nbsp;is&nbsp;{&nbsp;fantastic}<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;{&nbsp;</span><span style="color: #0000BB">$great</span><span style="color: #DD0000">}"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Works,&nbsp;outputs:&nbsp;This&nbsp;is&nbsp;fantastic<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$great</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Works<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;square&nbsp;is&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$square</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">width</span><span style="color: #007700">}</span><span style="color: #DD0000">00&nbsp;centimeters&nbsp;broad."</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;Works,&nbsp;quoted&nbsp;keys&nbsp;only&nbsp;work&nbsp;using&nbsp;the&nbsp;curly&nbsp;brace&nbsp;syntax<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;works:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;Works<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;works:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">][</span><span style="color: #0000BB">3</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;is&nbsp;wrong&nbsp;for&nbsp;the&nbsp;same&nbsp;reason&nbsp;as&nbsp;$foo[bar]&nbsp;is&nbsp;wrong&nbsp;&nbsp;outside&nbsp;a&nbsp;string.<br />//&nbsp;In&nbsp;other&nbsp;words,&nbsp;it&nbsp;will&nbsp;still&nbsp;work,&nbsp;but&nbsp;only&nbsp;because&nbsp;PHP&nbsp;first&nbsp;looks&nbsp;for&nbsp;a<br />//&nbsp;constant&nbsp;named&nbsp;foo;&nbsp;an&nbsp;error&nbsp;of&nbsp;level&nbsp;E_NOTICE&nbsp;(undefined&nbsp;constant)&nbsp;will&nbsp;be<br />//&nbsp;thrown.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;wrong:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #0000BB">foo</span><span style="color: #007700">][</span><span style="color: #0000BB">3</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Works.&nbsp;When&nbsp;using&nbsp;multi-dimensional&nbsp;arrays,&nbsp;always&nbsp;use&nbsp;braces&nbsp;around&nbsp;arrays<br />//&nbsp;when&nbsp;inside&nbsp;of&nbsp;strings<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;works:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">][</span><span style="color: #0000BB">3</span><span style="color: #007700">]}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Works.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;works:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">[</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">][</span><span style="color: #0000BB">3</span><span style="color: #007700">];<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;works&nbsp;too:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">values</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;var&nbsp;named&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #007700">{${</span><span style="color: #0000BB">$name</span><span style="color: #007700">}}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;var&nbsp;named&nbsp;by&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;getName():&nbsp;</span><span style="color: #007700">{${</span><span style="color: #0000BB">getName</span><span style="color: #007700">()}}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;var&nbsp;named&nbsp;by&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;\$object-&gt;getName():&nbsp;</span><span style="color: #007700">{${</span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">()}}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Won't&nbsp;work,&nbsp;outputs:&nbsp;This&nbsp;is&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;getName():&nbsp;{getName()}<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;getName():&nbsp;{getName()}"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+
+     </div>
+
+    </div>
+
+    <p class="para">
+     Também é possível acessar propriedades de classes usando variáveis
+     que contêm strings utilizando esta sintaxe.
+    </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;</span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;bar.'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'quux'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]}}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   <p class="para">O exemplo acima irá imprimir:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+I am bar.
+I am bar.
+</pre></div>
+   </div>
+   </div>
+
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Funções, chamadas a métodos, variáveis estáticas de classe e constantes de
+      classe dentro de <em>{$}</em> funcionam a partir do PHP
+      5. Entretanto, o valor acessado deverá ser interpretado como o nome
+      de uma variável no escopo em que a string está definida. Utilizar
+      somente chaves (<em>{}</em>) não funcionará
+      para acessar os valores de retorno de funções ou métodos nem os
+      valores de constantes da classe ou variáveis estáticas da classe.
+     </p>
+    </p></blockquote>
+
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Show&nbsp;all&nbsp;errors.<br /></span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">(</span><span style="color: #0000BB">E_ALL</span><span style="color: #007700">);<br /><br />class&nbsp;</span><span style="color: #0000BB">beers&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">softdrink&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'rootbeer'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;</span><span style="color: #0000BB">$ale&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'ipa'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$rootbeer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'A&nbsp;&amp;&nbsp;W'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ipa&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Alexander&nbsp;Keith\'s'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;works;&nbsp;outputs:&nbsp;I'd&nbsp;like&nbsp;an&nbsp;A&nbsp;&amp;&nbsp;W<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"I'd&nbsp;like&nbsp;an&nbsp;</span><span style="color: #007700">{${</span><span style="color: #0000BB">beers</span><span style="color: #007700">::</span><span style="color: #0000BB">softdrink</span><span style="color: #007700">}}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;works&nbsp;too;&nbsp;outputs:&nbsp;I'd&nbsp;like&nbsp;an&nbsp;Alexander&nbsp;Keith's<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"I'd&nbsp;like&nbsp;an&nbsp;</span><span style="color: #007700">{${</span><span style="color: #0000BB">beers</span><span style="color: #007700">::</span><span style="color: #0000BB">$ale</span><span style="color: #007700">}}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect3" id="language.types.string.substr">
+   <h4 class="title">Acesso e modificação da string por caractere</h4>
+
+   <p class="para">
+    É possível acessar e modificar caracteres dentro de <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s
+    especificando a posição, baseada em zero, do caractere desejado na
+    <span class="type"><a href="language.types.string.html" class="type string">string</a></span> usando colchetes, parecido com <span class="type"><a href="language.types.array.html" class="type array">array</a></span>s, por exemplo
+    <var class="varname"><var class="varname">$str[42]</var></var>. Imagine uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> como um
+    <span class="type"><a href="language.types.array.html" class="type array">array</a></span> de caracteres. As funções
+    <span class="function"><a href="function.substr.html" class="function">substr()</a></span> e <span class="function"><a href="function.substr-replace.html" class="function">substr_replace()</a></span>,
+    podem ser utilizadas quando se deseja extrair ou substituir mais que 1 caractere.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     A partir do PHP 7.1.0, posições negativas para strings são suportadas. Estas especificam
+     a posição do final da string.
+     Antes, posições negativas emitiam um <strong><code>E_NOTICE</code></strong> para leitura
+     (gerando um string vazia) e um <strong><code>E_WARNING</code></strong> para escrita
+     (deixando a string intocada).
+    </span>
+   </p></blockquote>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     <span class="type"><a href="language.types.string.html" class="type String">String</a></span>s também podem ser acessadas usando colchetes, como em
+     <var class="varname"><var class="varname">$str{42}</var></var>, com o mesmo propósito.
+    </span>
+   </p></blockquote>
+
+   <div class="warning"><strong class="warning">Aviso</strong>
+    <p class="simpara">
+     Escrever em uma posição fora do intervalo preenche a string com espaços.
+     Tipos diferentes de inteiro são convertidos para inteiro.
+     Tipo ilegal de deslocamento emite um <strong><code>E_WARNING</code></strong>.
+     Apenas o primeiro caractere de uma string atribuída é usado.
+     A partir de PHP 7.1.0, a atribuição de uma string vazia lança um erro fatal. Antes,
+     era atribuído o byte NULL.
+    </p>
+   </div>
+
+   <div class="warning"><strong class="warning">Aviso</strong>
+    <p class="simpara">
+     Internamente, as strings do PHP são arrays de bytes. Como resultado, acessar ou
+     modificar uma string usando colchetes não é seguro com multi-bytes e
+     deve ser feito somente em strings que utilizem apenas um byte em sua codificação,
+     como a ISO-8859-1.
+    </p>
+   </div>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     A partir do PHP 7.1.0, aplicar um operador de índice vazio em uma string lança um erro fatal
+     Antes, a string vazia era convertida em um array.
+    </span>
+   </p></blockquote>
+
+    <div class="example" id="example-73">
+     <p><strong>Exemplo #12 Alguns exemplos com strings</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;the&nbsp;first&nbsp;character&nbsp;of&nbsp;a&nbsp;string<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;test.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$first&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;the&nbsp;third&nbsp;character&nbsp;of&nbsp;a&nbsp;string<br /></span><span style="color: #0000BB">$third&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;the&nbsp;last&nbsp;character&nbsp;of&nbsp;a&nbsp;string.<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;still&nbsp;a&nbsp;test.'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$last&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Modify&nbsp;the&nbsp;last&nbsp;character&nbsp;of&nbsp;a&nbsp;string<br /></span><span style="color: #0000BB">$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Look&nbsp;at&nbsp;the&nbsp;sea'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)-</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'e'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+   <p class="para">
+    A partir do PHP 5.4 o deslocamento de strings devem ser inteiros ou strings equivalentes a inteiros, caso contrário um erro do tipo warning
+    será disparado. Anteriormente um deslocamento como <em>&quot;foo&quot;</em> era silenciosamente convertido em <em>0</em>.
+   </p>
+
+   <div class="example" id="example-74">
+    <p><strong>Exemplo #13 Diferenças entre o PHP 5.3 e PHP 5.4</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'abc'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1'</span><span style="color: #007700">]));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">]));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'x'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'x'</span><span style="color: #007700">]));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1x'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$str</span><span style="color: #007700">[</span><span style="color: #DD0000">'1x'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir no PHP 5.3:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(1) &quot;b&quot;
+bool(true)
+string(1) &quot;b&quot;
+bool(true)
+string(1) &quot;a&quot;
+bool(true)
+string(1) &quot;b&quot;
+bool(true)
+</pre></div>
+    </div>
+    <div class="example-contents"><p>O exemplo acima irá imprimir no PHP 5.4:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(1) &quot;b&quot;
+bool(true)
+
+Warning: Illegal string offset &#039;1.0&#039; in /tmp/t.php on line 7
+string(1) &quot;b&quot;
+bool(false)
+
+Warning: Illegal string offset &#039;x&#039; in /tmp/t.php on line 9
+string(1) &quot;a&quot;
+bool(false)
+string(1) &quot;b&quot;
+bool(false)
+</pre></div>
+    </div>
+   </div>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Acessar variáveis de outros tipos (excluindo-se arrays ou objetos que
+     implementem certas interfaces) usando <em>[]</em> ou
+     <em>{}</em> silenciosamente retornará <strong><code>NULL</code></strong>.
+    </p>
+   </p></blockquote>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     O PHP 5.5 adicionou o suporte ao acesso de caracteres dentro de strings literais
+     utilizando <em>[]</em> or <em>{}</em>.
+    </p>
+   </p></blockquote>
+  </div>
+ </div>
+
+ <div class="sect2" id="language.types.string.useful-funcs">
+  <h3 class="title">Funções e operadores úteis</h3>
+
+  <p class="para">
+   <span class="type"><a href="language.types.string.html" class="type String">String</a></span>s podem ser concatenadas utilizando o operador &#039;.&#039; (ponto). Note
+   que o operador &#039;+&#039; (adição) <em class="emphasis">não</em> funciona para isso.
+   Veja <a href="language.operators.string.html" class="link">operadores de string</a> para
+   mais informações.
+  </p>
+
+  <p class="para">
+   Há bastantes funções úteis para manipulação de <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s.
+  </p>
+
+  <p class="simpara">
+   Veja a <a href="ref.strings.html" class="link">seção de funções de string</a> para
+   funções gerais e <a href="ref.pcre.html" class="link">funções de expressões regulares compatíveis com Perl</a>
+   para funcionalidades avançadas de localização &amp; e substituição.
+  </p>
+
+  <p class="simpara">
+   Há também <a href="ref.url.html" class="link">funções para strings URL</a> e
+   funções para criptografia/descriptografia de strings
+   (<a href="ref.sodium.html" class="link">Sodium</a> e
+   <a href="ref.hash.html" class="link">Hash</a>).
+  </p>
+
+  <p class="simpara">
+   Finalmente, veja também as <a href="ref.ctype.html" class="link">funções de tipos de
+   caracteres</a>.
+  </p>
+ </div>
+
+ <div class="sect2" id="language.types.string.casting">
+  <h3 class="title">Conversão em strings</h3>
+
+  <p class="para">
+   Um valor pode ser convertido em uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> utilizando o modificador
+   <em>(string)</em> ou a função <span class="function"><a href="function.strval.html" class="function">strval()</a></span>.
+   A conversão em <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é automaticamente realizada no escopo de uma
+   expressão onde uma string é necessária. Isto acontece no uso das funções
+   <span class="function"><a href="function.echo.html" class="function">echo</a></span> ou <span class="function"><a href="function.print.html" class="function">print</a></span> ou quando
+   o valor de uma variável é comparado com uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span>. As seções <a href="language.types.html" class="link">Tipos</a> e <a href="language.types.type-juggling.html" class="link">Conversão de Tipos</a> tornarão
+   um pouco mais claro o assunto. Veja também a função <span class="function"><a href="function.settype.html" class="function">settype()</a></span>.
+  </p>
+
+  <p class="para">
+   O valor <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> <strong><code>TRUE</code></strong> é convertido para a <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   <em>&quot;1&quot;</em>. O <span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span> <strong><code>FALSE</code></strong> é convertido para
+   <em>&quot;&quot;</em> (uma string vazia). Isso permite converter nos dois
+   sentidos entre os valores <span class="type"><span class="type booleano">booleano</span></span> e <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+  </p>
+
+  <p class="para">
+   Um <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span> ou um <span class="type"><a href="language.types.float.html" class="type float">float</a></span> é convertido para uma
+   <span class="type"><a href="language.types.string.html" class="type string">string</a></span> representando o número textualmente (incluindo a parte
+   do expoente nos <span class="type"><a href="language.types.float.html" class="type float">float</a></span>s). Números de ponto flutuante podem ser
+   convertidos usando a notação exponencial (<em>4.1E+6</em>).
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    O caractere de ponto decimal é definido no código de idioma (locale) do script (categoria
+    LC_NUMERIC). Veja a função <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>.
+   </p>
+  </p></blockquote>
+
+  <p class="para">
+   <span class="type"><a href="language.types.array.html" class="type Array">Array</a></span>s são sempre convertidos para uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+   <em>&quot;Array&quot;</em>; por isso <span class="function"><a href="function.echo.html" class="function">echo</a></span> e
+   <span class="function"><a href="function.print.html" class="function">print</a></span> não podem, por si só, mostrar o conteúdo de um
+   <span class="type"><a href="language.types.array.html" class="type array">array</a></span>. Para visualizar um único elemento, use uma construção como
+   <em>echo $arr[&#039;foo&#039;]</em>. Veja abaixo dicas de como visualizar todo seu
+   conteúdo.
+  </p>
+
+  <p class="para">
+   Para converter <span class="type"><span class="type objeto">objeto</span></span>s em <span class="type"><a href="language.types.string.html" class="type string">string</a></span>s o método
+   mágico <a href="language.oop5.magic.html" class="link">__toString</a> deve ser usado.
+  </p>
+
+  <p class="para">
+   <span class="type"><a href="language.types.resource.html" class="type Resource">Resource</a></span>s são sempre convertidos para <span class="type"><span class="type strings">strings</span></span> na
+   estrutura <em>&quot;Resource id #1&quot;</em> onde <em>1</em> é
+   o número único do <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> atribuído pelo PHP
+   em tempo de execução. Apesar de que a estrutura exata desta string não seja confiável
+   e esteja sujeita a modificações, será sempre única a um dado recurso
+   dentro do ciclo de vida de um script sendo executado (por exemplo numa requisição Web ou em um processo
+   CLI) e não será reutilizada. Para obter o tipo de um <span class="type"><span class="type recurso">recurso</span></span>, utilize
+   a função <span class="function"><a href="function.get-resource-type.html" class="function">get_resource_type()</a></span>.
+  </p>
+
+  <p class="para">
+   <strong><code>NULL</code></strong> é sempre convertido para uma string vazia.
+  </p>
+
+  <p class="para">
+   Como declarado acima, converter diretamente um <span class="type"><a href="language.types.array.html" class="type array">array</a></span>,
+   <span class="type"><span class="type objeto">objeto</span></span> ou <span class="type"><span class="type recurso">recurso</span></span> para uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> não
+   fornece nenhuma informação útil sobre o valor, a não ser seu tipo. Veja as
+   funções <span class="function"><a href="function.print-r.html" class="function">print_r()</a></span> e <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span>
+   para maneiras mais efetivas de inspecionar o conteúdo destes tipos.
+  </p>
+
+  <p class="para">
+   A maioria dos valores no PHP também podem ser convertidos em strings para armazenamento
+   permanente. Este método é chamado de serialização e pode ser feito com a função
+   <span class="function"><a href="function.serialize.html" class="function">serialize()</a></span>.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.string.conversion">
+  <h3 class="title">Conversão de strings para números</h3>
+
+  <p class="simpara">
+   Quando uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> é interpretada como um valor numérico, o valor
+   resultante e seu tipo é determinado como segue.
+  </p>
+
+  <p class="simpara">
+   Se a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> não conter nenhum dos caracteres &#039;.&#039;, &#039;e&#039;,
+   ou &#039;E&#039; e o valor numérico encaixa-se dentro dos limites do tipo inteiro (definido pela constante
+   <strong><code>PHP_INT_MAX</code></strong>), a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> será avaliada
+   como um <span class="type"><span class="type inteiro">inteiro</span></span>. Em todos os outros casos será interpretada como um
+   <span class="type"><a href="language.types.float.html" class="type float">float</a></span>.
+  </p>
+
+  <p class="para">
+   O valor é obtido da porção inicial da <span class="type"><a href="language.types.string.html" class="type string">string</a></span>. Se a
+   <span class="type"><a href="language.types.string.html" class="type string">string</a></span> começar com dados numéricos válidos, esse será o valor
+   utilizado. Caso contrário, o valor será 0 (zero). Dados numéricos válidos são
+   um sinal opcional, seguido de um ou mais dígitos (opcionalmente contendo um
+   ponto decimal), seguido de um expoente, também opcional. O expoente é um &#039;e&#039; ou
+   &#039;E&#039; seguido de um ou mais dígitos.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10.5"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;float&nbsp;(11.5)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"-1.3e3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;float&nbsp;(-1299)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"bob-1.3e3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;integer&nbsp;(1)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"bob3"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;integer&nbsp;(1)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10&nbsp;Small&nbsp;Pigs"</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;integer&nbsp;(11)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #DD0000">"10.2&nbsp;Little&nbsp;Piggies"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;float&nbsp;(14.2)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"10.0&nbsp;pigs&nbsp;"&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;float&nbsp;(11)<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"10.0&nbsp;pigs&nbsp;"&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1.0</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$foo&nbsp;is&nbsp;float&nbsp;(11)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   Para mais informações sobre esta conversão, veja a página sobre strtod(3) no
+   manual UNIX.
+  </p>
+
+  <p class="para">
+   Para testar qualquer exemplo desta seção, copie-os e cole-os inserindo
+   a linha a seguir para ver o que está acontecendo:
+  </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"\$foo==</span><span style="color: #0000BB">$foo</span><span style="color: #DD0000">;&nbsp;tipo&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">gettype&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+
+  <p class="para">
+   Não espere obter o código de um caractere na conversão para inteiro,
+   como é feito em C. Use as funções <span class="function"><a href="function.ord.html" class="function">ord()</a></span> e
+   <span class="function"><a href="function.chr.html" class="function">chr()</a></span> para converter entre código ASCII e os próprios
+   caracteres.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.string.details">
+
+  <h3 class="title">Detalhes do tipo string</h3>
+
+  <p class="para">
+   A <span class="type"><a href="language.types.string.html" class="type string">string</a></span> no PHP é implementada como um array de bytes e um
+   inteiro indicando seu tamanho no buffer. Não existem informações de como
+   esses bytes são traduzidos em caracteres, ficando essa tarefa com o programador.
+   Não existem limitações sobre a composição dos valores da string; em
+   particular, bytes com valor <em>0</em> (“NUL bytes”) são permitidos
+   em qualquer lugar da string (entretanto, algumas funções, mencionadas neste manual como não
+   “binary safe”, podem repassar as strings para bibliotecas que ignorem os dados
+   após o byte nulo.)
+  </p>
+  <p class="para">
+   Esta natureza do tipo string explica o motivo de não haver o tipo &quot;byte&quot; disponível
+   no PHP – as strings assumem este papel. Funções que não retornam nenhuma informação textual – por
+   exemplo, dados arbitrários lidos de um socket de rede – continuarão retornando
+   strings.
+  </p>
+  <p class="para">
+   Dado que o PHP não dita uma codificação específica para strings, pode-se
+   questionar como strings literais seriam codificadas. Por exemplo, a string
+   <em>&quot;á&quot;</em> é equivalente a <em>&quot;\xE1&quot;</em> (ISO-8859-1),
+   <em>&quot;\xC3\xA1&quot;</em> (UTF-8, C form),
+   <em>&quot;\x61\xCC\x81&quot;</em> (UTF-8, D form) ou qualquer outra representação
+   possível? A resposta é que a string poderá ser codificada em qualquer forma
+   que o arquivo de script estiver codificado. Assim, se o script for escrito na
+   codificação ISO-8859-1, a string será codificada como ISO-8859-1 e assim por diante. Entretanto,
+   isso não se aplica se o Zend Multibyte estiver ativado; neste caso, o script
+   pode ser escrito em uma codificação arbitrária (que é declarada explicitamente ou é
+   detectada) e então convertida em um codificação interna, a qual
+   será a codificação utilizada nas strings literais.
+   Note que há algumas restrições na codificação do script (ou na
+   codificação interna caso o Zend Multibyte esteja ativo) – isso quase sempre
+   significa que essa codificação deve ser um conjunto que contenha dentro de si a ASCII, como
+   UTF-8 ou ISO-8859-1. Note, entretanto, que codificações que são dependentes de estado, onde
+   os mesmos valores de bytes possam ser utilizados tanto em estados iniciais quanto não iniciais,
+   podem ser problemáticos.
+  </p>
+  <p class="para">
+   Claro que, para serem úteis, funções que operam em textos podem ter que
+   fazer certas suposições sobre como as strings foram codificadas. Infelizmente, existem
+   muitas variações sobre este assunto através das funções do PHP:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Algumas funções assumem que a string foi codificada em alguma (qualquer) codificação de byte
+     único, mas elas não precisam interpretar estes bytes como caracteres
+     específicos. Este é por exemplo o caso das funções <span class="function"><a href="function.substr.html" class="function">substr()</a></span>,
+     <span class="function"><a href="function.strpos.html" class="function">strpos()</a></span>, <span class="function"><a href="function.strlen.html" class="function">strlen()</a></span> ou
+     <span class="function"><a href="function.strcmp.html" class="function">strcmp()</a></span>. Outra forma de refletir sobre essas funções é
+     que elas operam em buffers de memória, isto é, elas trabalham com bytes e deslocamento
+     de bytes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Outras funções recebem a codificação da string, possivelmente elas
+     assumem um padrão se nenhuma informação lhes for passada. Este é o caso da função
+     <span class="function"><a href="function.htmlentities.html" class="function">htmlentities()</a></span> e da maioria das funções
+     da extensão <a href="book.mbstring.html" class="link">mbstring</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Outras utilizam o idioma atual (veja <span class="function"><a href="function.setlocale.html" class="function">setlocale()</a></span>), mas
+     elas operam byte-a-byte. Este é o caso das funções <span class="function"><a href="function.strcasecmp.html" class="function">strcasecmp()</a></span>,
+     <span class="function"><a href="function.strtoupper.html" class="function">strtoupper()</a></span> e <span class="function"><a href="function.ucfirst.html" class="function">ucfirst()</a></span>.
+     Isso significa que podem ser utilizadas somente em codificações de byte único, desde que
+     a codificação corresponda com a definida pelo idioma. Por exemplo,
+     <em>strtoupper(&quot;á&quot;)</em> pode retornar <em>&quot;Á&quot;</em> se o
+     idioma estiver definido corretamente e <em>á</em>, se codificado como byte
+     único. Se a string estiver codificada em UTF-8, o resultado correto não será retornado
+     e a string resultante pode ou não ser corrompida, dependendo
+     do idioma atual.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Finalmente, elas podem simplesmente assumir que a string esteja utilizando uma codificação específica,
+     geralmente UTF-8. Este é o caso da maioria das funções das extensões
+     <a href="book.intl.html" class="link">intl</a> e
+     <a href="book.pcre.html" class="link">PCRE</a>
+     (na segunda, somente quando o modificador <em>u</em> é utilizado).
+     Devido a seu propósito especial, as funções
+     <span class="function"><a href="function.utf8-decode.html" class="function">utf8_decode()</a></span> assume a codificação UTF-8 e
+     <span class="function"><a href="function.utf8-encode.html" class="function">utf8_encode()</a></span> assume a codificação ISO-8859-1.
+    </span>
+   </li>
+  </ul>
+
+  <p class="para">
+   Por fim, isso significa que escrever programas corretos utilizando Unicode depende de
+   evitar cuidadosamente funções que não funcionam e que provavelmente
+   irão corromper os dados e usar, em substituição, funções que se comportem corretamente,
+   geralmente das extensões <a href="book.intl.html" class="link">intl</a> e
+   <a href="book.mbstring.html" class="link">mbstring</a>.
+   Entretanto, usar funções que manipulam codificações Unicode é somente o
+   começo. Não importa as funções que a linguagem provê, é essencial
+   saber a especificação Unicode. Por exemplo, um programa que supõem que só
+   existem maiúsculas e mínusculas está fazendo uma suposição errada.
+  </p>
+ </div>
+</div></div></div></body></html>

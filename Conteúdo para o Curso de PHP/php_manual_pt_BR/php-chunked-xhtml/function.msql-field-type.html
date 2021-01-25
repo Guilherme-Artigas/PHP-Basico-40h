@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Obt&eacute;m o tipo do campo</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.msql-field-table.html">« msql_field_table</a></li>
+      <li style="float: right;"><a href="function.msql-fieldflags.html">msql_fieldflags »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.msql.html">Fun&ccedil;&otilde;es para mSQL</a></li>
+    <li>Obt&eacute;m o tipo do campo</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.msql-field-type" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">msql_field_type</h1>
+  <p class="verinfo">(PHP 4, PHP 5 &lt; 5.3.0)</p><p class="refpurpose"><span class="refname">msql_field_type</span> &mdash; <span class="dc-title">Obtém o tipo do campo</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.msql-field-type-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>msql_field_type</strong></span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$field_offset</code></span>
+   ) : <span class="type">string</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>msql_field_type()</strong></span> obtém o tipo de um especificado campo.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.msql-field-type-parameters">
+  <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">
+ result</code></dt>
+<dd>
+<p class="para">O resulatdo <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> que
+ esta sendo avaliado. Este resultado vem de uma chamada a
+ <span class="function"><a href="function.msql-query.html" class="function">msql_query()</a></span>.</p></dd>
+
+    <dt>
+<code class="parameter">
+field_offset</code></dt>
+<dd>
+<p class="para">O número índice do campor.
+<code class="parameter">field_offset</code> começa com <em>1</em>.</p></dd>
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.msql-field-type-returnvalues">
+  <h3 class="title">Valor Retornado</h3>  
+  <p class="para">
+   O tipo do campo. Um dos <em>int</em>, 
+   <em>char</em>, <em>real</em>, <em>ident</em>,
+   <em>null</em> ou <em>unknown</em>. Retornará
+   <strong><code>FALSE</code></strong> em falha.
+  </p>
+ </div>
+
+</div></div></div></body></html>

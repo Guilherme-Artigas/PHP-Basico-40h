@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Lista os campos de uma tabela MySQL</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.mysql-list-dbs.html">« mysql_list_dbs</a></li>
+      <li style="float: right;"><a href="function.mysql-list-processes.html">mysql_list_processes »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="ref.mysql.html">Fun&ccedil;&otilde;es da MySQL</a></li>
+    <li>Lista os campos de uma tabela MySQL</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="function.mysql-list-fields" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysql_list_fields</h1>
+  <p class="verinfo">(PHP 4, PHP 5)</p><p class="refpurpose"><span class="refname">mysql_list_fields</span> &mdash; <span class="dc-title">Lista os campos de uma tabela MySQL</span></p>
+
+ </div>
+
+ <div id="function.mysql-list-fields-refsynopsisdiv">
+  <div class="warning"><strong class="warning">Aviso</strong>
+   <p class="para">Esta função está obsoleta desde o PHP 5.4.0 e
+toda a extensão <a href="book.mysql.html" class="link">MySQL original</a> foi removida in PHP 7.0.0.
+Alternativamente utilize as extensões <a href="book.mysqli.html" class="link">MySQLi</a> ou <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a>.
+Veja também <a href="mysqlinfo.api.choosing.html" class="link">MySQL: escolhendo uma API</a> e a
+<a href="faq.databases.html#faq.databases.mysql.deprecated" class="link">FAQ relacionada</a> para mais informações
+Alternatives to this function include:</p>
+   <ul class="simplelist">
+    <li class="member">Consulta SQL: <em>SHOW COLUMNS FROM algumatabela</em></li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysql-list-fields-description">
+  <h3 class="title">Descrição</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>mysql_list_fields</strong></span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$database_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>
+   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link_identifier</code><span class="initializer"> = NULL</span></span>
+  ] ) : <span class="type">resource</span></div>
+
+  <p class="para rdfs-comment">
+   Obtém informações sobre a tabela informada.
+  </p>
+  <p class="para">
+   Esta função está obsoleta. É preferrível usar
+   <span class="function"><a href="function.mysql-query.html" class="function">mysql_query()</a></span> para realizar uma consulta SQL <em>SHOW COLUMNS FROM 
+   table [LIKE &#039;name&#039;]</em>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysql-list-fields-parameters">
+  <h3 class="title">Parâmetros</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">database_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       O nome do banco de dados que está sendo consultado.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">table_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       O nome da tabela que esta sendo consultada.
+      </p>
+     </dd>
+
+    
+    <dt>
+<code class="parameter">
+link_identifier</code></dt>
+<dd>
+<p class="para">A conexão MySQL. Se o
+link identifier não for especificado, o último link aberto por
+<span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span> é utilizado. Se uma conexão anterior não existir
+será tentado criar um a partir de uma chadama a <span class="function"><a href="function.mysql-connect.html" class="function">mysql_connect()</a></span>
+sem nenhum argumento. Se nenhuma conexão for encontrada ou estabelecida, um erro nível
+<strong><code>E_WARNING</code></strong> é gerado.</p></dd>
+
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysql-list-fields-returnvalues">
+  <h3 class="title">Valor Retornado</h3>
+  <p class="para">
+   Um ponteiro de recurso <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> em caso de sucesso, ou <strong><code>FALSE</code></strong> em
+   caso de falha.
+  </p>
+  <p class="para">
+   O ponteiro de resultado pode ser usado com <span class="function"><a href="function.mysql-field-flags.html" class="function">mysql_field_flags()</a></span>,
+   <span class="function"><a href="function.mysql-field-len.html" class="function">mysql_field_len()</a></span>,
+   <span class="function"><a href="function.mysql-field-name.html" class="function">mysql_field_name()</a></span> e
+   <span class="function"><a href="function.mysql-field-type.html" class="function">mysql_field_type()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mysql-list-fields-examples">
+  <h3 class="title">Exemplos</h3>
+  <p class="para">
+   <div class="example" id="example-2222">
+    <p><strong>Exemplo #1 Alternativa para a obsoleta <span class="function"><strong>mysql_list_fields()</strong></span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SHOW&nbsp;COLUMNS&nbsp;FROM&nbsp;sometable"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;run&nbsp;query:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">mysql_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br />if&nbsp;(</span><span style="color: #0000BB">mysql_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysql_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>O exemplo acima irá imprimir
+algo similar à:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [Field] =&gt; id
+    [Type] =&gt; int(7)
+    [Null] =&gt;  
+    [Key] =&gt; PRI
+    [Default] =&gt;
+    [Extra] =&gt; auto_increment
+)
+Array
+(
+    [Field] =&gt; email
+    [Type] =&gt; varchar(100)
+    [Null] =&gt;
+    [Key] =&gt;
+    [Default] =&gt;
+    [Extra] =&gt;
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.mysql-list-fields-notes">
+  <h3 class="title">Notas</h3>
+  <blockquote class="note"><p><strong class="note">Nota</strong>: 
+   <p class="para">
+    Para compatibilidade com versões anteriores, o seguinte
+ apelido obsoleto pode ser usado: 
+    <span class="function"><strong>mysql_listfields()</strong></span>
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysql-list-fields-seealso">
+  <h3 class="title">Veja Também</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.mysql-field-flags.html" class="function" rel="rdfs-seeAlso">mysql_field_flags()</a> - Obt&eacute;m as flags associadas ao campo especificado em um resultado</span></li>
+    <li class="member"><span class="function"><a href="function.mysql-info.html" class="function" rel="rdfs-seeAlso">mysql_info()</a> - Obt&eacute;m informa&ccedil;&atilde;o sobre a consulta mais recente</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div></div></div></body></html>

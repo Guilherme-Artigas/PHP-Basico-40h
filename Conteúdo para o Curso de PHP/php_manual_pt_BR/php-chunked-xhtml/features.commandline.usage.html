@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Executando arquivos PHP</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="features.commandline.options.html">« Op&ccedil;&otilde;es</a></li>
+      <li style="float: right;"><a href="features.commandline.io-streams.html">I/O streams »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="features.commandline.html">Uso da linha de Comando</a></li>
+    <li>Executando arquivos PHP</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="features.commandline.usage" class="section">
+  <h2 class="title">Executando arquivos PHP</h2>
+  
+  
+  <p class="para">
+   Existem três formas de fornecer código PHP para ser executado pelo
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <acronym title="Server Application Programming Interface">SAPI</acronym>:
+   <ol type="1">
+    <li class="listitem">
+     <p class="para">
+      Diga ao PHP para executar determinado arquivo.
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ php my_script.php
+
+$ php -f my_script.php
+</pre></div>
+      </div>
+     </div>
+     <p class="para">
+      As duas formas (usando ou não a opção <strong class="option unknown">-f</strong>) executam o
+      arquivo <var class="filename">my_script.php</var>. Note que não existe
+      restrição sobre quais arquivos podem ser executados; em particular, o
+      nome do arquivo não precisa conter a extensão <em>.php</em>.
+     </p>
+     <blockquote class="note"><p><strong class="note">Nota</strong>: 
+      <p class="para">
+       Caso argumentos precisem ser passados para o script ao usar 
+       <strong class="option unknown">-f</strong>, o primeiro argumento deve ser <em>--</em>.
+      </p>
+     </p></blockquote>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Passa o código PHP diretamente através da linha de comando.
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ php -r &#039;print_r(get_defined_constants());&#039;
+</pre></div>
+      </div>
+     </div>
+     <p class="para">
+      Um cuidado especial deve ser tomado em relação a substituição de variáveis 
+      e o uso de aspas.
+     </p>
+     <blockquote class="note"><p><strong class="note">Nota</strong>: 
+      <p class="para">
+       Leia o exemplo cuidadosamente: não existem tags de abertura e fechamento! A
+       opção <strong class="option unknown">-r</strong> simplesmente não necessita delas, e usá-las irá gerar
+       um erro de interpretação.
+      </p>
+     </p></blockquote>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Direciona a entrada padrão (<em>stdin</em>)
+      para o código PHP.
+     </p>
+     <p class="para">
+      Isso dá a poderosa habilidade de criar código PHP dinamicanente e alimentar o 
+      binário, assim como demonstrado nesse exemplo fictício:
+     </p>
+     <div class="informalexample">
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+$ some_application | some_filter | php | sort -u &gt; final_output.txt
+</pre></div>
+      </div>
+     </div>
+    </li>
+   </ol>
+   Você não pode combinar essas formas de executar o código.
+  </p>
+  
+  <p class="para">
+   Assim como qualquer aplicação de linha de comando, o PHP aceita qualquer quantidade
+   argumentos; entretanto, os scripts PHP também podem receber outros argumentos.
+   A quantidade de argumentos que podem ser passados para o script não é limitada pelo
+   PHP (e apesar do shell ter um limite no número de caracteres que podem ser
+   passados, ele não é geralmente atingido). Os argumentos passados para o scripts
+   ficam disponíveis no array global <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var>. O primeiro índice
+   (zero) sempre contém o nome do script que está sendo chamado pela linha de 
+   comando. Note que, se o código é executado diretamente usando a opção de linha
+   de comando <strong class="option unknown">-r</strong>, o valor de <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var>
+   será somente um hífen (<em>-</em>). O mesmo é verdadeiro se o código 
+   e redirecionado pelo <em>STDIN</em>.
+  </p>
+
+  <p class="para">
+   Uma segunda variável global, <var class="varname"><var class="varname"><a href="reserved.variables.argc.html" class="classname">$argc</a></var></var>,
+   contém o número de elementos contidos no array<var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv</a></var></var> array
+   (<em class="emphasis">não</em> o número de argumentos passados para o
+   script).
+  </p>
+  
+  <p class="para">
+   Desde que os argumentos passados pelo script não comecem com o caractere
+   <em>-</em>, não existe nada em especial com que você deva se preocupar.
+   Passar um argumento para o script que comece com <em>-</em>
+   irá causar problemas, porque o interpretador do PHP irá pensar que ele mesmo deve
+   manipular esse argumento, mesmo antes de executar o script. Para prevenir isso
+   use o separador de lista de argumentos <em>--</em>. Depois que esse
+   separador é interpretado pelo PHP, cada argumento seguinte e passado intocado para o script.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+# This will not execute the given code but will show the PHP usage
+$ php -r &#039;var_dump($argv);&#039; -h
+Usage: php [options] [-f] &lt;file&gt; [args...]
+[...]
+
+# This will pass the &#039;-h&#039; argument to the script and prevent PHP from showing its usage
+$ php -r &#039;var_dump($argv);&#039; -- -h
+array(2) {
+  [0]=&gt;
+  string(1) &quot;-&quot;
+  [1]=&gt;
+  string(2) &quot;-h&quot;
+}
+</pre></div>
+   </div>
+  </div>
+  
+  <p class="para">
+   Entretanto, em sistemas Unix existe uma outra maneira de usar o PHP em linha
+   de comando: fazer com que a primeira linha do script comece com
+   <em>#!/usr/bin/php</em> (ou qualquer que seja o caminho para o binário 
+   do PHP <acronym title="Command Line Interpreter/Interface">CLI</acronym> caso seja diferente. O restante do arquivo deve conter código PHP normal
+   com as já tradicionais tags de abertura e fechamento. Uma vez que os atributos de execução
+   do arquivo estejam apropriadamente definidos (exemplo. <strong class="command">chmod +x test</strong>),
+   o script poderá ser executado como qualquer outro script shell ou perl:
+  </p>
+  
+  <div class="example" id="example-422">
+   <p><strong>Exemplo #1 Executando scripts PHP como shell scripts</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br /><span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+     Assumindo que esse arquivo tenha o nome <var class="filename">test</var> no diretório 
+     atual, é possível fazer o seguinte:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+$ chmod +x test
+$ ./test -h -- foo
+array(4) {
+  [0]=&gt;
+  string(6) &quot;./test&quot;
+  [1]=&gt;
+  string(2) &quot;-h&quot;
+  [2]=&gt;
+  string(2) &quot;--&quot;
+  [3]=&gt;
+  string(3) &quot;foo&quot;
+}
+</pre></div>
+   </div>
+  </div>
+  
+  <p class="para">
+   Como pode ser visto, nesse caso nenhum cuidado especial precisa ser tomado ao passar parâmetros
+   começando com <em>-</em>.
+  </p>
+  
+  <p class="para">
+   O executável do PHP pode ser usado para rodar scripts absolutamente independetes do
+   servidor web. Em sistemas Unix, a primeira linha especial <em>#!</em> (ou
+   &quot;shebang&quot;) deve ser adicionada a sripts PHP para que o sistema possa automaticamente
+   dizer qual programa deve executar o script. Em plataformas Windows,
+   é possível associar o <var class="filename">php.exe</var> com um clique duplo no arquivos
+   com extensão <em>.php</em>, ou um arquivo batch pode ser criado para rodar
+   scripts através do PHP. A primeira linha especial shebang para Unix não causa nenhum
+   efeito no Windows (Já que é formatada como um comentário PHP), então programas
+   multiplataforma podem ser escritos com a inclusão disso. Um exemplo simples de
+   programa de linha de comando em PHP é mostrado abaixo.
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-423">
+    <p><strong>Exemplo #2 Script planejado para ser executado na linha de comando (script.php)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+#!/usr/bin/php<br /><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$argc&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;array(</span><span style="color: #DD0000">'--help'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-help'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-h'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'-?'</span><span style="color: #007700">)))&nbsp;{<br /></span><span style="color: #0000BB">?&gt;<br /></span><br />This&nbsp;is&nbsp;a&nbsp;command&nbsp;line&nbsp;PHP&nbsp;script&nbsp;with&nbsp;one&nbsp;option.<br /><br />&nbsp;&nbsp;Usage:<br />&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #0000BB">?&gt;</span>&nbsp;&lt;option&gt;<br /><br />&nbsp;&nbsp;&lt;option&gt;&nbsp;can&nbsp;be&nbsp;some&nbsp;word&nbsp;you&nbsp;would&nbsp;like<br />&nbsp;&nbsp;to&nbsp;print&nbsp;out.&nbsp;With&nbsp;the&nbsp;--help,&nbsp;-help,&nbsp;-h,<br />&nbsp;&nbsp;or&nbsp;-?&nbsp;options,&nbsp;you&nbsp;can&nbsp;get&nbsp;this&nbsp;help.<br /><br /><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$argv</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   O script acima inclui a shebang na primeira linha para indicar que esse 
+   arquivo deve ser executado pelo PHP. Nos estámos trabalhando com a versão
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> aqui, então nenhum cabeçalho <acronym title="Hypertext Transfer Protocol">HTTP</acronym> será exibido.
+  </p>
+  
+  <p class="para">
+   O programa primeiramente verifica se o primeiro argumento obrigatório foi passado
+   (juntamente com o nome do arquivo, que também é contabilizado). Em caso negativo,
+   ou caso o argumento seja <strong class="option unknown">--help</strong>, <strong class="option unknown">-help</strong>,
+   <strong class="option unknown">-h</strong> ou <strong class="option unknown">-?</strong>, uma mensagem de ajuda é disparada,
+   usando <var class="varname"><var class="varname"><a href="reserved.variables.argv.html" class="classname">$argv[0]</a></var></var> para imprimir dinamicamente o nome do script
+   como foi digitado na linha de comando. Do contrário, o argumento é exibido da
+   forma como foi escrito.
+  </p>
+  
+  <p class="para">
+   Para executar o script acima em sistemas Unix, ele deve ser tornado executável,
+   e chamado simplesmente com <strong class="command">script.php echothis</strong> ou
+   <strong class="command">script.php -h</strong>. Em sistemas Windows, um arquivo batch similar
+   ao seguinte pode ser criado para essa tarefa:
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-424">
+    <p><strong>Exemplo #3 Arquivo batch para rodar um script de linha de comando em PHP (script.bat)</strong></p>
+    <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">@echo OFF
+&quot;C:\php\php.exe&quot; script.php %*</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   Assumindo que o programa acima foi nomeado como <var class="filename">script.php</var>, e que o
+   <acronym title="Command Line Interpreter/Interface">CLI</acronym> <var class="filename">php.exe</var> está em <var class="filename">C:\php\php.exe</var>,
+   esse arquivo batch irá executá-lo, repassando todas as opções:
+   <strong class="command">script.bat echothis</strong> ou <strong class="command">script.bat -h</strong>.
+  </p>
+  
+  <p class="para">
+   Veja também a documentação da extensão <a href="ref.readline.html" class="link">Readline</a>
+   com mais funções usadas para melhorar as aplicações de linha de
+   comando em PHP.
+  </p>
+  
+  <p class="para">
+   No Windows,o PHP pode ser configurado para rodar sem a necessidade de informar
+   o <var class="filename">C:\php\php.exe</var> ou a extensão<em>.php</em>, 
+   como descrito em <a href="install.windows.legacy.index.html#install.windows.legacy.commandline" class="link">PHP para linha de
+   comando no Microsoft Windows</a>.
+  </p>
+ </div></div></div></body></html>

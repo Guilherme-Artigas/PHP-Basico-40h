@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Sintaxe</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.constants.html">« Constantes</a></li>
+      <li style="float: right;"><a href="language.constants.predefined.html">Constantes M&aacute;gicas »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.constants.html">Constantes</a></li>
+    <li>Sintaxe</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.constants.syntax" class="sect1">
+   <h2 class="title">Sintaxe</h2>
+   <p class="simpara">
+    Você pode definir uma constante utilizando a função
+    <span class="function"><a href="function.define.html" class="function">define()</a></span>, ou a palavra-chave
+    <em>const</em> fora da definição de uma classe a partir do
+    PHP 5.3.0. Enquanto <span class="function"><a href="function.define.html" class="function">define()</a></span> permite que uma constante seja
+    definida para uma expressão arbitrária, a palavra-chave <em>const</em> possui
+    restrições conforme descrita no próximo parágrafo.
+    Uma vez definida, a constante não poderá ser modificada ou
+    anulada.
+   </p>
+   <p class="simpara">
+    Ao usar a palavra-chave <em>const</em>,
+    somente dados escalares (<span class="type"><a href="language.types.boolean.html" class="type boolean">boolean</a></span>, <span class="type"><a href="language.types.integer.html" class="type integer">integer</a></span>,
+    <span class="type"><a href="language.types.float.html" class="type float">float</a></span> e <span class="type"><a href="language.types.string.html" class="type string">string</a></span>) podem ser colocados
+    em constantes até o PHP 5.6. A partir do PHP 5.6, é possível também utilizar
+    qualquer expressão escalar como constantes e também
+    <span class="type"><a href="language.types.array.html" class="type array">array</a></span> constante. É permitido o uso de um <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+    (recurso) como valor de constante, mas deve ser evitado, já que pode causar
+    resultados inesperados.
+   </p>
+   <p class="simpara">
+    Pode-se obter o valor de uma constante simplesmente especificando seu nome.
+    Diferentemente de variáveis, você <em class="emphasis">não</em> prefixará uma
+    constante com um sinal de <em>$</em>.
+    Também pode-se utilizar a função <span class="function"><a href="function.constant.html" class="function">constant()</a></span> para
+    ler o valor de uma constante, se você precisar obter seu valor
+    dinamicamente.
+    Utilize <span class="function"><a href="function.get-defined-constants.html" class="function">get_defined_constants()</a></span> para obter a lista de
+    todas as constantes definidas.
+   </p>
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <span class="simpara">
+     As constantes e variáveis (globais) estão em espaços de nomes diferentes.
+     Isto implica, por exemplo, que <strong><code>TRUE</code></strong> e
+     <var class="varname"><var class="varname">$TRUE</var></var> sejam geralmente diferentes.
+    </span>
+   </p></blockquote>
+   <p class="simpara">
+    Ao usar-se uma constante indefinida, o PHP assumirá o nome
+    da constante como seu próprio valor, como se tivesse chamando-a como
+    uma <span class="type"><a href="language.types.string.html" class="type string">string</a></span> (CONSTANT vs &quot;CONSTANT&quot;).
+    Este comportamento é depreciado a partir do PHP 7.2.0, e um erro de nível
+    <strong><code>E_WARNING</code></strong> é emitido quando isso acontece
+    (antes, um erro de nível
+    <a href="ref.errorfunc.html" class="link">E_NOTICE</a> era emitido
+    Veja também a referência do manual sobre o porquê
+    <a href="language.types.array.html#language.types.array.foo-bar" class="link">$foo[bar]</a> é
+    errado (a não ser que <em>bar</em> primeiro seja definida
+    <span class="function"><a href="function.define.html" class="function">define()</a></span> como uma constante). Isto não se aplica a <a href="language.namespaces.rules.html" class="link">constantes totalmente qualificadas</a>,
+    que lançarão um erro fatal se não estiverem definidas. Se você simplesmente quer
+    checar se uma constante foi definida, utilize a função <span class="function"><a href="function.defined.html" class="function">defined()</a></span>.
+   </p>
+   <p class="para">
+    Estas são as diferenças entre constantes e variáveis:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Constantes não possuem um sinal de cifrão (<em>$</em>)
+       antes delas;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Antes do PHP 5.3 as constantes só poderiam ser definidas utilizando a função
+       <span class="function"><a href="function.define.html" class="function">define()</a></span>, e não por simples assimilação;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constantes podem ser definidas e acessadas de qualquer lugar sem
+       que a regras de escopo de variáveis sejam aplicadas;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constantes não podem ser redefinidas ou eliminadas depois
+       de criadas; e
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constantes só podem ter valores escalares. A partir do PHP 5.6 é possível
+       definir um array constante com a instrução <em>const</em> e a partir do
+       PHP 7 arrays constantes também podem ser definidas utilizando a função <span class="function"><a href="function.define.html" class="function">define()</a></span>
+       Pode-se utilizar arrays em expressões escalares constantes
+       (por exemplo <em>const FOO = array(1,2,3)[0];</em>),
+       cujo resultado final deve ser um valor de um tipo permitido.
+      </span>
+     </li>
+    </ul>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-111">
+     <p><strong>Exemplo #1 Definindo Constantes</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;imprime&nbsp;"Hello&nbsp;world."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;imprime&nbsp;"Constant"&nbsp;e&nbsp;gera&nbsp;um&nbsp;alerta&nbsp;notice.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-112">
+     <p><strong>Exemplo #2 Definindo Constantes usando a palavra-chave <em>const</em></strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Funciona&nbsp;a&nbsp;partir&nbsp;do&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Funciona&nbsp;a&nbsp;partir&nbsp;do&nbsp;PHP&nbsp;5.6.0<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">.</span><span style="color: #DD0000">';&nbsp;Goodbye&nbsp;World'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">ANIMALS&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bird'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;imprime&nbsp;"cat"<br /><br />//&nbsp;A&nbsp;partir&nbsp;do&nbsp;PHP&nbsp;7<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">,&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bird'<br /></span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;imprime&nbsp;"cat"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Ao contrário das funções definidas através de <span class="function"><a href="function.define.html" class="function">define()</a></span>,
+     as constantes definidas usando a palavra-chave <em>const</em>
+     devem ser declarados no escopo de maior nível, pois são definidas no
+     tempo de compilação. Isso significa que não podem ser definidas
+     dentro de funções, laços ou instruções <em>if</em>s ou blocos
+     <em>try</em>/<em>catch</em>.
+    </p>
+   </p></blockquote>
+
+   <blockquote class="note"><p><strong class="note">Nota</strong>: 
+    <p class="para">
+     Constantes definidas usando a palavra-chave <em>const</em> sempre serão
+     case-sensitive, enquanto as constantes usando <span class="function"><a href="function.define.html" class="function">define()</a></span>
+     podem ser case-insensitive.
+    </p>
+   </p></blockquote>
+
+   <p class="simpara">
+    Veja também <a href="language.oop5.constants.html" class="link">Constantes de Classe</a>.
+   </p>
+  </div></div></div></body></html>

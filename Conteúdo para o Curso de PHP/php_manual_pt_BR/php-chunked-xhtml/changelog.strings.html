@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Changelog</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="function.wordwrap.html">« wordwrap</a></li>
+      <li style="float: right;"><a href="refs.basic.vartype.html">Vari&aacute;vel e Extens&otilde;es Relacionadas aos Tipos »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="book.strings.html">Strings</a></li>
+    <li>Changelog</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="changelog.strings" class="appendix">
+ <h1>Changelog</h1>
+
+ <p class="para">As alterações a seguir foram feitas em classes/funções/métodos desta extensão.</p>
+ <table class='doctable table' rules='groups'><thead><tr><th>Version</th><th>Function</th><th>Description</th></tr></thead><tbody class="gen-changelog v"><tr><td>7.4.0</td><td><a href='function.str-getcsv.html'>str_getcsv</a></td><td>O par&acirc;metro escape agora interpreta uma string
+        vazia como um sinal para desabilitar o mecanismo de escape. Antes,
+        uma string vazia utilizava o valor padr&atilde;o do par&acirc;metro.</td></tr></tbody><tbody class="gen-changelog v7-4-0"><tr><td>7.0.0</td><td><a href='function.substr.html'>substr</a></td><td>Se string tiver o comprimento de
+        start, uma string vazia ser&aacute;
+        retornada. Antes dessa vers&atilde;o, retornava FALSE nesse caso.</td></tr></tbody><tbody class="gen-changelog v7-0-0"><tr><td>5.6.0</td><td><a href='function.substr-compare.html'>substr_compare</a></td><td>O par&acirc;metro length agora pode ser 0.</td></tr></tbody><tbody class="gen-changelog v5-6-0"><tr><td>5.5.1</td><td><a href='function.hex2bin.html'>hex2bin</a></td><td>A warning is thrown if the input string is invalid hexadecimal string.</td></tr></tbody><tbody class="gen-changelog v5-5-1"><tr><td>5.4.32, 5.5.16</td><td><a href='function.ucwords.html'>ucwords</a></td><td>O par&acirc;metro delimiters foi adicionado.</td></tr></tbody><tbody class="gen-changelog v5-4-32, 5-5-16"><tr><td>5.4.4</td><td><a href='function.hex2bin.html'>hex2bin</a></td><td>A warning is thrown if the input string is of odd length. In PHP 5.4.0 the string
+        was silently accepted, but the last byte was truncated.</td></tr></tbody><tbody class="gen-changelog v5-4-4"><tr><td>5.3.0</td><td><a href='function.stristr.html'>stristr</a></td><td>Adicionado o par&acirc;metro opcional before_needle.</td></tr><tr><td>&nbsp;</td><td><a href='function.strstr.html'>strstr</a></td><td>Adicionado o par&acirc;metro opcional before_needle.</td></tr></tbody><tbody class="gen-changelog v5-3-0"><tr><td>5.2.5</td><td><a href='function.addcslashes.html'>addcslashes</a></td><td>As seq&uuml;&ecirc;ncias de escape \v e \f foram adicionadas.</td></tr></tbody><tbody class="gen-changelog v5-2-5"><tr><td>5.2.3</td><td><a href='function.htmlentities.html'>htmlentities</a></td><td>O par&acirc;metro double_encode foi adicionado.</td></tr></tbody><tbody class="gen-changelog v5-2-3"><tr><td>5.2.2 - 5.2.6</td><td><a href='function.substr.html'>substr</a></td><td>Se start indicar a posi&ccedil;&atilde;o de truncagem
+        negativa ou al&eacute;m, retorna false. Outras vers&otilde;es
+        retornavam a string a partir do come&ccedil;o.</td></tr></tbody><tbody class="gen-changelog v5-2-2 - 5-2-6"><tr><td>5.1.0</td><td><a href='function.explode.html'>explode</a></td><td>Suporte a limit negativo foi adicionado</td></tr><tr><td>&nbsp;</td><td><a href='function.md5-file.html'>md5_file</a></td><td>Modificada fun&ccedil;&atilde;o para usar a API de API. Significa que voc&ecirc; pode us&aacute;-la
+        com wrappers, como md5_file('http://example.com/..')</td></tr><tr><td>&nbsp;</td><td><a href='function.sha1-file.html'>sha1_file</a></td><td>Modificada a fun&ccedil;&atilde;o para usar a API de streams. Significa que voc&ecirc; pode us&aacute;-la
+        com wrappers, como sha1_file('http://example.com/..')</td></tr><tr><td>&nbsp;</td><td><a href='function.str-word-count.html'>str_word_count</a></td><td>Adicionado o par&acirc;metro charlist</td></tr><tr><td>&nbsp;</td><td><a href='function.substr-compare.html'>substr_compare</a></td><td>Adicionada a possibilidade de usar offset negativo.</td></tr><tr><td>&nbsp;</td><td><a href='function.substr-count.html'>substr_count</a></td><td>Adiciona os par&acirc;metros offset e
+        length</td></tr></tbody><tbody class="gen-changelog v5-1-0"><tr><td>5.0.0</td><td><a href='function.html-entity-decode.html'>html_entity_decode</a></td><td>Suporte para conjunto de caracteres multi-byte foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.md5.html'>md5</a></td><td>O par&acirc;metro raw_output foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.md5-file.html'>md5_file</a></td><td>Adicionado o par&acirc;metro raw_output</td></tr><tr><td>&nbsp;</td><td><a href='function.sha1-file.html'>sha1_file</a></td><td>Adicionado o par&acirc;metro raw_output</td></tr><tr><td>&nbsp;</td><td><a href='function.str-replace.html'>str_replace</a></td><td>O par&acirc;metro count foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.strip-tags.html'>strip_tags</a></td><td>strip_tags tornou-se binary safe</td></tr></tbody><tbody class="gen-changelog v5-0-0"><tr><td>4.3.3</td><td><a href='function.str-replace.html'>str_replace</a></td><td>O comportamento desta fun&ccedil;&atilde;o foi modificado. Em antigas vers&otilde;es um bug 
+        existia ao se usar arrays em ambos os par&acirc;metros search 
+        e replace que causava &iacute;ndices de 
+        search vazios para serem pulados sem avan&ccedil;ar o
+        apontador interno no array replace. 
+        Isto foi corrigido no PHP 4.3.3, quaisquer scripts que contavam com este
+        bug removeriam valores de pesquisa vazios anteriores &agrave; chamada desta fun&ccedil;&atilde;o
+        afim de imitar o comportamento original.</td></tr></tbody><tbody class="gen-changelog v4-3-3"><tr><td>4.3.0</td><td><a href='function.str-rot13.html'>str_rot13</a></td><td>O comportamento desta fun&ccedil;&atilde;o foi reparado. Antes disso, o
+        str foi tamb&eacute;m modificado, como se fosse por
+        refer&ecirc;ncia.</td></tr><tr><td>&nbsp;</td><td><a href='function.strcspn.html'>strcspn</a></td><td>O start e length
+        foram adicionados</td></tr><tr><td>&nbsp;</td><td><a href='function.strip-tags.html'>strip_tags</a></td><td>Coment&aacute;rios HTML s&atilde;o sempre retirados</td></tr><tr><td>&nbsp;</td><td><a href='function.stristr.html'>stristr</a></td><td>stristr tornou-se binary safe.</td></tr><tr><td>&nbsp;</td><td><a href='function.strspn.html'>strspn</a></td><td>Os par&acirc;metros start e length
+        foram adicionados</td></tr><tr><td>&nbsp;</td><td><a href='function.strstr.html'>strstr</a></td><td>strstr tornou-se binary safe.</td></tr></tbody><tbody class="gen-changelog v4-3-0"><tr><td>4.1.0</td><td><a href='function.htmlentities.html'>htmlentities</a></td><td>O par&acirc;metro charset foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.ltrim.html'>ltrim</a></td><td>O par&acirc;metro charlist foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.rtrim.html'>rtrim</a></td><td>O par&acirc;metro charlist foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.trim.html'>trim</a></td><td>O par&acirc;metro opcional charlist foi adicionado.</td></tr></tbody><tbody class="gen-changelog v4-1-0"><tr><td>4.0.6</td><td><a href='function.sprintf.html'>sprintf</a></td><td>Suporte para argumento numerado/troca foi adicionado</td></tr></tbody><tbody class="gen-changelog v4-0-6"><tr><td>4.0.5</td><td><a href='function.nl2br.html'>nl2br</a></td><td>nl2br &eacute; agora XHTML compliant. Todas vers&otilde;es anteriores
+        retornam string com '&lt;br&gt;' inserido
+        antes de newlines ao inv&eacute;s de '&lt;br /&gt;'.</td></tr><tr><td>&nbsp;</td><td><a href='function.str-replace.html'>str_replace</a></td><td>Mais par&acirc;metros podem agora ser um array.</td></tr></tbody><tbody class="gen-changelog v4-0-5"><tr><td>4.0.3</td><td><a href='function.htmlentities.html'>htmlentities</a></td><td>O par&acirc;metro quote_style foi adicionado.</td></tr><tr><td>&nbsp;</td><td><a href='function.parse-str.html'>parse_str</a></td><td>O par&acirc;metro arr foi adicionado</td></tr><tr><td>&nbsp;</td><td><a href='function.wordwrap.html'>wordwrap</a></td><td>O par&acirc;metro opcional cut foi adicionado.</td></tr></tbody><tbody class="gen-changelog v4-0-3"><tr><td>4.0.1</td><td><a href='function.explode.html'>explode</a></td><td>O par&acirc;metro limit foi adicionado</td></tr></tbody><tbody class="gen-changelog v4-0-1"><tr><td>4.0.0</td><td><a href='function.strip-tags.html'>strip_tags</a></td><td>O par&acirc;metro allowable_tags foi adicionado</td></tr><tr><td>&nbsp;</td><td><a href='function.strtr.html'>strtr</a></td><td>Os par&acirc;metros to e from
+        foram adicionados.</td></tr></tbody></table>
+</div>
+</div></div></body></html>

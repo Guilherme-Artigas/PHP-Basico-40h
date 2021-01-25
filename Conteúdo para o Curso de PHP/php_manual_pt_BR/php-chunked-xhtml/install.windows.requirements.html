@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Requisitos de instala&ccedil;&atilde;o</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="install.windows.html">« Instala&ccedil;&atilde;o no Windows</a></li>
+      <li style="float: right;"><a href="install.windows.pecl.html">PECL »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="install.windows.html">Instala&ccedil;&atilde;o no Windows</a></li>
+    <li>Requisitos de instala&ccedil;&atilde;o</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="install.windows.requirements" class="sect1">
+    <h2 class="title">Requisitos de instalação</h2>
+
+    <p class="para">
+      O PHP 5.5+ requer ao menos Windows 2008/Vista, ou 2008r2, 2012, 2012r2, 2016 ou 7, 8, 8.1, 10. 32-Bit ou 64-bit (aka X86 or X64; PHP não roda no Windows RT/WOA/ARM).
+    </p>
+
+    <p class="para">
+      O PHP requer o Visual C runtime (CRT). Muitas aplicações também tem esse requisito, de forma que ele já deve estar instalado.
+    </p>
+
+    <p class="para">
+      PHP 5.4, 5.5, e 5.6 requerem VC CRT 11 (Visual Studio 2012). Veja: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30679" class="link external">&raquo;&nbsp;https://www.microsoft.com/en-us/download/details.aspx?id=30679</a>
+    </p>
+
+    <p class="para">
+      PHP 7.0+ requer VC CRT 14 (Visual Studio 2015). Ver: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48145" class="link external">&raquo;&nbsp;https://www.microsoft.com/en-us/download/details.aspx?id=48145</a>
+    </p>
+
+    <p class="para">
+      Você PRECISA instalar o CRT x86 para compilar o PHP em x86 builds CRT x64 para compilações PHP x64.
+    </p>
+
+    <p class="para">
+      Se o CRT já está instalado, o instalador irá avisar que não fez nenhuma alteração.
+    </p>
+
+    <p class="para">
+      O instalador CRT suporta as opções de linha de comando /quiet e /norestart, de forma que você pode automatizar o passo de instalação.
+    </p>
+
+    <p class="para">
+      DLLs do CRT VC11 podem ser copiadas da sua máquina local para uma máquina remota (uma instalação &quot;Copy Deployment&quot;) em vez de rodar o instalador na máquina remota (como o caso de uma máquina onde tenha acesso restrito. Veja: http://www.sitepoint.com/install-php53-windows/
+    </p>
+
+    <p class="para">
+      O CRT VC14 não suporta uma instalação installation &quot;Copy Deployment&quot;. CRT VC14 tem muitas DLLs a mais (a maioria com nomes iniciando com api-*). Se você conseguir achar todas e copiá-las isso pode funcionar (tente uma ferramenta como Resource Hacker para obter uma lista de DLLs a copiar).
+    </p>
+
+  </div></div></div></body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Escapando o HTML</title>
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+
+ </head>
+ <body class="docs"><div class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <ul class="nav" style="width: 100%">
+      <li style="float: left;"><a href="language.basic-syntax.phptags.html">« Tags PHP</a></li>
+      <li style="float: right;"><a href="language.basic-syntax.instruction-separation.html">Separa&ccedil;&atilde;o de instru&ccedil;&otilde;es »</a></li>
+    </ul>
+  </div>
+</div>
+<div id="breadcrumbs" class="clearfix">
+  <ul class="breadcrumbs-container">
+    <li><a href="index.html">PHP Manual</a></li>
+    <li><a href="language.basic-syntax.html">Sintaxe B&aacute;sica</a></li>
+    <li>Escapando o HTML</li>
+  </ul>
+</div>
+<div id="layout">
+  <div id="layout-content"><div id="language.basic-syntax.phpmode" class="sect1">
+   <h2 class="title">Escapando o HTML</h2>
+   <p class="para">
+    Tudo o que estiver fora das tags PHP é ignorado pelo
+    interpretador, o que permite arquivos PHP de conteúdo misto. Permite que o PHP
+    seja incluído dentro de documentos HTML, para, por exemplo, a criação de templates.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+&lt;p&gt;Isto&nbsp;vai&nbsp;ser&nbsp;ignorado&nbsp;pelo&nbsp;PHP&nbsp;e&nbsp;exibido&nbsp;peçp&nbsp;navegador.&lt;/p&gt;<br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Enquanto&nbsp;isto&nbsp;vai&nbsp;ser&nbsp;interpretado.'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&lt;p&gt;Isto&nbsp;também&nbsp;vai&nbsp;ser&nbsp;ignorado&nbsp;pelo&nbsp;PHP&nbsp;e&nbsp;exibido&nbsp;pelo&nbsp;navegador.&lt;/p&gt;</span>
+</code></div>
+     </div>
+
+    </div>
+    Isso funcionará porque quando o interpretador do PHP encontra ?&gt;, a tag
+    de fechamento, ele simplesmente começa a repassar qualquer coisa que encontre (exceto um fim de linha
+    imediato, ver a seção sobre
+    <a href="language.basic-syntax.instruction-separation.html" class="link">separação de instruções</a>),
+    até que ele encontre outra tag de abertura a não ser que esteja no meio de uma instrução condicional,
+    onde então o interpretador vai determinar o resultado
+    da condicional e assim decidir qual caminho tomar.
+    Veja no próximo exemplo.
+   </p>
+   <p class="para">
+    Utilizando estruturas avançadas
+    <div class="example" id="example-57">
+     <p><strong>Exemplo #1 Escape avançado usando condições</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$expression&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;Isto&nbsp;irá&nbsp;aparecer&nbsp;se&nbsp;a&nbsp;expressão&nbsp;for&nbsp;verdadeira.<br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">else:&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&nbsp;&nbsp;Senão&nbsp;isso&nbsp;que&nbsp;aparecerá.<br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">endif;&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    Nesse exemplo o PHP irá escapar os blocos em que a condição não seja satisfeita, mesmo
+    que o trecho de código esteja fora das tags de abertura/fechamento do PHP,
+    pois o interpretador do PHP, irá pular os conteúdos de blocos que
+    não possuem uma condição que não foi satisfeita.
+   </p>
+   <p class="para">
+    Para impressão de grandes blocos de texto, sair do modo de interpretação do PHP é
+    geralmente mais eficiente que enviar todo o texto através das funções
+    <span class="function"><a href="function.echo.html" class="function">echo</a></span> ou <span class="function"><a href="function.print.html" class="function">print</a></span>.
+   </p>
+   <p class="para">
+    No PHP 5 existem cinco diferentes pares de tags de abertura e fechamento
+    disponíveis, dependendo de como o interpretador estiver configurado. Dois deles,
+    <code class="code">&lt;?php ?&gt;</code> e
+    <code class="code">&lt;script language=&quot;php&quot;&gt; &lt;/script&gt;</code> estão sempre
+    disponíveis. Também a tag curta de echo <code class="code">&lt;?= ?&gt;</code>,
+    que está sempre disponível desde o PHP 5.4.0.
+   </p>
+   <p class="para">
+    As outras duas opções são as tags curtas e tags estilo <span class="productname">ASP</span>.
+    Assim, embora algumas pessoas achem as tags curtas e
+    <span class="productname">ASP</span> convenientes, são menos
+    portáveis, e geralmente não recomendadas.
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      Também note que se estiver incluindo o PHP dentro de XML ou XHTML,
+      será necessário o uso das tags &lt;?php ?&gt; para aderência
+      aos padrões.
+     </p>
+    </p></blockquote>
+   </p>
+   <p class="para">
+    O PHP 7 removeu o suporte a tags <span class="productname">ASP</span> e
+    <code class="code">&lt;script language=&quot;php&quot;&gt;</code>. Assim, é recomendado
+    utilizar apenas <code class="code">&lt;?php ?&gt;</code> e <code class="code">&lt;?= ?&gt;</code> ao
+    se escrever códigos PHP com maior compatibilidade.
+   </p>
+   <p class="para">
+    <div class="example" id="example-58">
+     <p><strong>Exemplo #2 Abrindo e Fechando as Tags do PHP</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+1.&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'se&nbsp;você&nbsp;quer&nbsp;servir&nbsp;documentos&nbsp;XHTML&nbsp;ou&nbsp;XML,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;escreva&nbsp;assim'</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />2.&nbsp;&nbsp;Você&nbsp;pode&nbsp;utilizar&nbsp;também&nbsp;a&nbsp;tag&nbsp;curta&nbsp;de&nbsp;echo&nbsp;para&nbsp;<span style="color: #0000BB">&lt;?=&nbsp;</span><span style="color: #DD0000">'imprimir&nbsp;isso'&nbsp;</span><span style="color: #0000BB">?&gt;</span>.<br />&nbsp;&nbsp;&nbsp;&nbsp;Ela&nbsp;sempre&nbsp;está&nbsp;disponível&nbsp;do&nbsp;PHP&nbsp;5.4.0&nbsp;em&nbsp;diante,&nbsp;e&nbsp;é&nbsp;equivalente&nbsp;a<br />&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'imprimir&nbsp;isso'&nbsp;</span><span style="color: #0000BB">?&gt;</span>.<br /><br />3.&nbsp;&nbsp;&lt;?&nbsp;echo&nbsp;'esse&nbsp;código&nbsp;entre&nbsp;tags&nbsp;curtas&nbsp;somente&nbsp;funcionará&nbsp;'.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'se&nbsp;short_open_tag&nbsp;estiver&nbsp;habititado';&nbsp;?&gt;<br /><br />4.&nbsp;&nbsp;&lt;script&nbsp;language="php"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;'alguns&nbsp;editores&nbsp;(como&nbsp;o&nbsp;FrontPage)&nbsp;não<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suportam&nbsp;processar&nbsp;instruções&nbsp;com&nbsp;tags&nbsp;assim';<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Esta&nbsp;sintaxe&nbsp;foi&nbsp;removida&nbsp;no&nbsp;PHP&nbsp;7.0.0.<br /><br />5.&nbsp;&nbsp;&lt;%&nbsp;echo&nbsp;'Você&nbsp;também&nbsp;pode&nbsp;utilizar&nbsp;tags&nbsp;no&nbsp;estilo&nbsp;ASP';&nbsp;%&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;%=&nbsp;$variable;&nbsp;%&gt;&nbsp;é&nbsp;um&nbsp;atalho&nbsp;para&nbsp;&lt;%&nbsp;echo&nbsp;$variable;&nbsp;%&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Essas&nbsp;duas&nbsp;sintaxes&nbsp;também&nbsp;foram&nbsp;removidas&nbsp;no&nbsp;PHP&nbsp;7.0.0.</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    Tags curtas (exemplo três) estão disponíveis apenas quando são habilitadas
+    pela configuração <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>
+    no arquivo <var class="filename">php.ini</var>, ou se o PHP foi configurado com
+    a opção <strong class="option unknown">--enable-short-tags</strong>.
+   </p>
+   <p class="para">
+    Tags <span class="productname">ASP</span> (exemplo cinco)
+    estão disponíveis somente quando
+    habilitadas através da diretiva de configuração
+    <a href="ini.core.html#ini.asp-tags" class="link">asp_tags</a> no arquivo <var class="filename">php.ini</var>, e foram removidas no PHP 7.0.0.
+   </p>
+   <p class="para">
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      O uso de tags curtas deve ser evitado ao desenvolver aplicações
+      ou bibliotecas que serão redistribuídas, ou usadas em
+      servidores PHP que não estão sobre o seu controle, porque as tags curtas
+      podem não ser suportadas no servidor em questão. Para código portável,
+      redistribuível, tenha certeza de não usar tags curtas.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      No PHP 5.2 e anteriores, o interpretador não permitia a tag de abertura
+      <em>&lt;?php</em> ser a única coisa em um arquivo.
+      Isto foi permitido a partir do PHP 5.3, desde que haja um ou mais caracteres em
+      branco depois da tag de abertura.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><strong class="note">Nota</strong>: 
+     <p class="para">
+      A partir do PHP 5.4, a tag curta <em>&lt;?=</em> sempre é reconhecida e
+      válida, independente da configuração <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a>.
+     </p>
+    </p></blockquote>
+   </p>
+  </div></div></div></body></html>
