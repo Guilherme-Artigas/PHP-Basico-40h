@@ -1,3 +1,0 @@
-Dica para quem esta usando o XAMPP
-
-No caso de estar usando o XAMPP para aprender php, salve seus projetos em xampp/htdocs/"crie alguma pasta aqui", para visualizar o arquivo, abra seu navegador e digite: localhost/"o nome da pasta que vc escolheu."... bons estudos!
